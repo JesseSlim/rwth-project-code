@@ -7,6 +7,67 @@ sy = np.array([[0, -1j], [1j, 0]], dtype=np.complex128)
 sz = np.array([[1, 0], [0, -1]], dtype=np.complex128)
 si = np.array([[1, 0], [0, 1]], dtype=np.complex128)
 S = np.stack((sx, sy, sz), axis=0)
+Sid = np.stack((si, sx, sy, sz), axis=0)
+
+
+def multiply_idpauli_matrices(A, B):
+    """
+    I think I reinvented quaternion multiplication... oh well, I guess it'll work
+    :param A:
+    :param B:
+    :return:
+    """
+    orig_shape = A.shape
+    A = A.reshape(-1, 4)
+    B = B.reshape(-1, 4)
+    N = A.shape[0]
+
+    B_indices = np.array([
+        [0, 1, 2, 3],
+        [1, 0, 3, 2],
+        [2, 3, 0, 1],
+        [3, 2, 1, 0]
+    ], dtype=np.int)
+
+    B_prefactors = np.array([
+        [1,   1,    1,   1],
+        [1,   1,   1j, -1j],
+        [1, -1j,    1,  1j],
+        [1,  1j,  -1j,   1],
+    ], dtype=np.complex128)
+
+    C = np.zeros((N, 4), dtype=np.complex128)
+
+    for i in range(4):
+        indices = B_indices[i,:]
+        prefactors = B_prefactors[i,:]
+        C[:,i] = np.einsum('ij,ij->i', A, B[:, indices] * prefactors[np.newaxis, :])
+
+    return C.reshape(orig_shape)
+
+
+def calc_rotation_matrices_idpauli(angles, ax_R):
+    N = len(angles)
+    result = np.zeros((N, 4), dtype=np.complex128)
+
+    result[:,0] = np.cos(angles)
+    result[:,1:4] = 1j * np.sin(angles).reshape(-1, 1) * ax_R.reshape(-1, 3)
+
+    return result
+
+
+def transform_rotating_frame(H_pauli, t, w_R, ax_R):
+    N = len(t)
+    H_idpauli = np.zeros((N, 4))
+    H_idpauli[:,1:4] = H_pauli
+
+    a_R = w_R * t * 0.5
+
+    R1 = calc_rotation_matrices_idpauli(a_R, ax_R)
+    R2 = calc_rotation_matrices_idpauli(-a_R, ax_R)
+
+    H_rot_idpauli = multiply_idpauli_matrices(multiply_idpauli_matrices(R1, H_idpauli), R2)
+    return H_rot_idpauli[:,1:4] - 0.5 * w_R * ax_R.reshape(-1,3)
 
 
 def assemble_H_paulis(t, x, y, z):
@@ -38,14 +99,13 @@ def calc_ev_ops(H_pauli, dt):
     N = H_pauli.shape[0]
 
     H_norms = np.linalg.norm(H_pauli, axis=1).reshape(-1, 1)
+    nonzero_norms = H_norms[:,0] > 0
     angles = H_norms * dt
 
-    H_pauli_normed = H_pauli / H_norms
-    # is h_norm is 0, we get infinities
-    # but in that case the rotation angle h_norm * dt is also zero
-    # so we don't really care about the rotation axis and we can set
-    # the infinities to zero
-    H_pauli_normed[np.isinf(H_pauli_normed)] = 0.0
+    H_pauli_normed = np.zeros_like(H_pauli)
+    # we only care about H (which sets the rotation axis) if the rotation angle \propto norm(H) > 0,
+    # otherwise we just leave it zero to avoid division by zero errors
+    H_pauli_normed[nonzero_norms,:] = H_pauli[nonzero_norms,:] / H_norms[nonzero_norms,:]
     R_matrix = np.tensordot(H_pauli_normed, S, axes=([1], [0]))
 
     eyes = np.repeat(np.eye(2)[np.newaxis, :, :], N, axis=0)
@@ -94,12 +154,16 @@ def accumulate_ev_ops_over_state(ev_ops, state):
     return result
 
 
-def integrate_evolution(H, calc_dt, plot_dt, plot_length, psi_0):
+def integrate_evolution(H, calc_dt, plot_dt, plot_length, psi_0, rotating_frame=False, w_R=0.0, ax_R=[0.0, 0.0, 1.0]):
     plot_steps = int(plot_length/plot_dt)
     plot_interval = int(plot_dt/calc_dt)
 
     calc_t = np.arange(plot_interval*plot_steps, dtype=np.float64)*calc_dt
     H_pauli = assemble_H_paulis(calc_t, *H)
+
+    if rotating_frame:
+        ax_R = np.array(ax_R)
+        H_pauli = transform_rotating_frame(H_pauli, calc_t, w_R, ax_R)
 
     all_ev_ops = calc_ev_ops(H_pauli, calc_dt)
 

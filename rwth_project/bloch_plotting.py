@@ -60,7 +60,7 @@ def plot_vector(x, y, z, **kw):
 
 def plot_vector_sph(theta, phi, **kw):
     r = kw.pop('r', 1.0)
-    plot_vector(*spher_to_cart(theta, phi, r), **kw)
+    plot_vector(*spher_to_cart(np.array([theta, phi, r])), **kw)
 
 
 def state_vector_to_bloch_angles(v):
@@ -72,6 +72,22 @@ def state_vector_to_bloch_angles(v):
     results[:, 1] = np.angle(v[:, 1]) - np.angle(v[:, 0])
 
     return results.reshape(orig_shape)
+
+
+def update_vector(line, c):
+    line.set_data([0.0, c[0]], [0.0, c[1]])
+    line.set_3d_properties([0.0, c[2]])
+    line.set_zorder(-c[1] + 100)
+
+
+def update_point(point, c):
+    point.set_data(c[0:2])
+    point.set_3d_properties(c[2:3])
+
+
+def update_line(line, c):
+    line.set_data(c[:,0], c[:,1])
+    line.set_3d_properties(c[:,2])
 
 
 def animate_state_list(psi_t, **kwarg):
@@ -90,28 +106,14 @@ def animate_state_list(psi_t, **kwarg):
 
     (trace_line,) = plt.plot([], [], [], color='g', alpha=0.5, animated=True, linewidth=trace_width)
 
-    def spher_to_cart_rotating_frame(theta, phi, r=1.0, rot_phase=0.0):
-        x = r * np.sin(theta) * np.cos(phi - rot_phase)
-        y = r * np.sin(theta) * np.sin(phi - rot_phase)
-        z = r * np.cos(theta)
-        return np.array([x, y, z])
-
-    def update_line(line, c):
-        line.set_data([0.0, c[0]], [0.0, c[1]])
-        line.set_3d_properties([0.0, c[2]])
-        line.set_zorder(-c[1] + 100)
-
-    def update_point(point, c):
-        point.set_data(c[0:2])
-        point.set_3d_properties(c[2:3])
+    psi_bloch_s = state_vector_to_bloch_angles(psi_t)
+    psi_bloch_c = spher_to_cart(psi_bloch_s)
 
     def update(i):
-        psi = psi_t[i, :]
-        psi_bloch_s = state_vector_to_bloch_angles(psi)
-        psi_bloch_c = spher_to_cart(psi_bloch_s)
-
-        update_line(qb_line, psi_bloch_c)
-        update_point(qb_dot, psi_bloch_c)
+        update_vector(qb_line, psi_bloch_c[i, :])
+        update_point(qb_dot, psi_bloch_c[i, :])
+        if trace_endpoint:
+            update_line(trace_line, psi_bloch_c[0:(i+1), :])
 
     ani = animation.FuncAnimation(fig, update, frames=np.arange(len(psi_t)), **kwarg)
 
