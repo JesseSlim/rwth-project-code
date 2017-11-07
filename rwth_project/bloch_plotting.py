@@ -97,24 +97,39 @@ def animate_state_list(psi_t, **kwarg):
     qubit_marker = 5  # marker size of the qubit state vector endpoint
     trace_width = 1
 
+    if not isinstance(psi_t, list):
+        psi_t = [psi_t]
+
+    n_states = len(psi_t)
+
     trace_endpoint = kwarg.pop('trace_endpoint', False)
+    colors = kwarg.pop('colors', ['C1', 'C2', 'C3', 'C4'])
 
     fig, ax = init_bloch_sphere()
 
-    (qb_line,) = plt.plot([], [], [], color='g', animated=True, linewidth=qubit_width)
-    (qb_dot,) = plt.plot([], [], [], color='g', animated=True, marker='o', markersize=qubit_marker, linestyle='')
+    qb_lines = []
+    qb_dots = []
+    trace_lines = []
+    psi_bloch_s = []
+    psi_bloch_c = []
+    for i in range(n_states):
+        (qb_line,) = plt.plot([], [], [], color=colors[i], animated=True, linewidth=qubit_width)
+        (qb_dot,) = plt.plot([], [], [], color=colors[i], animated=True, marker='o', markersize=qubit_marker, linestyle='')
+        (trace_line,) = plt.plot([], [], [], color=colors[i], alpha=0.5, animated=True, linewidth=trace_width)
 
-    (trace_line,) = plt.plot([], [], [], color='g', alpha=0.5, animated=True, linewidth=trace_width)
+        qb_lines.append(qb_line)
+        qb_dots.append(qb_dot)
+        trace_lines.append(trace_line)
+        psi_bloch_s.append(state_vector_to_bloch_angles(psi_t[i]))
+        psi_bloch_c.append(spher_to_cart(psi_bloch_s[i]))
 
-    psi_bloch_s = state_vector_to_bloch_angles(psi_t)
-    psi_bloch_c = spher_to_cart(psi_bloch_s)
+    def update(t):
+        for i in range(n_states):
+            update_vector(qb_lines[i], psi_bloch_c[i][t, :])
+            update_point(qb_dots[i], psi_bloch_c[i][t, :])
+            if trace_endpoint:
+                update_line(trace_lines[i], psi_bloch_c[i][0:(t+1), :])
 
-    def update(i):
-        update_vector(qb_line, psi_bloch_c[i, :])
-        update_point(qb_dot, psi_bloch_c[i, :])
-        if trace_endpoint:
-            update_line(trace_line, psi_bloch_c[0:(i+1), :])
-
-    ani = animation.FuncAnimation(fig, update, frames=np.arange(len(psi_t)), **kwarg)
+    ani = animation.FuncAnimation(fig, update, frames=np.arange(len(psi_t[0])), **kwarg)
 
     return ani
