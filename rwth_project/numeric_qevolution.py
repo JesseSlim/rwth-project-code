@@ -159,6 +159,9 @@ def integrate_evolution(H, calc_dt, plot_dt, plot_length, psi_0, rotating_frame=
     plot_interval = int(plot_dt/calc_dt)
 
     calc_t = np.arange(plot_interval*plot_steps, dtype=np.float64)*calc_dt
+    # we get one plot point for free because the plot_steps parameter actually specifies the number of Hamiltonians
+    # to be generated. Including the starting state in the trace means we have one more state in the calculated trace
+    plot_t = np.arange(plot_steps+1, dtype=np.float64)*plot_interval*calc_dt
     H_pauli = assemble_H_paulis(calc_t, *H)
 
     if rotating_frame:
@@ -168,9 +171,11 @@ def integrate_evolution(H, calc_dt, plot_dt, plot_length, psi_0, rotating_frame=
     all_ev_ops = calc_ev_ops(H_pauli, calc_dt)
 
     plot_ev_ops = np.zeros((plot_steps, 2, 2), dtype=np.complex128)
+    # there is no need jitting this loop as the number of times it's executed is fairly low
+    # the inner function is jitted anyway so we'd only jit away the loop overhead
     for i in range(plot_steps):
         plot_ev_ops[i, :, :] = accumulate_ev_ops(
             all_ev_ops[(i*plot_interval):((i+1)*plot_interval),:,:]
         )
 
-    return accumulate_ev_ops_over_state(plot_ev_ops, psi_0)
+    return accumulate_ev_ops_over_state(plot_ev_ops, psi_0), plot_t
