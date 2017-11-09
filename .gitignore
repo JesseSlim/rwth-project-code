@@ -1,2 +1,5 @@
 *.mp4
 *.png
+.idea
+.ipynb_checkpoints
+*.pyc
