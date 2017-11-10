@@ -17,8 +17,8 @@ def init_bloch_sphere(central_ball=True, crop_figure=True, fig=None, ax=None):
     ax.dist = 6
     ax.set_aspect('equal')
     ax.set_axis_off()
-    ax.plot(circle_x, circle_y, circle_z, color='gray')
-    ax.plot(circle_z, circle_x, circle_y, color='gray')
+    ax.plot(circle_x, circle_y, circle_z, color='gray', zorder=1001)
+    ax.plot(circle_z, circle_x, circle_y, color='gray', zorder=1002)
     ax.plot(circle_y, circle_z, circle_x, color='gray')
     ax.plot(line_range, circle_z, circle_z, color='gray')
     ax.plot(circle_z, line_range, circle_z, color='gray')
@@ -102,6 +102,7 @@ def update_vector(line, c):
 def update_point(point, c):
     point.set_data(c[0:2])
     point.set_3d_properties(c[2:3])
+    point.set_zorder(-c[1] + 1500)
 
 
 def update_3d_line(line, c):
@@ -128,9 +129,22 @@ def animate_state_list(psi_t, H_t=[], scale_H=1.0, H_1=[], plot_t=None, **kwarg)
     if plot_t is None:
         plot_t = np.arange(n_frames, dtype=np.float64)
 
-    trace_endpoint = kwarg.pop('trace_endpoint', False)
+    trace_qbstate = kwarg.pop('trace_qbstate', False)
     trace_rotation = kwarg.pop('trace_rotation', False)
-    colors = kwarg.pop('colors', ['C1', 'C2', 'C3', 'C4'])
+
+    vector_qbstate = kwarg.pop('vector_qbstate', True)
+    vector_rotation = kwarg.pop('vector_rotation', True)
+
+    if not isinstance(trace_qbstate, list):
+        trace_qbstate = [trace_qbstate] * n_states
+    if not isinstance(trace_rotation, list):
+        trace_rotation = [trace_rotation] * n_axes
+    if not isinstance(vector_qbstate, list):
+        vector_qbstate = [vector_qbstate] * n_states
+    if not isinstance(vector_rotation, list):
+        vector_rotation = [vector_rotation] * n_states
+
+    colors = kwarg.pop('colors', ['C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7'])
     axis_colors = kwarg.pop('axis_colors', colors)
     pulse_colors = kwarg.pop('pulse_colors', colors)
 
@@ -166,22 +180,16 @@ def animate_state_list(psi_t, H_t=[], scale_H=1.0, H_1=[], plot_t=None, **kwarg)
 
     pulse_lines = []
     pulse_prelines = []
-    pulse_min = None
-    pulse_max = None
+    pulse_min = 0.0
+    pulse_max = 0.0
     for i in range(n_pulses):
         pulse_line = (H1ax.plot([], [], color=pulse_colors[i], animated=True))[0]
         pulse_preline = (H1ax.plot(plot_t, H_1[i], color=pulse_colors[i], animated=True, alpha=0.3))[0]
 
         pulse_lines.append(pulse_line)
         pulse_prelines.append(pulse_preline)
-        if pulse_min is None:
-            pulse_min = np.min(H_1[i])
-        else:
-            pulse_min = min(pulse_min, np.min(H_1[i]))
-        if pulse_max is None:
-            pulse_max = np.max(H_1[i])
-        else:
-            pulse_max = max(pulse_max, np.max(H_1[i]))
+        pulse_min = min(pulse_min, np.min(H_1[i]))
+        pulse_max = max(pulse_max, np.max(H_1[i]))
 
     if n_pulses > 0:
         H1ax.set_xlim(np.min(plot_t), np.max(plot_t))
@@ -190,14 +198,16 @@ def animate_state_list(psi_t, H_t=[], scale_H=1.0, H_1=[], plot_t=None, **kwarg)
 
     def update(t):
         for i in range(n_states):
-            update_vector(qb_lines[i], psi_bloch_c[i][t, :])
-            update_point(qb_dots[i], psi_bloch_c[i][t, :])
-            if trace_endpoint:
+            if vector_qbstate[i]:
+                update_vector(qb_lines[i], psi_bloch_c[i][t, :])
+                update_point(qb_dots[i], psi_bloch_c[i][t, :])
+            if trace_qbstate[i]:
                 update_3d_line(trace_lines[i], psi_bloch_c[i][0:(t + 1), :])
 
         for i in range(n_axes):
-            update_vector(axis_lines[i], scale_H*H_t[i][t,:])
-            if trace_rotation:
+            if vector_rotation[i]:
+                update_vector(axis_lines[i], scale_H*H_t[i][t,:])
+            if trace_rotation[i]:
                 update_3d_line(axis_trace_lines[i], scale_H * H_t[i][0:(t + 1), :])
 
         for i in range(n_pulses):
