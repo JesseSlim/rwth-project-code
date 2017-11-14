@@ -195,24 +195,37 @@ def animate_state_list(psi_t, H_t=[], scale_H=1.0, H_1=[], plot_t=None, **kwarg)
         H1ax.set_xlim(np.min(plot_t), np.max(plot_t))
         H1ax.set_ylim(pulse_min*1.05, pulse_max*1.05)
 
+    def init_func():
+        return qb_lines + qb_dots + trace_lines + axis_lines + axis_trace_lines + pulse_lines
 
     def update(t):
+        redraw = []
         for i in range(n_states):
+
             if vector_qbstate[i]:
                 update_vector(qb_lines[i], psi_bloch_c[i][t, :])
                 update_point(qb_dots[i], psi_bloch_c[i][t, :])
+                redraw.append(qb_lines[i])
+                redraw.append(qb_dots[i])
             if trace_qbstate[i]:
                 update_3d_line(trace_lines[i], psi_bloch_c[i][0:(t + 1), :])
+                redraw.append(trace_lines[i])
 
         for i in range(n_axes):
             if vector_rotation[i]:
                 update_vector(axis_lines[i], scale_H*H_t[i][t,:])
+                redraw.append(axis_lines[i])
             if trace_rotation[i]:
                 update_3d_line(axis_trace_lines[i], scale_H * H_t[i][0:(t + 1), :])
+                redraw.append(axis_trace_lines[i])
 
         for i in range(n_pulses):
             pulse_lines[i].set_data(plot_t[0:(t + 1)], H_1[i][0:(t + 1)])
 
-    ani = animation.FuncAnimation(fig, update, frames=np.arange(n_frames), **kwarg)
+        return redraw
+
+    blit = kwarg.pop('blit', True)
+
+    ani = animation.FuncAnimation(fig, update, frames=np.arange(n_frames), init_func=init_func, blit=blit, **kwarg)
 
     return ani
