@@ -10,118 +10,192 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     65979,       1529]
-NotebookOptionsPosition[     64992,       1493]
-NotebookOutlinePosition[     65375,       1510]
-CellTagsIndexPosition[     65332,       1507]
+NotebookDataLength[     70185,       1625]
+NotebookOptionsPosition[     69231,       1590]
+NotebookOutlinePosition[     69614,       1607]
+CellTagsIndexPosition[     69571,       1604]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
-Cell[BoxData[""], "Input",
- CellChangeTimes->{{3.719726626871139*^9, 3.719726649169951*^9}}],
-
-Cell["\<\
-Define original Hamiltonian in the rotating frame (for resonant drive)\
-\>", "Text",
+Cell["Define original Hamiltonian in the rotating frame", "Text",
  CellChangeTimes->{{3.7196436607136917`*^9, 3.7196436919140244`*^9}, 
-   3.719657744467873*^9}],
+   3.719657744467873*^9, {3.720244319005018*^9, 3.7202443210489607`*^9}}],
 
 Cell[BoxData[
  RowBox[{"Horig", ":=", 
   RowBox[{
-   RowBox[{"H1", "/", "4"}], "*", 
-   RowBox[{"(", 
-    RowBox[{"sx", "+", 
+   RowBox[{
+    RowBox[{"H1", "/", "4"}], "*", 
+    RowBox[{"(", 
      RowBox[{
-      RowBox[{"Cos", "[", 
-       RowBox[{"2", "*", "ww", "*", "t"}], "]"}], "sx"}], "-", 
-     RowBox[{
-      RowBox[{"Sin", "[", 
-       RowBox[{"2", "*", "ww", "*", "t"}], "]"}], "*", "sy"}]}], 
-    ")"}]}]}]], "Input",
+      RowBox[{
+       RowBox[{"Cos", "[", "phi", "]"}], "*", "sx"}], "+", 
+      RowBox[{
+       RowBox[{"Cos", "[", 
+        RowBox[{
+         RowBox[{"2", "*", "ww", "*", "t"}], "+", "phi"}], "]"}], "sx"}], "+", 
+      RowBox[{
+       RowBox[{"Sin", "[", "phi", "]"}], "sy"}], "-", 
+      RowBox[{
+       RowBox[{"Sin", "[", 
+        RowBox[{
+         RowBox[{"2", "*", "ww", "*", "t"}], "+", "phi"}], "]"}], "*", 
+       "sy"}]}], ")"}]}], "+", 
+   RowBox[{
+    RowBox[{"Delta", "/", "2"}], "*", "sz"}]}]}]], "Input",
  CellChangeTimes->{{3.719643473500388*^9, 3.7196436036867323`*^9}, {
-  3.719643650553937*^9, 3.7196436528412933`*^9}}],
+  3.719643650553937*^9, 3.7196436528412933`*^9}, {3.720244552513276*^9, 
+  3.720244588137054*^9}, {3.720244629147169*^9, 3.720244667635796*^9}}],
 
 Cell["Define Magnus approximation Hamiltonians", "Text",
- CellChangeTimes->{{3.71964340444093*^9, 3.719643433346612*^9}}],
+ CellChangeTimes->{{3.71964340444093*^9, 3.719643433346612*^9}, {
+  3.720245446605926*^9, 3.72024544741252*^9}}],
 
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"Hww0", ":=", 
-   FractionBox[
-    RowBox[{"H1", " ", "sx"}], "4"]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"HwwM1", ":=", 
-   FractionBox[
-    RowBox[{
-     RowBox[{"H1", " ", 
-      RowBox[{"(", 
-       RowBox[{
-        RowBox[{"H1", " ", "sz"}], "+", 
-        RowBox[{"8", " ", "sx", " ", "ww"}]}], ")"}]}], "+", 
-     RowBox[{
-      RowBox[{"(", 
-       RowBox[{
-        RowBox[{"4", " ", "H1D", " ", "sy"}], "-", 
-        RowBox[{"2", " ", 
-         SuperscriptBox["H1", "2"], " ", "sz"}]}], ")"}], " ", 
-      RowBox[{"Cos", "[", 
-       RowBox[{"2", " ", "\[Alpha]0"}], "]"}]}], "+", 
-     RowBox[{"4", " ", "H1D", " ", "sx", " ", 
-      RowBox[{"Sin", "[", 
-       RowBox[{"2", " ", "\[Alpha]0"}], "]"}]}]}], 
-    RowBox[{"32", " ", "ww"}]]}], ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"HwwM2", ":=", 
+  RowBox[{"termHww0", "=", 
    RowBox[{
-    FractionBox["1", 
-     RowBox[{"256", " ", 
-      SuperscriptBox["ww", "2"]}]], 
+    FractionBox["1", "4"], " ", 
     RowBox[{"(", 
      RowBox[{
-      RowBox[{"8", " ", "H1", " ", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{"-", 
-          FractionBox[
-           RowBox[{
-            SuperscriptBox["H1", "2"], " ", "sx"}], "4"]}], "+", 
-         RowBox[{"H1", " ", "sz", " ", "ww"}], "+", 
-         RowBox[{"8", " ", "sx", " ", 
-          SuperscriptBox["ww", "2"]}]}], ")"}]}], "+", 
-      RowBox[{"2", " ", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{
-          SuperscriptBox["H1", "3"], " ", "sx"}], "+", 
-         RowBox[{"8", " ", "H1DD", " ", "sx"}], "+", 
-         RowBox[{"16", " ", "H1D", " ", "sy", " ", "ww"}], "-", 
-         RowBox[{"8", " ", 
-          SuperscriptBox["H1", "2"], " ", "sz", " ", "ww"}]}], ")"}], " ", 
-       RowBox[{"Cos", "[", 
-        RowBox[{"2", " ", "\[Alpha]0"}], "]"}]}], "-", 
+      RowBox[{"2", " ", "Delta", " ", "sz"}], "+", 
+      RowBox[{"H1", " ", "sx", " ", 
+       RowBox[{"Cos", "[", "phi", "]"}]}], "+", 
+      RowBox[{"H1", " ", "sy", " ", 
+       RowBox[{"Sin", "[", "phi", "]"}]}]}], ")"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"termHwwM1", "=", 
+   RowBox[{
+    FractionBox["1", 
+     RowBox[{"32", " ", "ww"}]], 
+    RowBox[{"(", 
+     RowBox[{
       RowBox[{
-       SuperscriptBox["H1", "3"], " ", "sx", " ", 
-       RowBox[{"Cos", "[", 
-        RowBox[{"4", " ", "\[Alpha]0"}], "]"}]}], "+", 
+       SuperscriptBox["H1", "2"], " ", "sz"}], "-", 
       RowBox[{"2", " ", 
+       SuperscriptBox["H1", "2"], " ", "sz", " ", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"2", " ", 
+         RowBox[{"(", 
+          RowBox[{"phi", "+", "\[Alpha]0"}], ")"}]}], "]"}]}], "+", 
+      RowBox[{"4", " ", 
        RowBox[{"(", 
         RowBox[{
-         RowBox[{
-          SuperscriptBox["H1", "3"], " ", "sy"}], "-", 
-         RowBox[{"8", " ", "H1DD", " ", "sy"}], "+", 
-         RowBox[{"12", " ", "H1", " ", "H1D", " ", "sz"}], "+", 
-         RowBox[{"16", " ", "H1D", " ", "sx", " ", "ww"}]}], ")"}], " ", 
+         RowBox[{"Delta", " ", "H1", " ", "sx"}], "+", 
+         RowBox[{"H1D", " ", "sy"}]}], ")"}], " ", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"phi", "+", 
+         RowBox[{"2", " ", "\[Alpha]0"}]}], "]"}]}], "+", 
+      RowBox[{"4", " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"H1D", " ", "sx"}], "-", 
+         RowBox[{"Delta", " ", "H1", " ", "sy"}]}], ")"}], " ", 
        RowBox[{"Sin", "[", 
-        RowBox[{"2", " ", "\[Alpha]0"}], "]"}]}], "+", 
+        RowBox[{"phi", "+", 
+         RowBox[{"2", " ", "\[Alpha]0"}]}], "]"}]}]}], ")"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"termHwwM2", "=", 
+    RowBox[{
+     FractionBox["1", 
+      RowBox[{"256", " ", 
+       SuperscriptBox["ww", "2"]}]], 
+     RowBox[{"(", 
       RowBox[{
-       SuperscriptBox["H1", "3"], " ", "sy", " ", 
-       RowBox[{"Sin", "[", 
-        RowBox[{"4", " ", "\[Alpha]0"}], "]"}]}]}], ")"}]}]}], 
-  ";"}]}], "Input",
+       RowBox[{
+        RowBox[{"-", "8"}], " ", "Delta", " ", 
+        SuperscriptBox["H1", "2"], " ", "sz"}], "-", 
+       RowBox[{"2", " ", 
+        SuperscriptBox["H1", "3"], " ", "sx", " ", 
+        RowBox[{"Cos", "[", "phi", "]"}]}], "+", 
+       RowBox[{"8", " ", "Delta", " ", 
+        SuperscriptBox["H1", "2"], " ", "sz", " ", 
+        RowBox[{"Cos", "[", 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{"phi", "+", "\[Alpha]0"}], ")"}]}], "]"}]}], "-", 
+       RowBox[{"16", " ", 
+        SuperscriptBox["Delta", "2"], " ", "H1", " ", "sx", " ", 
+        RowBox[{"Cos", "[", 
+         RowBox[{"phi", "+", 
+          RowBox[{"2", " ", "\[Alpha]0"}]}], "]"}]}], "+", 
+       RowBox[{"16", " ", "H1DD", " ", "sx", " ", 
+        RowBox[{"Cos", "[", 
+         RowBox[{"phi", "+", 
+          RowBox[{"2", " ", "\[Alpha]0"}]}], "]"}]}], "-", 
+       RowBox[{"32", " ", "Delta", " ", "H1D", " ", "sy", " ", 
+        RowBox[{"Cos", "[", 
+         RowBox[{"phi", "+", 
+          RowBox[{"2", " ", "\[Alpha]0"}]}], "]"}]}], "+", 
+       RowBox[{"2", " ", 
+        SuperscriptBox["H1", "3"], " ", "sx", " ", 
+        RowBox[{"Cos", "[", 
+         RowBox[{
+          RowBox[{"3", " ", "phi"}], "+", 
+          RowBox[{"2", " ", "\[Alpha]0"}]}], "]"}]}], "-", 
+       RowBox[{
+        SuperscriptBox["H1", "3"], " ", "sx", " ", 
+        RowBox[{"Cos", "[", 
+         RowBox[{
+          RowBox[{"3", " ", "phi"}], "+", 
+          RowBox[{"4", " ", "\[Alpha]0"}]}], "]"}]}], "-", 
+       RowBox[{"2", " ", 
+        SuperscriptBox["H1", "3"], " ", "sy", " ", 
+        RowBox[{"Sin", "[", "phi", "]"}]}], "+", 
+       RowBox[{"24", " ", "H1", " ", "H1D", " ", "sz", " ", 
+        RowBox[{"Sin", "[", 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{"phi", "+", "\[Alpha]0"}], ")"}]}], "]"}]}], "-", 
+       RowBox[{"32", " ", "Delta", " ", "H1D", " ", "sx", " ", 
+        RowBox[{"Sin", "[", 
+         RowBox[{"phi", "+", 
+          RowBox[{"2", " ", "\[Alpha]0"}]}], "]"}]}], "+", 
+       RowBox[{"16", " ", 
+        SuperscriptBox["Delta", "2"], " ", "H1", " ", "sy", " ", 
+        RowBox[{"Sin", "[", 
+         RowBox[{"phi", "+", 
+          RowBox[{"2", " ", "\[Alpha]0"}]}], "]"}]}], "-", 
+       RowBox[{"16", " ", "H1DD", " ", "sy", " ", 
+        RowBox[{"Sin", "[", 
+         RowBox[{"phi", "+", 
+          RowBox[{"2", " ", "\[Alpha]0"}]}], "]"}]}], "+", 
+       RowBox[{"2", " ", 
+        SuperscriptBox["H1", "3"], " ", "sy", " ", 
+        RowBox[{"Sin", "[", 
+         RowBox[{
+          RowBox[{"3", " ", "phi"}], "+", 
+          RowBox[{"2", " ", "\[Alpha]0"}]}], "]"}]}], "+", 
+       RowBox[{
+        SuperscriptBox["H1", "3"], " ", "sy", " ", 
+        RowBox[{"Sin", "[", 
+         RowBox[{
+          RowBox[{"3", " ", "phi"}], "+", 
+          RowBox[{"4", " ", "\[Alpha]0"}]}], "]"}]}]}], ")"}]}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Hww0", "=", "termHww0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"HwwM1", "=", 
+   RowBox[{"termHww0", "+", "termHwwM1"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"HwwM2", "=", 
+    RowBox[{"termHww0", "+", "termHwwM1", "+", "termHwwM2"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ApproxHList", "=", 
+   RowBox[{"{", 
+    RowBox[{"Hww0", ",", "HwwM1", ",", "HwwM2"}], "}"}]}], ";"}]}], "Input",
  CellChangeTimes->{{3.719643381072638*^9, 3.719643396752432*^9}, {
-  3.7196434965181017`*^9, 3.7196434980195923`*^9}}],
+  3.7196434965181017`*^9, 3.7196434980195923`*^9}, {3.7202442779699717`*^9, 
+  3.720244309855783*^9}, {3.720245964623187*^9, 3.720246063536854*^9}, {
+  3.7202461644283943`*^9, 3.720246231240554*^9}, {3.720248708864814*^9, 
+  3.7202487111749573`*^9}}],
 
 Cell[BoxData[{
  RowBox[{
@@ -135,10 +209,6 @@ Cell[BoxData[{
      RowBox[{"sz", "\[Rule]", 
       RowBox[{"PauliMatrix", "[", "3", "]"}]}]}], "}"}]}], 
   ";"}], "\[IndentingNewLine]", 
- RowBox[{
-  RowBox[{"vals", " ", "=", " ", 
-   RowBox[{"{", 
-    RowBox[{"ww", "\[Rule]", "1"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"H1Dsubs", "=", 
    RowBox[{"{", "\[IndentingNewLine]", 
@@ -176,7 +246,7 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{"AssembleH", "[", 
-    RowBox[{"H_", ",", "H1f_"}], "]"}], ":=", 
+    RowBox[{"H_", ",", "H1f_", ",", "vals_"}], "]"}], ":=", 
    RowBox[{"(", 
     RowBox[{
      RowBox[{
@@ -197,10 +267,10 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{"GetHFunc", "[", 
-    RowBox[{"H_", ",", "H1f_"}], "]"}], ":=", 
+    RowBox[{"H_", ",", "H1f_", ",", "vals_"}], "]"}], ":=", 
    RowBox[{"ToHFunc", "@", 
     RowBox[{"AssembleH", "[", 
-     RowBox[{"H", ",", "H1f"}], "]"}]}]}], ";"}]}], "Input",
+     RowBox[{"H", ",", "H1f", ",", "vals"}], "]"}]}]}], ";"}]}], "Input",
  CellChangeTimes->{{3.719643717851988*^9, 3.719643722578844*^9}, {
    3.7196445358476553`*^9, 3.719644645913954*^9}, 3.719644992270249*^9, {
    3.7196450874805927`*^9, 3.719645101937063*^9}, {3.719645166643141*^9, 
@@ -214,7 +284,8 @@ Cell[BoxData[{
    3.719652110886743*^9, 3.7196521323243837`*^9}, {3.719652912585964*^9, 
    3.7196529681193132`*^9}, {3.719653010339864*^9, 3.719653012248835*^9}, {
    3.719653562023431*^9, 3.71965359310808*^9}, 3.7197264696092863`*^9, {
-   3.719726534188534*^9, 3.719726555250202*^9}}],
+   3.719726534188534*^9, 3.719726555250202*^9}, {3.7202444989299*^9, 
+   3.720244499447023*^9}, {3.720245034401173*^9, 3.720245060520206*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -579,11 +650,11 @@ Cell[BoxData[
            RowBox[{
             RowBox[{"{", 
              RowBox[{
-             "origTrace", ",", " ", "o0Trace", ",", " ", "o1Trace", ",", " ", 
-              "o2Trace", ",", "\[Psi]0", ",", "gateAngle", ",", "tMax", ",", 
-              "H1func", ",", "hOrigFunc", ",", "oMax", ",", "oTraces", ",", 
-              "oColors", ",", "tCoincidence", ",", "t0", ",", "tC", ",", 
-              "relevantTCoincidence"}], "}"}], ",", "\[IndentingNewLine]", 
+             "origTrace", ",", "approxTraces", ",", "\[Psi]0", ",", 
+              "gateAngle", ",", "tMax", ",", "H1func", ",", "vals", ",", 
+              "hOrigFunc", ",", "approxColors", ",", "tCoincidence", ",", 
+              "t0", ",", "tC", ",", "relevantTCoincidence"}], "}"}], ",", 
+            "\[IndentingNewLine]", 
             RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
              RowBox[{"(*", " ", 
               RowBox[{
@@ -611,6 +682,13 @@ Cell[BoxData[
                   RowBox[{
                    RowBox[{"tMaxIn", "\[Rule]", "tMax"}], ",", 
                    RowBox[{"H1avgIn", "\[Rule]", "H1avg"}]}], "}"}]}]}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"vals", " ", "=", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"ww", "\[Rule]", "wwIn"}], ",", 
+                  RowBox[{"Delta", "\[Rule]", "DeltaIn"}], ",", 
+                  RowBox[{"phi", "\[Rule]", "phiIn"}]}], "}"}]}], ";", 
                "\[IndentingNewLine]", "\[IndentingNewLine]", 
                RowBox[{"(*", " ", 
                 RowBox[{
@@ -653,7 +731,7 @@ Cell[BoxData[
                  " ", "qubit"}], " ", "*)"}], "\[IndentingNewLine]", 
                RowBox[{"hOrigFunc", "=", 
                 RowBox[{"GetHFunc", "[", 
-                 RowBox[{"Horig", ",", "H1func"}], "]"}]}], ";", 
+                 RowBox[{"Horig", ",", "H1func", ",", "vals"}], "]"}]}], ";", 
                "\[IndentingNewLine]", 
                RowBox[{"origTrace", "=", 
                 RowBox[{"\[Psi]", "/.", 
@@ -661,42 +739,28 @@ Cell[BoxData[
                   RowBox[{
                   "hOrigFunc", ",", "tMax", ",", "\[Alpha]0", ",", 
                    "\[Psi]0"}], "]"}]}]}], ";", "\[IndentingNewLine]", 
-               RowBox[{"o0Trace", "=", 
-                RowBox[{"\[Psi]", "/.", 
-                 RowBox[{"NTrajectory", "[", 
-                  RowBox[{
-                   RowBox[{"GetHFunc", "[", 
-                    RowBox[{"Hww0", ",", "H1func"}], "]"}], ",", "tMax", ",", 
-                   "\[Alpha]0", ",", "\[Psi]0"}], "]"}]}]}], ";", 
-               "\[IndentingNewLine]", 
-               RowBox[{"o1Trace", "=", 
-                RowBox[{"\[Psi]", "/.", 
-                 RowBox[{"NTrajectory", "[", 
-                  RowBox[{
-                   RowBox[{"GetHFunc", "[", 
-                    RowBox[{"HwwM1", ",", "H1func"}], "]"}], ",", "tMax", ",",
-                    "\[Alpha]0", ",", "\[Psi]0"}], "]"}]}]}], ";", 
-               "\[IndentingNewLine]", 
-               RowBox[{"o2Trace", "=", 
-                RowBox[{"\[Psi]", "/.", 
-                 RowBox[{"NTrajectory", "[", 
-                  RowBox[{
-                   RowBox[{"GetHFunc", "[", 
-                    RowBox[{"HwwM2", ",", "H1func"}], "]"}], ",", "tMax", ",",
-                    "\[Alpha]0", ",", "\[Psi]0"}], "]"}]}]}], ";", 
-               "\[IndentingNewLine]", 
-               RowBox[{"oTraces", "=", 
-                RowBox[{"{", 
-                 RowBox[{"o0Trace", ",", "o1Trace", ",", "o2Trace"}], "}"}]}],
-                ";", "\[IndentingNewLine]", 
-               RowBox[{"oMax", "=", 
-                RowBox[{"Length", "[", "oTraces", "]"}]}], ";", 
-               "\[IndentingNewLine]", 
-               RowBox[{"oColors", "=", 
+               RowBox[{"approxTraces", "=", 
+                RowBox[{"Table", "[", 
+                 RowBox[{
+                  RowBox[{"\[Psi]", "/.", 
+                   RowBox[{"NTrajectory", "[", 
+                    RowBox[{
+                    RowBox[{"GetHFunc", "[", 
+                    RowBox[{
+                    RowBox[{"ApproxHList", "[", 
+                    RowBox[{"[", "i", "]"}], "]"}], ",", "H1func", ",", 
+                    "vals"}], "]"}], ",", "tMax", ",", "\[Alpha]0", ",", 
+                    "\[Psi]0"}], "]"}]}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"i", ",", 
+                    RowBox[{"Length", "[", "ApproxHList", "]"}]}], "}"}]}], 
+                 "]"}]}], ";", "\[IndentingNewLine]", 
+               RowBox[{"approxColors", "=", 
                 RowBox[{"Array", "[", 
                  RowBox[{
                   RowBox[{"ColorData", "[", "\"\<BlueGreenYellow\>\"", "]"}], 
-                  ",", "oMax", ",", 
+                  ",", 
+                  RowBox[{"Length", "[", "ApproxHList", "]"}], ",", 
                   RowBox[{"{", 
                    RowBox[{"0.", ",", "1."}], "}"}]}], "]"}]}], ";", 
                "\[IndentingNewLine]", "\[IndentingNewLine]", 
@@ -752,8 +816,34 @@ Cell[BoxData[
                  "upToOrder", ",", "1", ",", 
                   "\"\<Include Magnus expansion up to order\>\""}], "}"}], 
                 ",", 
-                RowBox[{"-", "1"}], ",", "2", ",", "1", ",", 
-                RowBox[{"Appearance", "\[Rule]", "\"\<Open\>\""}]}], "}"}]}], 
+                RowBox[{"-", "1"}], ",", 
+                RowBox[{
+                 RowBox[{"Length", "[", "ApproxHList", "]"}], "-", "1"}], ",",
+                 "1", ",", 
+                RowBox[{"Appearance", "\[Rule]", "\"\<Open\>\""}]}], "}"}], 
+              ",", "\[IndentingNewLine]", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{
+                 "wwIn", ",", "1.0", ",", 
+                  "\"\<Drive frequency \[Omega]\>\""}], "}"}], ",", "0.0", 
+                ",", "2.0"}], "}"}], ",", "\[IndentingNewLine]", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{
+                 "DeltaIn", ",", "0.0", ",", 
+                  "\"\<Qubit detuning \[CapitalDelta]\>\""}], "}"}], ",", 
+                RowBox[{"-", "1.0"}], ",", "1.0"}], "}"}], ",", 
+              "\[IndentingNewLine]", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{
+                 "phiIn", ",", "0.0", ",", 
+                  "\"\<Rotation axis angle \[Phi]\>\""}], "}"}], ",", 
+                RowBox[{"-", "Pi"}], ",", "Pi"}], "}"}]}], 
              "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}], 
           ",", "\[IndentingNewLine]", 
           RowBox[{"Plot", "[", 
@@ -810,7 +900,9 @@ Cell[BoxData[
    3.719737399408736*^9}, {3.71981940856663*^9, 3.719819411138315*^9}, {
    3.719843314063737*^9, 3.719843413670208*^9}, {3.719843528252864*^9, 
    3.719843533598009*^9}, {3.719843620978965*^9, 3.71984362210338*^9}, {
-   3.720243519084482*^9, 3.7202435229175987`*^9}}],
+   3.720243519084482*^9, 3.7202435229175987`*^9}, {3.7202451043841333`*^9, 
+   3.720245415885253*^9}, {3.720246273548353*^9, 3.720246474447229*^9}, {
+   3.720248674427906*^9, 3.7202486815214987`*^9}}],
 
 Cell[CellGroupData[{
 
@@ -905,14 +997,14 @@ Cell[BoxData[
            RowBox[{
             RowBox[{"PlotBlochTraceFromState", "[", 
              RowBox[{
-              RowBox[{"oTraces", "[", 
+              RowBox[{"approxTraces", "[", 
                RowBox[{"[", "i", "]"}], "]"}], ",", 
               RowBox[{"{", 
                RowBox[{"0", ",", 
                 RowBox[{"tM", "*", "tMax"}]}], "}"}], ",", 
               RowBox[{"{", 
                RowBox[{"PlotStyle", "\[Rule]", 
-                RowBox[{"oColors", "[", 
+                RowBox[{"approxColors", "[", 
                  RowBox[{"[", "i", "]"}], "]"}]}], "}"}]}], "]"}], ",", 
             RowBox[{"{", 
              RowBox[{"i", ",", 
@@ -931,13 +1023,13 @@ Cell[BoxData[
              RowBox[{
               RowBox[{"Map", "[", 
                RowBox[{
-                RowBox[{"oTraces", "[", 
+                RowBox[{"approxTraces", "[", 
                  RowBox[{"[", "i", "]"}], "]"}], ",", 
                 "relevantTCoincidence"}], "]"}], ",", 
               RowBox[{"{", 
                RowBox[{
                 RowBox[{"PointSize", "[", "Large", "]"}], ",", 
-                RowBox[{"oColors", "[", 
+                RowBox[{"approxColors", "[", 
                  RowBox[{"[", "i", "]"}], "]"}]}], "}"}]}], "]"}], ",", 
             RowBox[{"{", 
              RowBox[{"i", ",", 
@@ -1030,7 +1122,9 @@ Cell[BoxData[
    3.719811953752569*^9}, {3.719812061519149*^9, 3.719812063628517*^9}, 
    3.719813267447775*^9, 3.719832746783979*^9, 3.7198428663838882`*^9, {
    3.719843354205288*^9, 3.719843363712579*^9}, {3.719843444367652*^9, 
-   3.719843502247257*^9}, {3.719843537230729*^9, 3.719843545435014*^9}}]
+   3.719843502247257*^9}, {3.719843537230729*^9, 3.719843545435014*^9}, {
+   3.720246413114575*^9, 3.720246414290749*^9}, {3.720246522590025*^9, 
+   3.720246523257423*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1197,13 +1291,13 @@ Cell[BoxData[
              RowBox[{
               RowBox[{"XBasisFromZBasis", "@*", 
                RowBox[{"(", 
-                RowBox[{"oTraces", "[", 
+                RowBox[{"approxTraces", "[", 
                  RowBox[{"[", "i", "]"}], "]"}], ")"}]}], ",", 
               RowBox[{"{", 
                RowBox[{"0", ",", 
                 RowBox[{"tM", "*", "tMax"}]}], "}"}], ",", 
               RowBox[{"PlotStyle", "\[Rule]", 
-               RowBox[{"oColors", "[", 
+               RowBox[{"approxColors", "[", 
                 RowBox[{"[", "i", "]"}], "]"}]}]}], "]"}], ",", 
             RowBox[{"{", 
              RowBox[{"i", ",", 
@@ -1222,7 +1316,7 @@ Cell[BoxData[
              RowBox[{"{", 
               RowBox[{
                RowBox[{"PointSize", "[", "Large", "]"}], ",", 
-               RowBox[{"oColors", "[", 
+               RowBox[{"approxColors", "[", 
                 RowBox[{"[", "i", "]"}], "]"}], ",", 
                RowBox[{"Point", "[", 
                 RowBox[{"PolarCoordinatesFromState", "/@", 
@@ -1230,7 +1324,7 @@ Cell[BoxData[
                   RowBox[{"(", 
                    RowBox[{"XBasisFromZBasis", "@*", 
                     RowBox[{"(", 
-                    RowBox[{"oTraces", "[", 
+                    RowBox[{"approxTraces", "[", 
                     RowBox[{"[", "i", "]"}], "]"}], ")"}]}], ")"}], "/@", 
                   "relevantTCoincidence"}]}], "]"}]}], "}"}], "]"}], ",", 
             RowBox[{"{", 
@@ -1276,7 +1370,9 @@ Cell[BoxData[
    3.719843718627131*^9, 3.719843719378285*^9}, {3.719843858777162*^9, 
    3.719843859921233*^9}, {3.72024380879817*^9, 3.720243816523246*^9}, {
    3.7202438548946953`*^9, 3.720243860948628*^9}, {3.720243891743392*^9, 
-   3.720243922702126*^9}, {3.720243993601803*^9, 3.72024399777099*^9}}]
+   3.720243922702126*^9}, {3.720243993601803*^9, 3.72024399777099*^9}, {
+   3.7202464150413847`*^9, 3.720246415784823*^9}, {3.720246523772788*^9, 
+   3.720246524143972*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1407,13 +1503,13 @@ Cell[BoxData[{
             RowBox[{
              RowBox[{"XBasisFromZBasis", "@*", 
               RowBox[{"(", 
-               RowBox[{"oTraces", "[", 
+               RowBox[{"approxTraces", "[", 
                 RowBox[{"[", "i", "]"}], "]"}], ")"}]}], ",", 
              RowBox[{"{", 
               RowBox[{"0", ",", 
                RowBox[{"tM", "*", "tMax"}]}], "}"}], ",", 
              RowBox[{"PlotStyle", "\[Rule]", 
-              RowBox[{"oColors", "[", 
+              RowBox[{"approxColors", "[", 
                RowBox[{"[", "i", "]"}], "]"}]}]}], "]"}], ",", 
            RowBox[{"{", 
             RowBox[{"i", ",", 
@@ -1432,7 +1528,7 @@ Cell[BoxData[{
             RowBox[{"{", 
              RowBox[{
               RowBox[{"PointSize", "[", "Large", "]"}], ",", 
-              RowBox[{"oColors", "[", 
+              RowBox[{"approxColors", "[", 
                RowBox[{"[", "i", "]"}], "]"}], ",", 
               RowBox[{"Point", "[", 
                RowBox[{"MercatorCoordinatesFromPolar", "/@", 
@@ -1441,7 +1537,7 @@ Cell[BoxData[{
                   RowBox[{"(", 
                    RowBox[{"XBasisFromZBasis", "@*", 
                     RowBox[{"(", 
-                    RowBox[{"oTraces", "[", 
+                    RowBox[{"approxTraces", "[", 
                     RowBox[{"[", "i", "]"}], "]"}], ")"}]}], ")"}], "/@", 
                   "relevantTCoincidence"}]}]}], "]"}]}], "}"}], "]"}], ",", 
            RowBox[{"{", 
@@ -1488,11 +1584,12 @@ Cell[BoxData[{
    3.7198328266032667`*^9, {3.719843174759067*^9, 3.719843244248317*^9}, {
    3.7198437511308002`*^9, 3.719843788827873*^9}, {3.71984384298101*^9, 
    3.719843864113104*^9}, {3.720243702204912*^9, 3.7202437875619783`*^9}, {
-   3.720243943503297*^9, 3.720243987025612*^9}}]
+   3.720243943503297*^9, 3.720243987025612*^9}, {3.7202464165341167`*^9, 
+   3.7202464172056713`*^9}, {3.72024652475279*^9, 3.720246525600177*^9}}]
 }, Open  ]]
 },
 WindowSize->{1680, 929},
-WindowMargins->{{-1725, Automatic}, {Automatic, 77}},
+WindowMargins->{{-1858, Automatic}, {Automatic, 19}},
 CellContext->Notebook,
 FrontEndVersion->"10.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (October 9, \
 2015)",
@@ -1509,27 +1606,26 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 92, 1, 28, "Input"],
-Cell[653, 23, 190, 4, 30, "Text"],
-Cell[846, 29, 481, 14, 28, "Input"],
-Cell[1330, 45, 121, 1, 30, "Text"],
-Cell[1454, 48, 2654, 75, 138, "Input"],
-Cell[4111, 125, 3521, 91, 216, "Input"],
-Cell[7635, 218, 26101, 594, 1831, "Input"],
+Cell[558, 20, 209, 2, 30, "Text"],
+Cell[770, 24, 864, 24, 28, "Input"],
+Cell[1637, 50, 169, 2, 30, "Text"],
+Cell[1809, 54, 5354, 143, 272, "Input"],
+Cell[7166, 199, 3519, 88, 199, "Input"],
+Cell[10688, 289, 26926, 615, 1831, "Input"],
 Cell[CellGroupData[{
-Cell[33761, 816, 95, 1, 65, "Chapter"],
-Cell[33859, 819, 105, 1, 30, "Text"],
-Cell[33967, 822, 648, 19, 46, "Input"],
-Cell[34618, 843, 10567, 189, 471, "Input"]
+Cell[37639, 908, 95, 1, 65, "Chapter"],
+Cell[37737, 911, 105, 1, 30, "Text"],
+Cell[37845, 914, 648, 19, 46, "Input"],
+Cell[38496, 935, 10687, 191, 471, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[45222, 1037, 145, 2, 65, "Chapter"],
-Cell[45370, 1041, 10257, 237, 862, "Input"]
+Cell[49220, 1131, 145, 2, 65, "Chapter"],
+Cell[49368, 1135, 10379, 239, 862, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[55664, 1283, 101, 1, 65, "Chapter"],
-Cell[55768, 1286, 3024, 73, 284, "Input"],
-Cell[58795, 1361, 6181, 129, 352, "Input"]
+Cell[59784, 1379, 101, 1, 65, "Chapter"],
+Cell[59888, 1382, 3024, 73, 284, "Input"],
+Cell[62915, 1457, 6300, 130, 369, "Input"]
 }, Open  ]]
 }
 ]
