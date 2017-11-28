@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     94653,       2238]
-NotebookOptionsPosition[     93091,       2180]
-NotebookOutlinePosition[     93474,       2197]
-CellTagsIndexPosition[     93431,       2194]
+NotebookDataLength[     94285,       2222]
+NotebookOptionsPosition[     92724,       2164]
+NotebookOutlinePosition[     93106,       2181]
+CellTagsIndexPosition[     93063,       2178]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -380,38 +380,19 @@ Cell[BoxData[{
      RowBox[{"0", ",", "\[IndentingNewLine]", 
       RowBox[{
        RowBox[{"-", 
-        FractionBox["1", "4"]}], " ", "\[ImaginaryI]", " ", 
+        FractionBox["1", 
+         RowBox[{"4", "ww"}]]}], " ", "\[ImaginaryI]", " ", "H1", " ", 
+       RowBox[{"Sin", "[", "\[Alpha]0", "]"}], " ", 
        RowBox[{"(", 
         RowBox[{
-         RowBox[{
-          RowBox[{"-", "H1"}], " ", "sy"}], "+", 
-         RowBox[{"H1", " ", "sy", " ", 
+         RowBox[{"sx", " ", 
           RowBox[{"Cos", "[", 
-           RowBox[{"2", " ", "\[Alpha]0"}], "]"}]}], "+", 
-         RowBox[{"H1", " ", "sx", " ", 
+           RowBox[{"phi", "+", "\[Alpha]0"}], "]"}]}], "-", 
+         RowBox[{"sy", " ", 
           RowBox[{"Sin", "[", 
-           RowBox[{"2", " ", "\[Alpha]0"}], "]"}]}]}], ")"}]}], ",", 
-      "\[IndentingNewLine]", 
-      RowBox[{
-       RowBox[{
-        RowBox[{"-", 
-         FractionBox["1", "4"]}], " ", "\[ImaginaryI]", " ", 
-        RowBox[{"(", 
-         RowBox[{
-          RowBox[{
-           RowBox[{"-", "H1"}], " ", "sy"}], "+", 
-          RowBox[{"H1", " ", "sy", " ", 
-           RowBox[{"Cos", "[", 
-            RowBox[{"2", " ", "\[Alpha]0"}], "]"}]}], "+", 
-          RowBox[{"H1", " ", "sx", " ", 
-           RowBox[{"Sin", "[", 
-            RowBox[{"2", " ", "\[Alpha]0"}], "]"}]}]}], ")"}]}], "-", 
-       RowBox[{
-        FractionBox["1", "16"], " ", "\[ImaginaryI]", " ", 
-        SuperscriptBox["H1", "2"], " ", "sz", " ", 
-        RowBox[{"Sin", "[", 
-         RowBox[{"2", " ", "\[Alpha]0"}], "]"}]}]}]}], "\[IndentingNewLine]", 
-     "}"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+           RowBox[{"phi", "+", "\[Alpha]0"}], "]"}]}]}], ")"}]}], ",", 
+      "\[IndentingNewLine]", "0"}], "\[IndentingNewLine]", "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"H1pOptions", "=", 
    RowBox[{"{", 
@@ -430,13 +411,10 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{"jmpList", "=", 
-    RowBox[{
-     RowBox[{"{", 
-      RowBox[{
-      "constantJmp", ",", " ", "cosineJmp", ",", "trapezoidJmp", ",", 
-       "costrapJmp"}], "}"}], "/.", 
-     RowBox[{"H1", "\[Rule]", 
-      RowBox[{"H1", "/", "2"}]}]}]}], ";"}], "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{
+     "constantJmp", ",", " ", "cosineJmp", ",", "trapezoidJmp", ",", 
+      "costrapJmp"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
   "\[IndentingNewLine]", 
   RowBox[{"(*", 
    RowBox[{
@@ -538,7 +516,11 @@ Cell[BoxData[{
    3.720416517520042*^9, 3.720416517677897*^9}, {3.720416551520164*^9, 
    3.7204166948204193`*^9}, {3.72043353806583*^9, 3.720433555385394*^9}, {
    3.720438511996814*^9, 3.720438539773818*^9}, {3.720440701307568*^9, 
-   3.720440714771039*^9}, {3.720502044311821*^9, 3.720502048941143*^9}}]
+   3.720440714771039*^9}, {3.720502044311821*^9, 3.720502048941143*^9}, {
+   3.720867840722589*^9, 3.720867850358924*^9}, {3.7208678940854187`*^9, 
+   3.720867948418954*^9}, {3.720867980809053*^9, 3.7208679837721043`*^9}, {
+   3.720868027730586*^9, 3.720868031525524*^9}, 3.7208682846405077`*^9, {
+   3.720869871860929*^9, 3.7208698760412197`*^9}, 3.720870244286984*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1257,9 +1239,9 @@ Cell[BoxData[
                 RowBox[{"tM", "*", "tMax"}], ",", "0.0"}], "]"}], "]"}], ",", 
              
              RowBox[{"{", 
-              RowBox[{"Red", ",", 
-               RowBox[{"Thickness", "[", "0.015", "]"}], ",", "Dashed"}], 
-              "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+              RowBox[{"Gray", ",", 
+               RowBox[{"Thickness", "[", "0.010", "]"}]}], "}"}]}], "]"}], 
+           ",", "\[IndentingNewLine]", 
            RowBox[{"PlotBlochPointsFromStates", "[", 
             RowBox[{
              RowBox[{"Map", "[", 
@@ -1411,7 +1393,9 @@ Cell[BoxData[
    3.720503221707087*^9, 3.720503251315072*^9}, {3.720503281956786*^9, 
    3.720503293085417*^9}, {3.720504877053884*^9, 3.720504884432884*^9}, {
    3.7205060857987757`*^9, 3.7205061378284187`*^9}, {3.720509189462253*^9, 
-   3.720509191525303*^9}, {3.72051122820717*^9, 3.720511231103367*^9}}]
+   3.720509191525303*^9}, {3.72051122820717*^9, 3.720511231103367*^9}, {
+   3.7208687519522552`*^9, 3.720868757989324*^9}, {3.7208700198551207`*^9, 
+   3.720870029893828*^9}, {3.720870118547086*^9, 3.720870123364106*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -2178,8 +2162,8 @@ Cell[BoxData[
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1680, 931},
-WindowMargins->{{-1794, Automatic}, {Automatic, 20}},
+WindowSize->{1680, 929},
+WindowMargins->{{-1920, Automatic}, {Automatic, 6}},
 CellContext->Notebook,
 FrontEndVersion->"10.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (October 9, \
 2015)",
@@ -2206,38 +2190,38 @@ Cell[2284, 70, 5400, 143, 272, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[7721, 218, 270, 3, 65, "Chapter"],
-Cell[7994, 223, 11919, 317, 842, "Input"]
+Cell[7994, 223, 11419, 299, 821, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[19950, 545, 186, 2, 65, "Chapter"],
-Cell[20139, 549, 3904, 97, 199, "Input"],
-Cell[24046, 648, 10855, 245, 743, "Input"],
+Cell[19450, 527, 186, 2, 65, "Chapter"],
+Cell[19639, 531, 3904, 97, 199, "Input"],
+Cell[23546, 630, 10855, 245, 743, "Input"],
 Cell[CellGroupData[{
-Cell[34926, 897, 192, 2, 71, "Section"],
-Cell[35121, 901, 12125, 302, 1015, "Input"]
+Cell[34426, 879, 192, 2, 71, "Section"],
+Cell[34621, 883, 12125, 302, 1015, "Input"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[47295, 1209, 100, 1, 65, "Chapter"],
+Cell[46795, 1191, 100, 1, 65, "Chapter"],
 Cell[CellGroupData[{
-Cell[47420, 1214, 97, 1, 64, "Section"],
-Cell[47520, 1217, 10934, 196, 454, "Input"]
+Cell[46920, 1196, 97, 1, 64, "Section"],
+Cell[47020, 1199, 11067, 198, 454, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[58491, 1418, 163, 2, 64, "Section"],
-Cell[58657, 1422, 5480, 122, 369, "Input"]
+Cell[58124, 1402, 163, 2, 64, "Section"],
+Cell[58290, 1406, 5480, 122, 369, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[64174, 1549, 99, 1, 64, "Section"],
-Cell[64276, 1552, 6832, 137, 352, "Input"]
+Cell[63807, 1533, 99, 1, 64, "Section"],
+Cell[63909, 1536, 6832, 137, 352, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[71145, 1694, 174, 2, 64, "Section"],
-Cell[71322, 1698, 20475, 449, 1049, "Input"]
+Cell[70778, 1678, 174, 2, 64, "Section"],
+Cell[70955, 1682, 20475, 449, 1049, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[91834, 2152, 102, 1, 64, "Section"],
-Cell[91939, 2155, 1124, 21, 97, "Input"]
+Cell[91467, 2136, 102, 1, 64, "Section"],
+Cell[91572, 2139, 1124, 21, 97, "Input"]
 }, Open  ]]
 }, Open  ]]
 }
