@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      2189,         74]
-NotebookOptionsPosition[      1936,         60]
-NotebookOutlinePosition[      2291,         76]
-CellTagsIndexPosition[      2248,         73]
+NotebookDataLength[      2288,         77]
+NotebookOptionsPosition[      2035,         63]
+NotebookOutlinePosition[      2390,         79]
+CellTagsIndexPosition[      2347,         76]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -39,7 +39,9 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{"Om3", "=", 
    RowBox[{
-    FractionBox["1", "32"], " ", "\[ImaginaryI]", " ", "H1", " ", 
+    FractionBox["1", 
+     RowBox[{"32", 
+      SuperscriptBox["ww", "2"]}]], " ", "\[ImaginaryI]", " ", "H1", " ", 
     RowBox[{"Sin", "[", "\[Alpha]0", "]"}], " ", 
     RowBox[{"(", 
      RowBox[{
@@ -56,7 +58,8 @@ Cell[BoxData[{
        RowBox[{"Sin", "[", 
         RowBox[{"phi", "+", "\[Alpha]0"}], "]"}]}]}], ")"}]}]}], 
   ";"}]}], "Input",
- CellChangeTimes->{{3.7209590275521307`*^9, 3.720959066279249*^9}}]
+ CellChangeTimes->{{3.7209590275521307`*^9, 3.720959066279249*^9}, {
+  3.720959125499642*^9, 3.720959130803247*^9}}]
 },
 WindowSize->{808, 826},
 WindowMargins->{{52, Automatic}, {Automatic, 4}},
@@ -75,10 +78,9 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 1374, 38, 141, "Input"]
+Cell[558, 20, 1473, 41, 126, "Input"]
 }
 ]
 *)
 
 (* End of internal cache information *)
-

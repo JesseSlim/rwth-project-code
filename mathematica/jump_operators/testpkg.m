@@ -29,7 +29,7 @@ JesseGrim[input_,symbols_,tot_]:=
 		trimmedCoeffs = 0;
 		(* now we actually pick the desired coefficients, and replace the undesired ones by zero *)
 		(* let's do some simplification on the coefficients for good measure *)
-		pickedCoeffs = MapThread[If[#1,#2 // S,If[#2!=0,trimmedCoeffs++]; 0]&,{desiredCoeffs,cl},numsym];
+		pickedCoeffs = MapThread[If[#1,#2 // S,If[#2=!=0,trimmedCoeffs++]; 0]&,{desiredCoeffs,cl},numsym];
 		Print["    > picking and simplifying done:  ", Date[][[4;;5]], "  trimmed coeffs:  ", trimmedCoeffs];
 
 		(* create a nested array of the same form as the CoefficientList that contains the corresponding factors *)
@@ -43,6 +43,28 @@ JesseGrim[input_,symbols_,tot_]:=
 		Return[result];
 	];
 		
+
+
+JesseMagnus[Ham_,MEterms_,order_] := 
+	Module[{\[Lambda], HH, ME, nestedCommutators, magnusDECoeff, magnusDETerms, magnusDE},
+	SetNonCommutative[HH,ME];
+	SetNonCommutative[Ham, MEterms];
+	SetCommutative[\[Lambda]];
+	
+	(* create a list of (order) nested commutators, including the first separate Hamiltonian term *)
+	(* i.e. {H, [\[CapitalOmega],H], [\[CapitalOmega],[\[CapitalOmega],H]], [\[CapitalOmega],[\[CapitalOmega],[\[CapitalOmega],H]]]} *)
+	nestedCommutators = FoldList[ Commutator[#2,#1]& , Join[{HH},ConstantArray[ME,order-1]]];
+	(* specify coefficients in the Magnus \[CapitalOmega] differential equation (eq. 21 in the pedadagogical paper)*)
+	magnusDECoeff[k_] := (-1)^k*BernoulliB[k]/Factorial[k];
+	(* write down the Magnus \[CapitalOmega] DE terms and plug in the Magnus expansion in \[Lambda] *)
+	magnusDETerms = Array[magnusDECoeff,order,0]*nestedCommutators /. {HH -> -I*Ham, ME -> \!\(
+\*UnderoverscriptBox[\(\[Sum]\), \(s = 1\), \(order\)]\(
+\*SuperscriptBox[\(\[Lambda]\), \(s\)] 
+\(\*SubscriptBox[\(MEterms\), \(s\)]\)[t, t0]\)\)};
+	(* sum the terms, collect coefficients in \[Lambda] up to (order) and return *)
+	magnusDE = Apply[Plus,magnusDETerms] // NCE;
+	Return[CoefficientList[magnusDE, \[Lambda], order]];
+];
 
 
 (*Third MagnusM3 for the case that the initial time Subscript[t, 0] \
