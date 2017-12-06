@@ -1,0 +1,88 @@
+\documentclass[twoside]{article} 
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[pdftex]{graphicx}
+\usepackage[procnames]{listings}
+\usepackage{color}
+\usepackage{lipsum} % Package to generate dummy text throughout this template
+\usepackage{braket}
+\usepackage{epsfig}
+\usepackage{epstopdf}
+
+
+% \usepackage[sc]{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+% \linespread{1.05} % Line spacing - Palatino needs more space between lines
+% \usepackage{microtype} % Slightly tweak font spacing for aesthetics
+
+\usepackage[hmarginratio=1:1,top=32mm,columnsep=20pt]{geometry} % Document margins
+\usepackage{multicol} % Used for the two-column layout of the document
+\usepackage[width=.8\textwidth,hang, small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions under/above floats in tables or figures
+\usepackage{float} % Required for tables and figures in the multi-column environment - they need to be placed in specific locations with the [H] (e.g. \begin{table}[H])
+\usepackage{hyperref} % For hyperlinks in the PDF
+
+\usepackage{lettrine} % The lettrine is the first enlarged letter at the beginning of the text
+\usepackage{paralist} % Used for the compactitem environment which makes bullet points with less space between them
+\usepackage{todonotes}
+\newcommand{\unit}[1]{\ensuremath{\; \mathrm{#1}}}
+
+\usepackage[super]{nth}
+\usepackage{bm}
+\usepackage[version=4]{mhchem}
+
+\usepackage{abstract} % Allows abstract customization
+\renewcommand{\abstractnamefont}{\normalfont\bfseries} % Set the "Abstract" text to bold
+\renewcommand{\abstracttextfont}{\normalfont\small\itshape} % Set the abstract itself to small italic text
+
+\usepackage{titlesec} % Allows customization of titles
+
+\usepackage{fancyhdr} % Headers and footers
+
+\usepackage[labelformat=simple]{subcaption}
+\renewcommand\thesubfigure{(\alph{subfigure})}
+
+\newcommand{\spfield}{\mathcal{E}_\ell^{(1)}}
+\newcommand{\sprabi}{\Omega_1^{(1)}}
+\newcommand{\me}{\mathrm{e}}
+\usepackage{siunitx}
+\sisetup{
+	separate-uncertainty = true,
+	multi-part-units = single
+}
+
+\DeclareSIUnit{\belm}{Bm}
+\DeclareSIUnit{\gauss}{G}
+
+\newcommand{\qop}[1]{\hat{#1}}
+\newcommand{\qproj}[1]{\ket{#1}\bra{#1}}
+\newcommand{\device}[1]{\textit{#1}}
+\newcommand{\expval}[1]{\left\langle #1 \right\rangle}
+\newcommand{\subcapref}[1]{\subcap{\subref{#1}}}
+\newcommand{\subcap}[1]{\textbf{#1}~|}
+\newcommand{\realpart}{\operatorname{Re}}
+
+\newcommand{\matr}[1]{\bm{#1}}
+\newcommand{\sx}{\matr{\sigma}_x}
+\newcommand{\sy}{\matr{\sigma}_y}
+\newcommand{\sz}{\matr{\sigma}_z}
+
+\DeclareCaptionLabelSeparator{pipe}{ | }
+
+\captionsetup{% use subfigure to confine changes to subcaptions
+  font={sf},
+  textfont={up},
+  labelsep=pipe,
+  format=plain,
+  width=\textwidth
+}
+
+\captionsetup[subfigure]{
+	format=hang,
+	labelsep=pipe
+}
+
+\usepackage[backend=biber, sorting=none, style=nature]{biblatex}
+\DeclareNameAlias{sortname}{given-family}
+\DeclareNameAlias{default}{given-family}
+\bibliography{master}
