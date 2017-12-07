@@ -93,20 +93,37 @@ We use this series to approximate the trajectory of a two-level qubit driven by 
 	\label{eq:H-drive}
 	\matr{H}(t) = \frac{E(t)}{4}\left( \sx + \cos(2 \omega t) \sx - \sin(2 \omega t) \sy \right),
 \end{align}
-where we set the detuning $\Delta$ and phase offset $\phi$ of the drive both to zero.
+where for now we have set the detuning $\Delta$ and phase offset $\phi$ of the drive both to zero.
 
 For now, we restrict ourselves to the first order Magnus term, which is equivalent to the rotating wave approximation for constant drive. We begin by studying the case of linear drive, given by
 \begin{align}
 	E(t) = E_0 + E_1 t.
 \end{align}
-We then integrate equation (\ref{eq:omg-1}) over a full period $t_c = \pi / \omega$ of the drive Hamiltonian \ref{eq:H-drive}, starting from $t_0$:
-\begin{align*}
-	\Omega_1(t,t_0) = &\int_{t_0}^{t_0+t_c} \frac{E(t)}{4}\left( \sx + \cos(2 \omega t) \sx - \sin(2 \omega t) \sy \right) \, \mathrm{d}t \\
-	= &\int_{t_0}^{t_0+t_c} \frac{E(t)}{4} \sx \, \mathrm{d}t + \int_{t_0}^{t_0+t_c} \frac{E(t)}{4} (\cos(2 \omega t) \sx - \sin(2 \omega t) \sy) \, \mathrm{d}t\\
-	= &\frac{E_0 t_c  + E_1 (t_0 t_c + t_c^2 / 2)}{4} \sx + \frac{E_1 t_c \sin(2 \omega t_0)}{8\omega} \sx + \frac{E_1 t_c \cos(2 \omega t_0)}{8\omega} \sy \\
-	= &t_c\frac{E_0 + E_1 t_0}{4} \sx + t_c^2 \frac{E_1}{8} \sx + \frac{t_c}{\omega} \left( \frac{E_1 \sin(2 \omega t_0)}{8} \sx + \frac{E_1 \cos(2 \omega t_0)}{8} \sy \right) \\
-	= &t_c\left[ \frac{E_0 + E_1 t_0}{4} \sx + \frac{\pi E_1}{8 \omega} \left( \sx + \sin(2 \omega t_0) \sx + \cos(2 \omega t_0) \sy \right) \right]
-\end{align*}
+We then integrate equation (\ref{eq:omg-1}) over a full period $t_c = \pi / \omega$ of the drive Hamiltonian (\ref{eq:H-drive}), starting from $t_0$:
+\begin{align}
+	\Omega_1(t,t_0) = &\int_{t_0}^{t_0+t_c} \frac{E(t)}{4}\left( \sx + \cos(2 \omega t) \sx - \sin(2 \omega t) \sy \right) \, \mathrm{d}t \nonumber \\
+	= &\int_{t_0}^{t_0+t_c} \frac{E(t)}{4} \sx \, \mathrm{d}t + \int_{t_0}^{t_0+t_c} \frac{E(t)}{4} (\cos(2 \omega t) \sx - \sin(2 \omega t) \sy) \, \mathrm{d}t \nonumber \\
+	= &\frac{E_0 t_c  + E_1 (t_0 t_c + t_c^2 / 2)}{4} \sx + \frac{E_1 t_c \sin(2 \omega t_0)}{8\omega} \sx + \frac{E_1 t_c \cos(2 \omega t_0)}{8\omega} \sy \nonumber \\
+	= &t_c\frac{E_0 + E_1 t_0}{4} \sx + t_c^2 \frac{E_1}{8} \sx + \frac{t_c}{\omega} \left( \frac{E_1 \sin(2 \omega t_0)}{8} \sx + \frac{E_1 \cos(2 \omega t_0)}{8} \sy \right) \nonumber \\
+	= &t_c\left[ \frac{E_0 + E_1 t_0}{4} \sx + \frac{E_1}{8 \omega} \left( \pi \sx + \sin(2 \omega t_0) \sx + \cos(2 \omega t_0) \sy \right) \right] \label{eq:evexp-order-1}
+\end{align}
+The first term of this evolution operator exponent,
+\begin{align}
+	\label{eq:evexp-rwa-constant-term}
+	t_c \frac{E_0 + E_1 t_0}{4} \sx = t_c \frac{E(t_0)}{4} \sx,
+\end{align}
+can be understood as the rotating wave evolution over a period $t_c$ with constant drive given by the value of the driving envelope at the beginning of the evolution period $E(t_0)$. The second term,
+\begin{align}
+	\label{eq:evexp-rwa-linear-term}
+	t_c^2\frac{E_1}{8}\sx=t_c\frac{\pi E_1}{8 \omega}\sx,
+\end{align}
+can still be understood in the rotating wave picture as the extra rotation brought about by the (linear) increase in driving strength during the evolution interval $t_c$. Keeping in mind that $t_c = \pi / \omega$, the effect of this term decreases if $\omega$ increases; i.e. the driving signal has less time to increase within one evolution interval. 
+
+The final two terms in equation (\ref{eq:evexp-order-1}),
+\begin{align}
+	t_c \frac{\pi E_1}{8 \omega} \left( \sin(2 \omega t_0) \sx + \cos(2 \omega t_0) \sy \right),
+\end{align}
+can no longer be understood in the rotating wave approximation. These terms constitute an average of the effect of the counter-rotating wave over a single evolution interval $t_c$ (which is exactly the period of the counter-rotating wave). In the case of constant drive, i.e. $E_1 = 0$, this effect averages out to zero, but if the drive increases during the evolution interval, a non-zero average is obtained.
 
 \printbibliography
 	

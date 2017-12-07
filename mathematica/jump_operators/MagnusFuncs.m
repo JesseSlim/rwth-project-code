@@ -10,8 +10,8 @@ MF=MatrixForm;
 <<NC`;
 <<NCAlgebra`;
 
-Off[General::spell1];
-Off[MatrixExp::eivn]
+(*Off[General::spell1];
+Off[MatrixExp::eivn]*)
 
 tc=Pi/ww;
 
@@ -76,6 +76,13 @@ JesseGrim[input_,symbols_,tot_]:=
 	Module[{numsym, cl, desiredCoeffs, pickedCoeffs, factors, result, trimmedCoeffs},
 		numsym = Length[symbols];
 		cl = CoefficientList[input, symbols, ConstantArray[tot+1, numsym]];
+		(* CoefficientList annoyingly returns an empty list if none of the requested powers can be found,
+		causing the rest of the function, which expects in that case a (tot+1)^numsym numsym-D matrix
+		filled with zeroes, to throw up *)
+		If[cl === {}, 
+			cl = ConstantArray[0, ConstantArray[tot+1, numsym]]; 
+			Print["    > starting trim with empty coefficient list"];
+		];
 		(* create a nested array of the same form as the CoefficientList that specifies whether each coefficient is 'desired',
 		i.e that it satisfies the maximum power constraint *)
 		desiredCoeffs = Table[
@@ -94,8 +101,8 @@ JesseGrim[input_,symbols_,tot_]:=
 			Evaluate[Sequence@@Table[{coeff[iii],0,tot},{iii,numsym}]]
 		];
 		(* assemble the trimmed polynomial *)
-		result = Apply[Plus,Flatten[factors*pickedCoeffs]] // S;
-		Print["    > assembling and simplifying done: ", Date[][[4;;5]]];
+		result = Apply[Plus,Flatten[factors*pickedCoeffs]] // FS;
+		Print["    > assembling and FULL simplifying done: ", Date[][[4;;5]]];
 		Return[result];
 	];
 		
@@ -128,14 +135,19 @@ JesseDoMagnusIntegration[MEIntegrand_,maxOrder_] :=
 	Module[{workpiece},
 	Print["\n* Begin integrating the next Magnus integrand, at date and time ", Date[][[1 ;; 5]]];
 	workpiece = MEIntegrand //. SigmaComRules;
+	Print[workpiece];
 	Print["SigmaComRules Done:  ", Date[][[4 ;; 5]]];
 	workpiece = JesseGrim[workpiece, {1/ww, t, t0}, maxOrder];
+	Print[workpiece];
 	Print["Trimming Done:  ", Date[][[4 ;; 5]]];
 
 	workpiece = workpiece /. t->tt;
-	workpiece = Integrate[workpiece, {tt, t0, t}];
+	Print[workpiece];
+	workpiece = Integrate[workpiece, {tt, t0, tf}] /. tf->t;
+	Print[workpiece];
 	Print["Integration from `t0' to `t' done:  ", Date[][[4 ;; 5]]];   
 	workpiece = JesseGrim[workpiece, {1/ww, t, t0}, maxOrder + 1];
+	Print[workpiece];
 	Print["Post-integration trim done:  ", Date[][[4 ;; 5]]];
 	Return[workpiece];
 ];
@@ -206,3 +218,8 @@ to t *)
    ];
   Print["Error in GetOO:  Not returning a value."]
   ];
+
+
+SetCommutative[t,td0];
+$Assumptions={ww>0,phi1>0,t>0,t0>0,H1>0,phi10>0,tp>0,xz>0,t>t0};
+CWW=Collect[#,ww];
