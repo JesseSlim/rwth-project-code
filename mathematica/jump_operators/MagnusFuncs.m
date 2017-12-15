@@ -10,6 +10,11 @@ MF=MatrixForm;
 <<NC`;
 <<NCAlgebra`;
 
+suspSigmaNC = {sx->sxx,sy->syy,sz->szz};
+restSigmaNC = {sxx->sx,syy->sy,szz->sz};
+
+factorOut[expr_, factor_,sf_:Cancel] := (sf[(expr/.suspSigmaNC)/(factor/.suspSigmaNC)]/.restSigmaNC)*factor
+
 (*Off[General::spell1];
 Off[MatrixExp::eivn]*)
 
@@ -52,8 +57,10 @@ Commutator[xx_,yy_]:=0 /; CommutativeQ[xx];
 Commutator[xx_,yy_]:=0 /; CommutativeQ[yy];
 
 (* Linearity *)
-Commutator[Plus[a_,addends__],B_]:=Commutator[a,B]+Commutator[Plus[addends],B];
-Commutator[A_,Plus[b_,baddends__]]:=Commutator[A,b]+Commutator[A,Plus[baddends]];
+(*Commutator[Plus[a_,addends__],B_]:=Commutator[a,B]+Commutator[Plus[addends],B];
+Commutator[A_,Plus[b_,baddends__]]:=Commutator[A,b]+Commutator[A,Plus[baddends]];*)
+Commutator[Plus[a_,addends__],B_]:=Plus @@ (Commutator[#,B]& /@ {a,addends});
+Commutator[A_,Plus[b_,addends__]]:=Plus @@ (Commutator[A,#]& /@ {b,addends});
 Commutator[Times[c_,factors__],B_]:=c Commutator[Times[factors],B] /; CommutativeQ[c];
 Commutator[A_,Times[c_,factors__]]:=c Commutator[A,Times[factors]] /; CommutativeQ[c];
 (*  *)
@@ -72,7 +79,7 @@ Keep terms up to maximum power of "tot", that is, terms of the form
 x1^p1x2^p2x3^p3
 s.t. p1 + p2 + p3 \[LessEqual] tot
  *)
-JesseGrim[input_,symbols_,tot_]:=
+JesseGrim[input_,symbols_,tot_,termwiseSF_:Simplify,totalSF_:FullSimplify]:=
 	Module[{numsym, cl, desiredCoeffs, pickedCoeffs, factors, result, trimmedCoeffs},
 		numsym = Length[symbols];
 		cl = CoefficientList[input, symbols, ConstantArray[tot+1, numsym]];
@@ -92,7 +99,7 @@ JesseGrim[input_,symbols_,tot_]:=
 		trimmedCoeffs = 0;
 		(* now we actually pick the desired coefficients, and replace the undesired ones by zero *)
 		(* let's do some simplification on the coefficients for good measure *)
-		pickedCoeffs = MapThread[If[#1,#2 // S,If[#2=!=0,trimmedCoeffs++]; 0]&,{desiredCoeffs,cl},numsym];
+		pickedCoeffs = MapThread[If[#1,#2 // termwiseSF,If[#2=!=0,trimmedCoeffs++]; 0]&,{desiredCoeffs,cl},numsym];
 		Print["    > picking and simplifying done:  ", Date[][[4;;5]], "  trimmed coeffs:  ", trimmedCoeffs];
 
 		(* create a nested array of the same form as the CoefficientList that contains the corresponding factors *)
@@ -101,125 +108,121 @@ JesseGrim[input_,symbols_,tot_]:=
 			Evaluate[Sequence@@Table[{coeff[iii],0,tot},{iii,numsym}]]
 		];
 		(* assemble the trimmed polynomial *)
-		result = Apply[Plus,Flatten[factors*pickedCoeffs]] // FS;
-		Print["    > assembling and FULL simplifying done: ", Date[][[4;;5]]];
+		result = Apply[Plus,Flatten[factors*pickedCoeffs]] // totalSF;
+		Print["    > assembling and simplifying done: ", Date[][[4;;5]]];
 		Return[result];
 	];
 		
 
 
 (* Determine the terms in the Magnus expansion recursively, based on equation (21) from  *)
-JesseGetMagnusIntegrands[Ham_,METerms_,order_] := 
-	Module[{\[Lambda], HH, ME, nestedCommutators, magnusDECoeff, magnusDETerms, magnusDE},
+JesseGetMagnusIntegrands[Ham_,METerms_,order_,printStatusUpdates_:False] := 
+	Module[{
+		\[Lambda], HH, ME, nestedCommutators, magnusDECoeff, magnusDETerms, magnusDE, result,
+		bilinearRulesA, bilinearRulesB, maxLambdaRules
+	},
+	bilinearRulesA={
+		CMTR[A_Plus,B_]:>(CMTR[#,B]&/@A),
+		CMTR[A_,B_Plus]:>(CMTR[A,#]&/@B)
+	};
+	bilinearRulesB={
+		CMTR[Times[a_,rest__],B_]:>a CMTR[Times[rest],B]/;CommutativeQ[a],
+		CMTR[A_,Times[b_,rest__]]:>b CMTR[A,Times[rest]]/;CommutativeQ[b]
+	};
+	maxLambdaRules={\[Lambda]^p_ :> 0 /; p > order};
+
 	SetNonCommutative[HH,ME];
 	SetNonCommutative[Ham, METerms];
 	SetCommutative[\[Lambda]];
 	
+	If[printStatusUpdates,Print["Starting the calculation of Magnus integrands at ", Date[][[1;;5]]]];
+	
 	(* create a list of (order) nested commutators, including the first separate Hamiltonian term *)
 	(* i.e. {H, [\[CapitalOmega],H], [\[CapitalOmega],[\[CapitalOmega],H]], [\[CapitalOmega],[\[CapitalOmega],[\[CapitalOmega],H]]]} *)
-	nestedCommutators = FoldList[ Commutator[#2,#1]& , Join[{HH},ConstantArray[ME,order-1]]];
+	nestedCommutators = FoldList[ CMTR[#2,#1]& , Join[{HH},ConstantArray[ME,order-1]]];
+	If[printStatusUpdates,Print["    > assembling nested commutators done: ", Date[][[4;;5]]]];
 	(* specify coefficients in the Magnus \[CapitalOmega] differential equation (eq. 21 in the pedadagogical paper)*)
 	magnusDECoeff[k_] := (*((-1)^k)**)BernoulliB[k]/Factorial[k];
+
 	(* write down the Magnus \[CapitalOmega] DE terms and plug in the Magnus expansion in \[Lambda] *)
-	magnusDETerms = Array[magnusDECoeff,order,0]*nestedCommutators /. {HH -> -I*Ham, ME -> \!\(
+	magnusDETerms = Array[magnusDECoeff,order,0]*nestedCommutators;
+	If[printStatusUpdates,Print["    > assembling terms done: ", Date[][[4;;5]]]];
+	magnusDETerms = magnusDETerms /. {HH -> -I*Ham, ME -> \!\(
 \*UnderoverscriptBox[\(\[Sum]\), \(s = 1\), \(order\)]\(
 \*SuperscriptBox[\(\[Lambda]\), \(s\)] 
 \(\*SubscriptBox[\(METerms\), \(s\)]\)[t, t0]\)\)};
+	If[printStatusUpdates,Print["    > substituting series done: ", Date[][[4;;5]]]];
+
+	magnusDETerms = magnusDETerms //. bilinearRulesA;
+	If[printStatusUpdates,Print["    > A+B bilinearity done: ", Date[][[4;;5]]]];
+	magnusDETerms = magnusDETerms //. Join[bilinearRulesB,maxLambdaRules];
+	If[printStatusUpdates,Print["    > c*A bilinearity done: ", Date[][[4;;5]]]];
+	(*magnusDETerms = magnusDETerms /. {\[Lambda]^p_ :> 0 /; p > order};*)
+
 	(* sum the terms, collect coefficients in \[Lambda] up to (order) and return *)
-	magnusDE = Apply[Plus,magnusDETerms] // NCE;
-	Return[CoefficientList[magnusDE, \[Lambda], order]];
+	magnusDE = Apply[Plus,magnusDETerms];
+	If[printStatusUpdates,Print["    > adding terms w/o NCE done: ", Date[][[4;;5]]]];
+	result = CoefficientList[magnusDE, \[Lambda], order] /. CMTR -> Commutator;
+	If[printStatusUpdates,Print["    > picking coefficients done: ", Date[][[4;;5]]]];
+	Return[result];
 ];
 
 
-JesseDoMagnusIntegration[MEIntegrand_,maxOrder_] := 
+JesseDoMagnusIntegration[MEIntegrand_,maxOrder_,doGrim_:True,itgStartTime_:t0] := 
 	Module[{workpiece},
 	Print["\n* Begin integrating the next Magnus integrand, at date and time ", Date[][[1 ;; 5]]];
 	workpiece = MEIntegrand //. SigmaComRules;
-	Print[workpiece];
+	(*Print[workpiece//FullForm];*)
 	Print["SigmaComRules Done:  ", Date[][[4 ;; 5]]];
-	workpiece = JesseGrim[workpiece, {1/ww, t, t0}, maxOrder];
-	Print[workpiece];
-	Print["Trimming Done:  ", Date[][[4 ;; 5]]];
+	(*Print[workpiece];*)
+	If[doGrim,
+		workpiece = JesseGrim[workpiece, {1/ww, t, t0}, maxOrder];
+		(*Print[workpiece];*)
+		Print["Trimming Done:  ", Date[][[4 ;; 5]]];
+	,
+		Print["Skipping trim"];
+	];
 
-	workpiece = workpiece /. t->tt;
-	Print[workpiece];
-	workpiece = Integrate[workpiece, {tt, t0, tf}] /. tf->t;
-	Print[workpiece];
+	workpiece = workpiece /. {t->tt};
+	(*Print[workpiece//FullForm];*)
+	workpiece = (Integrate[workpiece, {tt, itgStartTime, tf}]) /. tf->t;
+	(*Print[workpiece//FullForm];*)
 	Print["Integration from `t0' to `t' done:  ", Date[][[4 ;; 5]]];   
-	workpiece = JesseGrim[workpiece, {1/ww, t, t0}, maxOrder + 1];
-	Print[workpiece];
-	Print["Post-integration trim done:  ", Date[][[4 ;; 5]]];
+	If[doGrim,
+		workpiece = JesseGrim[workpiece, {1/ww, t, t0}, maxOrder];
+		(*Print[workpiece];*)
+		Print["Post-integration trim done:  ", Date[][[4 ;; 5]]];
+	,
+		Print["Skipping trim, simplifying instead"];
+		workpiece = workpiece // S;
+		Print["Simplifying done:  ", Date[][[4 ;; 5]]];
+	];
+	(*Print[workpiece];*)
 	Return[workpiece];
 ];
 
 
-(* Get \[CapitalOmega]\[CapitalOmega](t,t0) may output (depending on \
-lastTrue/False)
-Subscript[\[CapitalOmega]\[CapitalOmega], order](t,t0) 
-or
-Subscript[Omega, order](t0)
-(maximal coefficient ~ 1/ww^maxOmega)
- *)
-
-GetOOnope[order_, maxOmega_, MEterms_] := Module[{fn, Omega, OO},
-  Print["\n Begin calculating \!\(\*SubscriptBox[\(\[CapitalOmega]\
-\[CapitalOmega]\), \(k\)]\)[t,t0] of Magnus Expansion \
-order k = ", order, ", at date and time ", Date[][[1 ;; 5]]];
-  fn[t_] = fxn[t, order] //. SigmaComRules;
-  Print["SigmaComRules Done:  ", Date[][[4 ;; 5]]];
-  (*Print["fn[t] = ", fn[t]];*)
-  
-  
-  (* this one worked well:
-  fn[t_]=Grim[fn[t],1/ww,t,t0,maxOmega]//S;
-  *)
-  (*Print["fn before grim:  ",fn[t]];*)
-  tempo = JesseGrim[fn[t], {1/ww, t, t0}, maxOmega];
-  fn[t_] = tempo;
-  
-  
-  Print["Trimming Done:  ", Date[][[4 ;; 5]]];
-  fn[t_] = fn[t];
-  Print["Simplify of fn OMITTED:  ", Date[][[4 ;; 5]]];
-  
-  
-  If[lastTF == True,
-   (* Calculate the actual Magnus Term for a period tc *)
-   (*Print[
-   "GetOO:  True"];*)
-   
-   Omega[t0_] = Integrate[fn[tt], {tt, t0, t0 + tc}];
-   Print["Integration from `t0' to `t0 + tc' done:  ", 
-    Date[][[4 ;; 5]]];
-   (*Print[
-   "After integration (and before applying 'Grim') we have Omega[t0] \
-= ",Omega[t0]];*)
-   
-   Omega[t0_] = JesseGrim[Omega[t0], {1/ww, tc, t0}, maxOmega + 1];
-   Return[Omega[t0]],
-   
-   
-   (* Otherwise Calculate the "intermediate Magnus Term" from time t0 \
-to t *)
-   (*Print["GetOO:  False"];*)
-   
-   OO[t_, t0_] = Integrate[fn[tt], {tt, t0, t}];
-   Print["Integration from `t0' to `t' done:  ", Date[][[4 ;; 5]]];
-   (*this one worked well:
-   OO[t_,t0_]=Grim[OO[t,t0],1/ww,t,t0,maxOmega+1]//FS;*)
-   
-   tempo = JesseGrim[OO[t, t0], {1/ww, t, t0}, maxOmega + 1];
-   Print["Post-integration trim done:  ", Date[][[4 ;; 5]]];
-   (*Print["(2) After applying Grim, tempo = ",tempo];*)
-   
-   OO[t_, t0_] = tempo;
-   Print["Final Simplify OMITTED:  ", Date[][[4 ;; 5]]];
-   Return[OO[t, t0]];
-   ];
-  Print["Error in GetOO:  Not returning a value."]
-  ];
+BCHFormula[A_,B_,2]:=(
+	A + B
+	+1/2 Commutator[A,B]
+)//.SigmaComRules;
+BCHFormula[A_,B_,3]:=(
+	A + B
+	+1/2 Commutator[A,B]
+	+1/12 (Commutator[A,Commutator[A,B]]+Commutator[B,Commutator[B,A]])
+)//.SigmaComRules;
+BCHFormula[A_,B_,4]:=(
+	A + B
+	+1/2 Commutator[A,B]
+	+1/12 (Commutator[A,Commutator[A,B]]+Commutator[B,Commutator[B,A]])
+	-1/24 Commutator[B,Commutator[A,Commutator[A,B]]]
+)//.SigmaComRules;
 
 
 SetCommutative[t,td0];
 $Assumptions={ww>0,phi1>0,t>0,t0>0,H1>0,phi10>0,tp>0,xz>0,t>t0};
-CWW=Collect[#,ww];
+CWW=Collect[#,ww]&;
+
+
+(* ::Text:: *)
+(*asdfqdfvsadfv*)

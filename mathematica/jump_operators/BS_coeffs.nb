@@ -1,0 +1,774 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     23816,        765]
+NotebookOptionsPosition[     20877,        670]
+NotebookOutlinePosition[     21260,        687]
+CellTagsIndexPosition[     21217,        684]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Quit", "[", "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.722243616778412*^9, 3.722243619731081*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Get", "[", 
+   RowBox[{
+    RowBox[{"NotebookDirectory", "[", "]"}], "<>", "\"\<MagnusFuncs.m\>\""}], 
+   "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.72208391001262*^9, 3.722083912281644*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\<\"You are using the version of NCAlgebra which is found in:\"\
+\>"], "Print",
+ CellChangeTimes->{3.722244187433213*^9, 3.722244246251595*^9, 
+  3.722335653796883*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"  \"\>", "\[InvisibleSpace]", "\<\"/Users/jesse/NC/\"\>"}],
+  SequenceForm["  ", "/Users/jesse/NC/"],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.722244187433213*^9, 3.722244246251595*^9, 
+  3.722335653803474*^9}],
+
+Cell[BoxData["\<\"You can now use \\\"<< NCAlgebra`\\\" to load \
+NCAlgebra.\"\>"], "Print",
+ CellChangeTimes->{3.722244187433213*^9, 3.722244246251595*^9, 
+  3.7223356538115788`*^9}],
+
+Cell["\<\
+------------------------------------------------------------
+NCAlgebra - Version 5.0.3
+Compatible with Mathematica Version 10 and above
+
+Authors:
+
+  J. William Helton*
+  Mauricio de Oliveira&
+
+* Math, UCSD, La Jolla, CA
+& MAE, UCSD, La Jolla, CA
+
+with major earlier contributions by:
+
+  Mark Stankus$ 
+  Robert L. Miller#
+
+$ Math, Cal Poly San Luis Obispo
+# General Atomics Corp
+
+Copyright: 
+  Helton and de Oliveira 2017
+  Helton 2002
+  Helton and Miller June 1991
+  All rights reserved.
+
+The program was written by the authors and by:
+  David Hurst, Daniel Lamm, Orlando Merino, Robert Obar,
+  Henry Pfister, Mike Walker, John Wavrik, Lois Yu,
+  J. Camino, J. Griffin, J. Ovall, T. Shaheen, John Shopple. 
+  The beginnings of the program come from eran@slac.
+  Considerable recent help came from Igor Klep.
+
+Current primary support is from the 
+  NSF Division of Mathematical Sciences.
+  
+This program was written with support from 
+  AFOSR, NSF, ONR, Lab for Math and Statistics at UCSD,
+  UCSD Faculty Mentor Program,
+  and US Department of Education.
+
+For NCAlgebra updates see:
+
+  www.github.com/NCAlgebra/NC
+  www.math.ucsd.edu/~ncalg
+
+------------------------------------------------------------\
+\>", "Print",
+ CellChangeTimes->{3.722244187433213*^9, 3.722244246251595*^9, 
+  3.72233565382067*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Original Hamiltonian ME", "Section",
+ CellChangeTimes->{{3.722083917847747*^9, 3.722083928556838*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Horig", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"H1", "/", "4"}], "*", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Cos", "[", "phi", "]"}], "*", "sx"}], "+", 
+      RowBox[{
+       RowBox[{"Cos", "[", 
+        RowBox[{
+         RowBox[{"2", "*", "ww", "*", "t"}], "+", "phi"}], "]"}], "sx"}], "+", 
+      RowBox[{
+       RowBox[{"Sin", "[", "phi", "]"}], "sy"}], "-", 
+      RowBox[{
+       RowBox[{"Sin", "[", 
+        RowBox[{
+         RowBox[{"2", "*", "ww", "*", "t"}], "+", "phi"}], "]"}], "*", 
+       "sy"}]}], ")"}]}], "+", 
+   RowBox[{
+    RowBox[{"Delta", "/", "2"}], "*", "sz"}]}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox[
+   RowBox[{"Delta", " ", "sz"}], "2"], "+", 
+  RowBox[{
+   FractionBox["1", "4"], " ", "H1", " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"sx", " ", 
+      RowBox[{"Cos", "[", "phi", "]"}]}], "+", 
+     RowBox[{"sx", " ", 
+      RowBox[{"Cos", "[", 
+       RowBox[{"phi", "+", 
+        RowBox[{"2", " ", "t", " ", "ww"}]}], "]"}]}], "+", 
+     RowBox[{"sy", " ", 
+      RowBox[{"Sin", "[", "phi", "]"}]}], "-", 
+     RowBox[{"sy", " ", 
+      RowBox[{"Sin", "[", 
+       RowBox[{"phi", "+", 
+        RowBox[{"2", " ", "t", " ", "ww"}]}], "]"}]}]}], ")"}]}]}]], "Output",\
+
+ CellChangeTimes->{
+  3.7222441881912947`*^9, 3.72224425396157*^9, {3.7223356388659554`*^9, 
+   3.722335654226738*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Hsimple", "=", 
+  RowBox[{
+   RowBox[{"Horig", "/.", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"phi", "\[Rule]", "0"}], ",", 
+      RowBox[{"Delta", "\[Rule]", "0"}]}], "}"}]}], "//", "FS"}]}]], "Input",
+ CellChangeTimes->{3.722083990631926*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox["1", "4"], " ", "H1", " ", 
+  RowBox[{"(", 
+   RowBox[{"sx", "+", 
+    RowBox[{"sx", " ", 
+     RowBox[{"Cos", "[", 
+      RowBox[{"2", " ", "t", " ", "ww"}], "]"}]}], "-", 
+    RowBox[{"sy", " ", 
+     RowBox[{"Sin", "[", 
+      RowBox[{"2", " ", "t", " ", "ww"}], "]"}]}]}], ")"}]}]], "Output",
+ CellChangeTimes->{
+  3.722244188876988*^9, 3.7222442559594173`*^9, {3.722335639008853*^9, 
+   3.722335654478386*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Remove", "[", "\[CapitalOmega]bscoeff", "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.72208400359072*^9, 3.722084007580626*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"$RecursionLimit", "=", "10240"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"max", "=", "6"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"SetNonCommutative", "[", "h", "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"MIbscoeff", "=", 
+      RowBox[{"JesseGetMagnusIntegrands", "[", 
+       RowBox[{"h", ",", "\[CapitalOmega]bscoeff", ",", "max", ",", "True"}], 
+       "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"MIbscoeff", "=", 
+      RowBox[{"MIbscoeff", "/.", 
+       RowBox[{"h", "\[Rule]", "Hsimple"}]}]}], ";"}]}], 
+   "\[IndentingNewLine]", "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.7220840171627502`*^9, 3.722084051485063*^9}, {
+  3.722084086400832*^9, 3.722084087495536*^9}, {3.722085751812931*^9, 
+  3.722085766859928*^9}, {3.722088132868497*^9, 3.722088156251445*^9}, {
+  3.722244260191554*^9, 3.722244275690113*^9}, {3.722335602513281*^9, 
+  3.722335602638392*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Starting the calculation of Magnus integrands at \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"2017", ",", "12", ",", "15", ",", "15", ",", "7"}], "}"}]}],
+  SequenceForm[
+  "Starting the calculation of Magnus integrands at ", {2017, 12, 15, 15, 7}],
+  
+  Editable->False]], "Print",
+ CellChangeTimes->{3.722335654543853*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"    > assembling nested commutators done: \"\>", 
+   "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"15", ",", "7"}], "}"}]}],
+  SequenceForm["    > assembling nested commutators done: ", {15, 7}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.722335654549419*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"    > assembling terms done: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"15", ",", "7"}], "}"}]}],
+  SequenceForm["    > assembling terms done: ", {15, 7}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.722335654557188*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"    > substituting series done: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"15", ",", "7"}], "}"}]}],
+  SequenceForm["    > substituting series done: ", {15, 7}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.722335654564639*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"    > A+B bilinearity done: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"15", ",", "7"}], "}"}]}],
+  SequenceForm["    > A+B bilinearity done: ", {15, 7}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7223356545719757`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"    > c*A bilinearity done: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"15", ",", "7"}], "}"}]}],
+  SequenceForm["    > c*A bilinearity done: ", {15, 7}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.722335654677302*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"    > adding terms w/o NCE done: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"15", ",", "7"}], "}"}]}],
+  SequenceForm["    > adding terms w/o NCE done: ", {15, 7}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.722335654683771*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"    > picking coefficients done: \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"15", ",", "7"}], "}"}]}],
+  SequenceForm["    > picking coefficients done: ", {15, 7}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.722335654690365*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Block", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"$RecursionLimit", "=", "10240"}], "}"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"Do", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          SubscriptBox["\[CapitalOmega]bscoeff", "i"], "[", 
+          RowBox[{"t_", ",", "t0_"}], "]"}], "=", 
+         RowBox[{"JesseDoMagnusIntegration", "[", 
+          RowBox[{
+           RowBox[{"MIbscoeff", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], ",", " ", "max", ",", "False", 
+           ",", "0"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+       RowBox[{"(*", 
+        RowBox[{
+         RowBox[{"Print", "[", 
+          RowBox[{
+           SubscriptBox["WWeff", "i"], "[", 
+           RowBox[{"t", ",", "t0"}], "]"}], "]"}], ";"}], "*)"}], 
+       "\[IndentingNewLine]", ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", "max"}], "}"}]}], "\[IndentingNewLine]", "]"}], 
+     ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]], "Input",
+ CellChangeTimes->{{3.722084070857686*^9, 3.72208407384173*^9}, {
+  3.722085007225594*^9, 3.722085007512124*^9}, {3.722088160851268*^9, 
+  3.72208817856409*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"\\n* Begin integrating the next Magnus integrand, at date and \
+time \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"2017", ",", "12", ",", "15", ",", "15", ",", "7"}], "}"}]}],
+  SequenceForm[
+  "\n* Begin integrating the next Magnus integrand, at date and time ", {2017,
+    12, 15, 15, 7}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.722335654758136*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"SigmaComRules Done:  \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"15", ",", "7"}], "}"}]}],
+  SequenceForm["SigmaComRules Done:  ", {15, 7}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.722335654765383*^9}],
+
+Cell[BoxData["\<\"Skipping trim\"\>"], "Print",
+ CellChangeTimes->{3.7223356547736053`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Integration from `t0' to `t' done:  \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"15", ",", "7"}], "}"}]}],
+  SequenceForm["Integration from `t0' to `t' done:  ", {15, 7}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7223356567755547`*^9}],
+
+Cell[BoxData["\<\"Skipping trim, simplifying instead\"\>"], "Print",
+ CellChangeTimes->{3.7223356567838173`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Simplifying done:  \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"15", ",", "7"}], "}"}]}],
+  SequenceForm["Simplifying done:  ", {15, 7}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.722335656864216*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"\\n* Begin integrating the next Magnus integrand, at date and \
+time \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"2017", ",", "12", ",", "15", ",", "15", ",", "7"}], "}"}]}],
+  SequenceForm[
+  "\n* Begin integrating the next Magnus integrand, at date and time ", {2017,
+    12, 15, 15, 7}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.722335657037072*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"SigmaComRules Done:  \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"15", ",", "7"}], "}"}]}],
+  SequenceForm["SigmaComRules Done:  ", {15, 7}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7223356570442457`*^9}],
+
+Cell[BoxData["\<\"Skipping trim\"\>"], "Print",
+ CellChangeTimes->{3.722335657052074*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Integration from `t0' to `t' done:  \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"15", ",", "7"}], "}"}]}],
+  SequenceForm["Integration from `t0' to `t' done:  ", {15, 7}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.722335658345942*^9}],
+
+Cell[BoxData["\<\"Skipping trim, simplifying instead\"\>"], "Print",
+ CellChangeTimes->{3.722335658353311*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Simplifying done:  \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"15", ",", "7"}], "}"}]}],
+  SequenceForm["Simplifying done:  ", {15, 7}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7223356584175453`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"\\n* Begin integrating the next Magnus integrand, at date and \
+time \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"2017", ",", "12", ",", "15", ",", "15", ",", "7"}], "}"}]}],
+  SequenceForm[
+  "\n* Begin integrating the next Magnus integrand, at date and time ", {2017,
+    12, 15, 15, 7}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.722335658708825*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"SigmaComRules Done:  \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"15", ",", "7"}], "}"}]}],
+  SequenceForm["SigmaComRules Done:  ", {15, 7}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7223356587164803`*^9}],
+
+Cell[BoxData["\<\"Skipping trim\"\>"], "Print",
+ CellChangeTimes->{3.722335658724025*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Integration from `t0' to `t' done:  \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"15", ",", "7"}], "}"}]}],
+  SequenceForm["Integration from `t0' to `t' done:  ", {15, 7}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.72233567822336*^9}],
+
+Cell[BoxData["\<\"Skipping trim, simplifying instead\"\>"], "Print",
+ CellChangeTimes->{3.722335678230609*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Simplifying done:  \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"15", ",", "7"}], "}"}]}],
+  SequenceForm["Simplifying done:  ", {15, 7}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7223356787994137`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"\\n* Begin integrating the next Magnus integrand, at date and \
+time \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"2017", ",", "12", ",", "15", ",", "15", ",", "7"}], "}"}]}],
+  SequenceForm[
+  "\n* Begin integrating the next Magnus integrand, at date and time ", {2017,
+    12, 15, 15, 7}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.722335679174952*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"SigmaComRules Done:  \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"15", ",", "7"}], "}"}]}],
+  SequenceForm["SigmaComRules Done:  ", {15, 7}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.72233567918394*^9}],
+
+Cell[BoxData["\<\"Skipping trim\"\>"], "Print",
+ CellChangeTimes->{3.722335679191267*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Integration from `t0' to `t' done:  \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"15", ",", "8"}], "}"}]}],
+  SequenceForm["Integration from `t0' to `t' done:  ", {15, 8}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.722335698832673*^9}],
+
+Cell[BoxData["\<\"Skipping trim, simplifying instead\"\>"], "Print",
+ CellChangeTimes->{3.722335698839476*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Simplifying done:  \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"15", ",", "8"}], "}"}]}],
+  SequenceForm["Simplifying done:  ", {15, 8}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7223356991052523`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"\\n* Begin integrating the next Magnus integrand, at date and \
+time \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"2017", ",", "12", ",", "15", ",", "15", ",", "8"}], "}"}]}],
+  SequenceForm[
+  "\n* Begin integrating the next Magnus integrand, at date and time ", {2017,
+    12, 15, 15, 8}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.722335699428458*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"SigmaComRules Done:  \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"15", ",", "8"}], "}"}]}],
+  SequenceForm["SigmaComRules Done:  ", {15, 8}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7223356994631968`*^9}],
+
+Cell[BoxData["\<\"Skipping trim\"\>"], "Print",
+ CellChangeTimes->{3.722335699468885*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Integration from `t0' to `t' done:  \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"15", ",", "13"}], "}"}]}],
+  SequenceForm["Integration from `t0' to `t' done:  ", {15, 13}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.722336005108452*^9}],
+
+Cell[BoxData["\<\"Skipping trim, simplifying instead\"\>"], "Print",
+ CellChangeTimes->{3.722336005114855*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Simplifying done:  \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"15", ",", "13"}], "}"}]}],
+  SequenceForm["Simplifying done:  ", {15, 13}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.722336007210635*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"\\n* Begin integrating the next Magnus integrand, at date and \
+time \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"2017", ",", "12", ",", "15", ",", "15", ",", "13"}], "}"}]}],
+  SequenceForm[
+  "\n* Begin integrating the next Magnus integrand, at date and time ", {2017,
+    12, 15, 15, 13}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.722336007545044*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"SigmaComRules Done:  \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"15", ",", "13"}], "}"}]}],
+  SequenceForm["SigmaComRules Done:  ", {15, 13}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.722336007578067*^9}],
+
+Cell[BoxData["\<\"Skipping trim\"\>"], "Print",
+ CellChangeTimes->{3.722336007584093*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Integration from `t0' to `t' done:  \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"15", ",", "14"}], "}"}]}],
+  SequenceForm["Integration from `t0' to `t' done:  ", {15, 14}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.722336042185747*^9}],
+
+Cell[BoxData["\<\"Skipping trim, simplifying instead\"\>"], "Print",
+ CellChangeTimes->{3.722336042192986*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Simplifying done:  \"\>", "\[InvisibleSpace]", 
+   RowBox[{"{", 
+    RowBox[{"15", ",", "14"}], "}"}]}],
+  SequenceForm["Simplifying done:  ", {15, 14}],
+  Editable->False]], "Print",
+ CellChangeTimes->{3.7223360437116137`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.722084366246283*^9, 3.7220843757330313`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Hbscoeff", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"I", "/", 
+      RowBox[{"(", "tc", ")"}]}], "*", 
+     RowBox[{"Apply", "[", 
+      RowBox[{"Plus", ",", 
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{
+          SubscriptBox["\[CapitalOmega]bscoeff", "i"], "[", 
+          RowBox[{"tc", ",", "0"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", "max"}], "}"}]}], "]"}]}], "]"}]}], "//", "FS"}], 
+   "//", "CWW"}]}]], "Input",
+ CellChangeTimes->{{3.722085668858459*^9, 3.7220857067148323`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox[
+   RowBox[{"H1", " ", "sx"}], "4"], "-", 
+  FractionBox[
+   RowBox[{"61", " ", 
+    SuperscriptBox["H1", "6"], " ", "sz"}], 
+   RowBox[{"786432", " ", 
+    SuperscriptBox["ww", "5"]}]], "-", 
+  FractionBox[
+   RowBox[{"3", " ", 
+    SuperscriptBox["H1", "5"], " ", "sx"}], 
+   RowBox[{"8192", " ", 
+    SuperscriptBox["ww", "4"]}]], "-", 
+  FractionBox[
+   RowBox[{
+    SuperscriptBox["H1", "4"], " ", "sz"}], 
+   RowBox[{"512", " ", 
+    SuperscriptBox["ww", "3"]}]], "-", 
+  FractionBox[
+   RowBox[{
+    SuperscriptBox["H1", "3"], " ", "sx"}], 
+   RowBox[{"256", " ", 
+    SuperscriptBox["ww", "2"]}]], "-", 
+  FractionBox[
+   RowBox[{
+    SuperscriptBox["H1", "2"], " ", "sz"}], 
+   RowBox[{"32", " ", "ww"}]]}]], "Output",
+ CellChangeTimes->{3.722335639380121*^9, 3.7223360441156483`*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+Evaluator->"LocalComp",
+WindowSize->{808, 819},
+WindowMargins->{{-1773, Automatic}, {Automatic, 40}},
+FrontEndVersion->"10.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (October 9, \
+2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 136, 3, 39, "Input"],
+Cell[CellGroupData[{
+Cell[719, 27, 229, 6, 39, "Input"],
+Cell[CellGroupData[{
+Cell[973, 37, 182, 3, 22, "Print"],
+Cell[1158, 42, 269, 6, 22, "Print"],
+Cell[1430, 50, 183, 3, 22, "Print"],
+Cell[1616, 55, 1316, 50, 665, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2981, 111, 108, 1, 64, "Section"],
+Cell[CellGroupData[{
+Cell[3114, 116, 649, 21, 57, "Input"],
+Cell[3766, 139, 735, 23, 58, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4538, 167, 274, 8, 39, "Input"],
+Cell[4815, 177, 453, 13, 58, "Output"]
+}, Open  ]],
+Cell[5283, 193, 163, 3, 39, "Input"],
+Cell[CellGroupData[{
+Cell[5471, 200, 1009, 22, 125, "Input"],
+Cell[CellGroupData[{
+Cell[6505, 226, 391, 10, 22, "Print"],
+Cell[6899, 238, 322, 8, 22, "Print"],
+Cell[7224, 248, 292, 7, 22, "Print"],
+Cell[7519, 257, 298, 7, 22, "Print"],
+Cell[7820, 266, 292, 7, 22, "Print"],
+Cell[8115, 275, 290, 7, 22, "Print"],
+Cell[8408, 284, 300, 7, 22, "Print"],
+Cell[8711, 293, 300, 7, 22, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9060, 306, 1210, 32, 142, "Input"],
+Cell[CellGroupData[{
+Cell[10295, 342, 425, 10, 38, "Print"],
+Cell[10723, 354, 276, 7, 22, "Print"],
+Cell[11002, 363, 91, 1, 22, "Print"],
+Cell[11096, 366, 308, 7, 22, "Print"],
+Cell[11407, 375, 112, 1, 22, "Print"],
+Cell[11522, 378, 272, 7, 22, "Print"],
+Cell[11797, 387, 425, 10, 38, "Print"],
+Cell[12225, 399, 278, 7, 22, "Print"],
+Cell[12506, 408, 89, 1, 22, "Print"],
+Cell[12598, 411, 306, 7, 22, "Print"],
+Cell[12907, 420, 110, 1, 22, "Print"],
+Cell[13020, 423, 274, 7, 22, "Print"],
+Cell[13297, 432, 425, 10, 38, "Print"],
+Cell[13725, 444, 278, 7, 22, "Print"],
+Cell[14006, 453, 89, 1, 22, "Print"],
+Cell[14098, 456, 305, 7, 22, "Print"],
+Cell[14406, 465, 110, 1, 22, "Print"],
+Cell[14519, 468, 274, 7, 22, "Print"],
+Cell[14796, 477, 425, 10, 38, "Print"],
+Cell[15224, 489, 275, 7, 22, "Print"],
+Cell[15502, 498, 89, 1, 22, "Print"],
+Cell[15594, 501, 306, 7, 22, "Print"],
+Cell[15903, 510, 110, 1, 22, "Print"],
+Cell[16016, 513, 274, 7, 22, "Print"],
+Cell[16293, 522, 425, 10, 38, "Print"],
+Cell[16721, 534, 278, 7, 22, "Print"],
+Cell[17002, 543, 89, 1, 22, "Print"],
+Cell[17094, 546, 308, 7, 22, "Print"],
+Cell[17405, 555, 110, 1, 22, "Print"],
+Cell[17518, 558, 274, 7, 22, "Print"],
+Cell[17795, 567, 427, 10, 38, "Print"],
+Cell[18225, 579, 278, 7, 22, "Print"],
+Cell[18506, 588, 89, 1, 22, "Print"],
+Cell[18598, 591, 308, 7, 22, "Print"],
+Cell[18909, 600, 110, 1, 22, "Print"],
+Cell[19022, 603, 276, 7, 22, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[19325, 614, 94, 1, 39, "Input"],
+Cell[CellGroupData[{
+Cell[19444, 619, 571, 17, 39, "Input"],
+Cell[20018, 638, 831, 28, 62, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
