@@ -169,27 +169,36 @@ JesseGetMagnusIntegrands[Ham_,METerms_,order_,printStatusUpdates_:False] :=
 
 
 JesseDoMagnusIntegration[MEIntegrand_,maxOrder_,doGrim_:True,itgStartTime_:t0] := 
-	Module[{workpiece},
-	Print["\n* Begin integrating the next Magnus integrand, at date and time ", Date[][[1 ;; 5]]];
+	Module[{workpiece,termwiseSF,totalSF,terms,itgdTerms,ii},
+	termwiseSF = Simplify[#,TimeConstraint -> {5, 20}]&;
+	totalSF = Simplify[#,TimeConstraint -> {200, 1000}]&;
+
+	Print["\n** Begin integrating the next Magnus integrand, at date and time ", Date[][[1 ;; 5]]];
 	workpiece = MEIntegrand //. SigmaComRules;
 	(*Print[workpiece//FullForm];*)
 	Print["SigmaComRules Done:  ", Date[][[4 ;; 5]]];
 	(*Print[workpiece];*)
 	If[doGrim,
-		workpiece = JesseGrim[workpiece, {1/ww, t, t0}, maxOrder];
+		workpiece = JesseGrim[workpiece, {1/ww, t, t0}, maxOrder, termwiseSF, totalSF];
 		(*Print[workpiece];*)
 		Print["Trimming Done:  ", Date[][[4 ;; 5]]];
 	,
 		Print["Skipping trim"];
 	];
 
-	workpiece = workpiece /. {t->tt};
-	(*Print[workpiece//FullForm];*)
-	workpiece = (Integrate[workpiece, {tt, itgStartTime, tf}]) /. tf->t;
+	workpiece = workpiece /. {t->tt, sx->sxx, sy->syy, sz->szz};
+	terms = List @@ (workpiece // Expand);
+	ii = 0;
+	Print["Starting termwise integration on ", Length[terms], " terms"];
+	itgdTerms = Table[ii++; Print["Term: ", ii]; Integrate[trm, {tt, itgStartTime, tf}], {trm, terms}];
+	(*Print[workpiece];*)
+	workpiece = Plus @@ itgdTerms;
+	workpiece = workpiece /. {tf->t, sxx->sx, syy->sy, szz->sz};
+	(*workpiece = (Integrate[workpiece, {tt, itgStartTime, tf}]) /. {tf->t, sxx\[Rule]sx, syy\[Rule]sy, szz\[Rule]sz};*)
 	(*Print[workpiece//FullForm];*)
 	Print["Integration from `t0' to `t' done:  ", Date[][[4 ;; 5]]];   
 	If[doGrim,
-		workpiece = JesseGrim[workpiece, {1/ww, t, t0}, maxOrder];
+		workpiece = JesseGrim[workpiece, {1/ww, t, t0}, maxOrder, termwiseSF, totalSF];
 		(*Print[workpiece];*)
 		Print["Post-integration trim done:  ", Date[][[4 ;; 5]]];
 	,

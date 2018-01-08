@@ -1,0 +1,124 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      3486,        114]
+NotebookOptionsPosition[      3229,        100]
+NotebookOutlinePosition[      3588,        116]
+CellTagsIndexPosition[      3545,        113]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"jumpOww0", "=", "0"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"jumpOwwM1", "=", 
+   RowBox[{
+    FractionBox["1", 
+     RowBox[{"4", "ww"}]], "\[ImaginaryI]", " ", 
+    RowBox[{"(", 
+     RowBox[{"HA", "-", "HB"}], ")"}], " ", 
+    RowBox[{"Sin", "[", 
+     RowBox[{"\[Alpha]0", "-", "\[Alpha]j"}], "]"}], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{"sx", " ", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"phi", "+", "\[Alpha]0", "+", "\[Alpha]j"}], "]"}]}], "-", 
+      RowBox[{"sy", " ", 
+       RowBox[{"Sin", "[", 
+        RowBox[{"phi", "+", "\[Alpha]0", "+", "\[Alpha]j"}], "]"}]}]}], 
+     ")"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"jumpOwwM2", "=", 
+   RowBox[{
+    RowBox[{"-", 
+     FractionBox["1", 
+      RowBox[{"32", 
+       SuperscriptBox["ww", "2"]}]]}], " ", "\[ImaginaryI]", " ", 
+    RowBox[{"Sin", "[", 
+     RowBox[{"\[Alpha]0", "-", "\[Alpha]j"}], "]"}], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"HA", "-", "HB"}], ")"}], " ", 
+       RowBox[{"(", 
+        RowBox[{"HA", "+", "HB"}], ")"}], " ", "sz", " ", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"\[Alpha]0", "-", "\[Alpha]j"}], "]"}]}], 
+      "\[IndentingNewLine]", "+", 
+      RowBox[{"2", " ", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"Delta", " ", 
+             RowBox[{"(", 
+              RowBox[{"HA", "-", "HB"}], ")"}], " ", "sx"}], "+", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"HAD", "-", "HBD"}], ")"}], " ", "sy"}]}], ")"}], " ", 
+          RowBox[{"Cos", "[", 
+           RowBox[{"phi", "+", "\[Alpha]0", "+", "\[Alpha]j"}], "]"}]}], "+", 
+         
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"-", 
+             SuperscriptBox["HA", "2"]}], "+", 
+            SuperscriptBox["HB", "2"]}], ")"}], " ", "sz", " ", 
+          RowBox[{"Cos", "[", 
+           RowBox[{
+            RowBox[{"2", " ", "phi"}], "+", "\[Alpha]0", "+", "\[Alpha]j"}], 
+           "]"}]}], "+", 
+         RowBox[{"2", " ", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"HAD", "-", "HBD"}], ")"}], " ", "sx"}], "+", 
+            RowBox[{"Delta", " ", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"-", "HA"}], "+", "HB"}], ")"}], " ", "sy"}]}], ")"}], 
+          " ", 
+          RowBox[{"Sin", "[", 
+           RowBox[{"phi", "+", "\[Alpha]0", "+", "\[Alpha]j"}], "]"}]}]}], 
+        ")"}]}]}], ")"}]}]}], ";"}]}], "Input"]
+},
+WindowSize->{808, 905},
+WindowMargins->{{-1524, Automatic}, {19, Automatic}},
+FrontEndVersion->"10.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (October 9, \
+2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 2667, 78, 153, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

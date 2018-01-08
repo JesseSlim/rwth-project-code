@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    131270,       3038]
-NotebookOptionsPosition[    129248,       2967]
-NotebookOutlinePosition[    129607,       2983]
-CellTagsIndexPosition[    129564,       2980]
+NotebookDataLength[    134641,       3100]
+NotebookOptionsPosition[    132677,       3032]
+NotebookOutlinePosition[    133036,       3048]
+CellTagsIndexPosition[    132993,       3045]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -455,6 +455,63 @@ Cell[BoxData[
                RowBox[{"tr", "^", "2"}]}], ")"}]}]}], "]"}]}], "}"}]}], 
        "\[IndentingNewLine]", "}"}], "/.", 
       RowBox[{"{", 
+       RowBox[{"tr", "\[Rule]", "0.2"}], "}"}]}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"drive5", "=", 
+     RowBox[{
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"0", ",", 
+          RowBox[{"Function", "[", 
+           RowBox[{"t", ",", "0"}], "]"}]}], "}"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{"tr", ",", 
+          RowBox[{"Function", "[", 
+           RowBox[{"t", ",", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"1", "/", "2"}], "-", 
+               RowBox[{
+                RowBox[{"Cos", "[", 
+                 RowBox[{
+                  RowBox[{"t", "/", "tr"}], "*", "Pi"}], "]"}], "/", "2"}]}], 
+              ")"}], "/", 
+             RowBox[{"(", 
+              RowBox[{"1", "-", "tr"}], ")"}]}]}], "]"}]}], "}"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"1", "-", "tr"}], ",", 
+          RowBox[{"Function", "[", 
+           RowBox[{"t", ",", 
+            RowBox[{"1", "/", 
+             RowBox[{"(", 
+              RowBox[{"1", "-", "tr"}], ")"}]}]}], "]"}]}], "}"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{"1", ",", 
+          RowBox[{"Function", "[", 
+           RowBox[{"t", ",", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"1", "/", "2"}], "-", 
+               RowBox[{
+                RowBox[{"Cos", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"-", 
+                    RowBox[{"(", 
+                    RowBox[{"t", "-", "1"}], ")"}]}], "/", "tr"}], "*", 
+                  "Pi"}], "]"}], "/", "2"}]}], ")"}], "/", 
+             RowBox[{"(", 
+              RowBox[{"1", "-", "tr"}], ")"}]}]}], "]"}]}], "}"}]}], 
+       "\[IndentingNewLine]", "}"}], "/.", 
+      RowBox[{"{", 
        RowBox[{"tr", "\[Rule]", "0.2"}], "}"}]}]}], ";"}]}]}]], "Input",
  CellChangeTimes->{{3.722252835009561*^9, 3.722252983603561*^9}, {
   3.722253128224712*^9, 3.7222531543126307`*^9}, {3.7222532341076403`*^9, 
@@ -464,18 +521,23 @@ Cell[BoxData[
   3.7222594927476053`*^9, 3.722259591854425*^9}, {3.7222684389012327`*^9, 
   3.7222686546724586`*^9}, {3.722268703149239*^9, 3.722268834912031*^9}, {
   3.7222689742935953`*^9, 3.72226898325815*^9}, {3.722320004794733*^9, 
-  3.722320004929516*^9}}],
+  3.722320004929516*^9}, {3.724403421184445*^9, 3.724403488511674*^9}, {
+  3.724403520262582*^9, 3.724403593140544*^9}, {3.724403629752738*^9, 
+  3.7244036734157553`*^9}}],
 
 Cell[BoxData[
  RowBox[{
   RowBox[{"driveList", "=", 
    RowBox[{"{", 
-    RowBox[{"drive1", ",", "drive2", ",", "drive3", ",", "drive4"}], "}"}]}], 
-  ";"}]], "Input",
+    RowBox[{
+    "drive1", ",", "drive2", ",", "drive3", ",", "drive4", ",", "drive5"}], 
+    "}"}]}], ";"}]], "Input",
  CellChangeTimes->{{3.722253854301886*^9, 3.7222538566705437`*^9}, {
   3.7222539620907087`*^9, 3.72225396907371*^9}, {3.722259521172325*^9, 
   3.7222595219801598`*^9}, {3.722268565373745*^9, 3.7222685666963387`*^9}, {
-  3.72226883833307*^9, 3.722268839443039*^9}}],
+  3.72226883833307*^9, 3.722268839443039*^9}, {3.722594586213265*^9, 
+  3.722594594915327*^9}, {3.724403459811368*^9, 3.724403461240267*^9}, {
+  3.724403492514868*^9, 3.724403493769144*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -972,9 +1034,7 @@ Cell[BoxData[
    3.7205033420945883`*^9}, {3.720505394832678*^9, 3.720505399174391*^9}, {
    3.72050545297269*^9, 3.720505559165401*^9}, {3.720505600648261*^9, 
    3.720505610319808*^9}, {3.720505644865181*^9, 3.720505691536974*^9}, 
-   3.720505792435629*^9, 3.720505834077351*^9, {3.7227754422995853`*^9, 
-   3.7227754440331306`*^9}, {3.722775489430608*^9, 3.72277549457899*^9}, 
-   3.722777438895952*^9}]
+   3.720505792435629*^9, 3.720505834077351*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -982,39 +1042,12 @@ Cell[CellGroupData[{
 Cell["Arbitrary piecewise constant envelope functions", "Section",
  CellChangeTimes->{{3.721110390798583*^9, 3.7211104688817587`*^9}}],
 
-Cell[TextData[{
- "Numerically integrate wavefunction trajectories using a specified piecewise \
-continuous (PC) drive envelope and a specified Hamiltonian (Ham). Between \
-different continuous sections of the drive envelope, the specified jump \
-operator is applied.\nReturns many things:\n[[1]]: piecewise continuous \
-wavevector function \[Psi](t)\n[[2]]: list of wavevector functions ",
- Cell[BoxData[
-  FormBox[
-   RowBox[{
-    SubscriptBox["\[Psi]", "i"], "(", "t", ")"}], TraditionalForm]],
-  FormatType->"TraditionalForm"],
- " for each PC section of the drive envelope. Also valid outside the interval \
-of the drive envelope PC section, there the drive envelope is extrapolated\n\
-[[3]]: list of wavevectors just before each jump\n[[4]]: list of jump \
-operator functions O(t) between subsequent drive envelope PC sections (i.e. \
-the jump operators with the appropriate left-side and right-side drive \
-functions plugged in)\n[[5]]: piecewise continuous Hamiltonian with the \
-appropriate drive envelopes plugged in\n[[6]]: list of jump operator \
-functions O(t) between drive envelope PC sections and the real trajectory"
-}], "Text",
- CellChangeTimes->{{3.722772440713541*^9, 3.722772443598927*^9}, {
-  3.722772522396186*^9, 3.722772634892714*^9}, {3.722772682712346*^9, 
-  3.722772766657378*^9}, {3.722772939939292*^9, 3.722773183549913*^9}, {
-  3.722773229392001*^9, 3.722773298281454*^9}, {3.722773690351658*^9, 
-  3.72277369346979*^9}, {3.722773817677286*^9, 3.722773906223671*^9}, {
-  3.7227740373105803`*^9, 3.722774089820601*^9}}],
-
 Cell[BoxData[
  RowBox[{
-  RowBox[{"NPCTrajectory", "[", 
+  RowBox[{"NPCEffectiveTrajectory", "[", 
    RowBox[{
    "pclist_", ",", "tM_", ",", "H1avg_", ",", "\[Psi]0_", ",", "\[Alpha]0In_",
-     ",", "Ham_", ",", "jumpOp_", ",", "vals_"}], "]"}], ":=", 
+     ",", "approxH_", ",", "jumpOp_", ",", "vals_"}], "]"}], ":=", 
   RowBox[{"Module", "[", 
    RowBox[{
     RowBox[{"{", "\[IndentingNewLine]", 
@@ -1094,7 +1127,7 @@ Cell[BoxData[
       RowBox[{
        RowBox[{
         RowBox[{"GetHFunc", "[", 
-         RowBox[{"Ham", ",", "#", ",", "vals"}], "]"}], "&"}], "/@", 
+         RowBox[{"approxH", ",", "#", ",", "vals"}], "]"}], "&"}], "/@", 
        "jumpFuncs"}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
      RowBox[{"Do", "[", "\[IndentingNewLine]", 
       RowBox[{
@@ -1112,11 +1145,6 @@ Cell[BoxData[
              RowBox[{"[", "ii", "]"}], "]"}], "]"}], "]"}], ".", 
           RowBox[{"Last", "[", "\[Psi]befores", "]"}]}]}], ";", 
         "\[IndentingNewLine]", 
-        RowBox[{"(*", " ", 
-         RowBox[{
-         "the", " ", "following", " ", "could", " ", "be", " ", "optimized", 
-          " ", "by", " ", "restricting", " ", "the", " ", "time"}], " ", 
-         "*)"}], "\[IndentingNewLine]", 
         RowBox[{"nextTraj", "=", 
          RowBox[{"\[Psi]", "/.", 
           RowBox[{"First", "@", 
@@ -1143,7 +1171,7 @@ Cell[BoxData[
                 "next\[Psi]after"}]}], "}"}], ",", "\[Psi]", ",", 
              RowBox[{"{", 
               RowBox[{"t", ",", "0", ",", "tM"}], "}"}]}], "]"}]}]}]}], ";", 
-        " ", "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", 
         RowBox[{"trajectories", "=", 
          RowBox[{"Insert", "[", 
           RowBox[{"trajectories", ",", "nextTraj", ",", 
@@ -1334,14 +1362,13 @@ Cell[BoxData[
    3.722342076890678*^9, 3.722342081060718*^9}, {3.722342167847352*^9, 
    3.722342239257505*^9}, {3.722342539442081*^9, 3.722342572843513*^9}, {
    3.722579313294983*^9, 3.722579658826136*^9}, {3.722579691740156*^9, 
-   3.7225796962160482`*^9}, 3.722772488042734*^9, {3.7227726753348207`*^9, 
-   3.722772676255411*^9}, {3.722772773436491*^9, 3.7227728166239777`*^9}}],
+   3.7225796962160482`*^9}}],
 
 Cell[BoxData[
  RowBox[{"(*", 
   RowBox[{
    RowBox[{"test", "=", 
-    RowBox[{"NPCTrajectory", "[", 
+    RowBox[{"NPCEffectiveTrajectory", "[", 
      RowBox[{"drive1", ",", 
       RowBox[{"2", "Pi", "*", 
        RowBox[{"1", "/", "0.9"}]}], ",", "0.9", ",", 
@@ -1394,8 +1421,7 @@ Cell[BoxData[
    3.722338746343416*^9, 3.722338785584511*^9}, {3.722338832108172*^9, 
    3.722338889347335*^9}, {3.7223407101269627`*^9, 3.722340727854108*^9}, {
    3.722340868564765*^9, 3.7223408796432858`*^9}, 3.722342998601893*^9, {
-   3.722581329482355*^9, 3.722581339587761*^9}, 3.722582872868895*^9, 
-   3.7227724919797573`*^9}]
+   3.722581329482355*^9, 3.722581339587761*^9}, 3.722582872868895*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1526,12 +1552,23 @@ Cell[BoxData[
        RowBox[{"opts", " ", ":", 
         RowBox[{"OptionsPattern", "[", 
          RowBox[{"{", "ParametricPlot3D", "}"}], "]"}]}]}], "]"}], ":=", 
+     RowBox[{"PlotBlochTraceFromState", "[", 
+      RowBox[{"\[Psi]", ",", "range", ",", "1", ",", "opts"}], "]"}]}], ";"}],
+    "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"PlotBlochTraceFromState", "[", 
+      RowBox[{"\[Psi]_", ",", "range_", ",", "scale_", ",", 
+       RowBox[{"opts", " ", ":", 
+        RowBox[{"OptionsPattern", "[", 
+         RowBox[{"{", "ParametricPlot3D", "}"}], "]"}]}]}], "]"}], ":=", 
      "\[IndentingNewLine]", 
      RowBox[{"ParametricPlot3D", "[", "\[IndentingNewLine]", 
       RowBox[{
-       RowBox[{"BlochCoordinatesFromState", "[", 
-        RowBox[{"\[Psi]", "[", "t", "]"}], "]"}], ",", "\[IndentingNewLine]", 
-       
+       RowBox[{
+        RowBox[{"BlochCoordinatesFromState", "[", 
+         RowBox[{"\[Psi]", "[", "t", "]"}], "]"}], "*", "scale"}], ",", 
+       "\[IndentingNewLine]", 
        RowBox[{"Evaluate", "[", 
         RowBox[{"Join", "[", 
          RowBox[{
@@ -1607,15 +1644,17 @@ Cell[BoxData[
      RowBox[{"PlotBlochPoints", "[", 
       RowBox[{"pts_", ",", 
        RowBox[{"style_List", " ", ":", " ", 
-        RowBox[{"{", "}"}]}]}], "]"}], ":=", "\[IndentingNewLine]", 
+        RowBox[{"{", "}"}]}], ",", 
+       RowBox[{"scale_:", "1"}]}], "]"}], ":=", "\[IndentingNewLine]", 
      RowBox[{"Graphics3D", "[", 
       RowBox[{"Evaluate", "[", 
        RowBox[{"Join", "[", "\[IndentingNewLine]", 
         RowBox[{"style", ",", "\[IndentingNewLine]", 
          RowBox[{"{", 
-          RowBox[{"Point", "[", "pts", "]"}], "}"}]}], "\[IndentingNewLine]", 
-        "]"}], "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
-   "\[IndentingNewLine]", 
+          RowBox[{"Point", "[", 
+           RowBox[{"pts", "*", "scale"}], "]"}], "}"}]}], 
+        "\[IndentingNewLine]", "]"}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{
     "Plot", " ", "points", " ", "given", " ", "by", " ", "a", " ", "list", 
@@ -1625,12 +1664,14 @@ Cell[BoxData[
     RowBox[{"PlotBlochPointsFromStates", "[", 
      RowBox[{"\[Psi]s_", ",", 
       RowBox[{"style_List", " ", ":", " ", 
-       RowBox[{"{", "}"}]}]}], "]"}], ":=", 
+       RowBox[{"{", "}"}]}], ",", 
+      RowBox[{"scale_:", "1"}]}], "]"}], ":=", 
     RowBox[{"PlotBlochPoints", "[", 
      RowBox[{
       RowBox[{"Map", "[", 
        RowBox[{"BlochCoordinatesFromState", ",", "\[Psi]s"}], "]"}], ",", 
-      "style"}], "]"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      "style", ",", "scale"}], "]"}]}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
    RowBox[{"(*", " ", 
     RowBox[{"Plot", " ", "BlochAngle", " ", "trace"}], " ", "*)"}], 
    "\[IndentingNewLine]", 
@@ -1707,7 +1748,13 @@ Cell[BoxData[
     ";"}]}]}]], "Input",
  CellChangeTimes->{{3.720505899810814*^9, 3.7205059013441477`*^9}, {
   3.722325477180963*^9, 3.7223254825515633`*^9}, {3.722325522691586*^9, 
-  3.72232552860935*^9}}]
+  3.72232552860935*^9}, {3.7243979154894743`*^9, 3.72439792187*^9}, {
+  3.72439796962573*^9, 3.724398024305126*^9}, {3.724398080686165*^9, 
+  3.724398083107679*^9}, {3.7243981567911*^9, 3.7243981643348503`*^9}, {
+  3.7243985478797693`*^9, 3.724398555934943*^9}, {3.724398587236867*^9, 
+  3.724398666110857*^9}, {3.7243988294530478`*^9, 3.724398838522921*^9}, {
+  3.72439887655098*^9, 3.724398878435732*^9}, {3.724398986859541*^9, 
+  3.7243989885359488`*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1722,217 +1769,199 @@ Cell["3D plots", "Section",
 
 Cell[BoxData[
  RowBox[{
-  RowBox[{
-   RowBox[{"Bloch3DPlotter", ":=", 
-    RowBox[{"Hold", "[", "\[IndentingNewLine]", 
-     RowBox[{"Show", "[", "\[IndentingNewLine]", 
+  RowBox[{"Bloch3DPlotter", ":=", 
+   RowBox[{"Hold", "[", "\[IndentingNewLine]", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "thicknessStateVec", ",", "thicknessRotAx", ",", 
+        "thicknessOrigTrace"}], "}"}], ",", "\[IndentingNewLine]", 
       RowBox[{
-       RowBox[{"Join", "[", "\[IndentingNewLine]", 
+       RowBox[{"thicknessStateVec", "=", "8"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"thicknessRotAx", "=", "6"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"thicknessOrigTrace", "=", "2"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Show", "[", "\[IndentingNewLine]", 
         RowBox[{
-         RowBox[{"{", " ", 
-          RowBox[{"(*", " ", 
-           RowBox[{
-            RowBox[{"Plot", " ", "the", " ", "trajectory"}], ",", " ", 
-            RowBox[{
-            "state", " ", "vector", " ", "and", " ", "instantaneous", " ", 
-             "rotation", " ", "axis", " ", "of", " ", "the", " ", "qubit", 
-             " ", "under", " ", "the", " ", "original", " ", 
-             "Hamiltonian"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+         RowBox[{"Join", "[", "\[IndentingNewLine]", 
           RowBox[{
-           RowBox[{"PlotBlochTraceFromState", "[", 
-            RowBox[{"origTrace", ",", 
-             RowBox[{"{", 
-              RowBox[{"0", ",", 
-               RowBox[{"tM", "*", "tMax"}]}], "}"}], ",", 
-             RowBox[{"PlotStyle", "\[Rule]", "Red"}]}], "]"}], ",", 
-           "\[IndentingNewLine]", 
-           RowBox[{"PlotBlochVectorFromState", "[", 
-            RowBox[{
-             RowBox[{"origTrace", "[", 
-              RowBox[{"tM", "*", "tMax"}], "]"}], ",", 
-             RowBox[{"{", 
-              RowBox[{"Red", ",", " ", 
-               RowBox[{"Thickness", "[", "0.015", "]"}]}], "}"}]}], "]"}], 
-           ",", "\[IndentingNewLine]", 
-           RowBox[{"PlotBlochVector", "[", 
-            RowBox[{
-             RowBox[{"RotationAxisFromHamiltonian", "[", 
-              RowBox[{"hOrigFunc", "[", 
+           RowBox[{"If", "[", 
+            RowBox[{"optShowOrigTrace", ",", 
+             RowBox[{"{", " ", 
+              RowBox[{"(*", " ", 
                RowBox[{
-                RowBox[{"tM", "*", "tMax"}], ",", "0.0"}], "]"}], "]"}], ",", 
-             
-             RowBox[{"{", 
-              RowBox[{"Gray", ",", 
-               RowBox[{"Thickness", "[", "0.010", "]"}]}], "}"}]}], "]"}], 
-           ",", "\[IndentingNewLine]", 
-           RowBox[{"PlotBlochPointsFromStates", "[", 
-            RowBox[{
-             RowBox[{"Map", "[", 
-              RowBox[{"origTrace", ",", "relevantTCoincidence"}], "]"}], ",", 
-             
-             RowBox[{"{", 
+                RowBox[{"Plot", " ", "the", " ", "trajectory"}], ",", " ", 
+                RowBox[{
+                "state", " ", "vector", " ", "and", " ", "instantaneous", " ",
+                  "rotation", " ", "axis", " ", "of", " ", "the", " ", 
+                 "qubit", " ", "under", " ", "the", " ", "original", " ", 
+                 "Hamiltonian"}]}], " ", "*)"}], "\[IndentingNewLine]", 
               RowBox[{
-               RowBox[{"PointSize", "[", "Large", "]"}], ",", "Red"}], 
-              "}"}]}], "]"}]}], "\[IndentingNewLine]", "}"}], ",", 
-         "\[IndentingNewLine]", 
-         RowBox[{"(*", " ", 
-          RowBox[{
-          "Plot", " ", "the", " ", "trajectory", " ", "of", " ", "the", " ", 
-           "qubit", " ", "under", " ", "the", " ", "approximate", " ", 
-           "Hamiltonians"}], " ", "*)"}], "\[IndentingNewLine]", 
-         RowBox[{"Table", "[", 
-          RowBox[{
-           RowBox[{"PlotBlochTraceFromState", "[", 
-            RowBox[{
-             RowBox[{"approxTraces", "[", 
-              RowBox[{"[", "i", "]"}], "]"}], ",", 
+               RowBox[{"PlotBlochTraceFromState", "[", 
+                RowBox[{"origTrace", ",", 
+                 RowBox[{"{", 
+                  RowBox[{"0", ",", 
+                   RowBox[{"tM", "*", "tMax"}]}], "}"}], ",", "0.995", ",", 
+                 RowBox[{"PlotStyle", "\[Rule]", 
+                  RowBox[{"{", 
+                   RowBox[{"Red", ",", 
+                    RowBox[{
+                    "AbsoluteThickness", "[", "thicknessOrigTrace", "]"}]}], 
+                   "}"}]}]}], "]"}], ",", "\[IndentingNewLine]", 
+               RowBox[{"PlotBlochPointsFromStates", "[", 
+                RowBox[{
+                 RowBox[{"Map", "[", 
+                  RowBox[{"origTrace", ",", 
+                   RowBox[{"Flatten", "[", "relevantTCoincidences", "]"}]}], 
+                  "]"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"AbsolutePointSize", "[", "psizeOrigCoinc", "]"}], 
+                   ",", "Red"}], "}"}], ",", "0.995"}], "]"}]}], 
+              "\[IndentingNewLine]", "}"}], ",", 
+             RowBox[{"{", "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"If", "[", 
+            RowBox[{"optShowStateVec", ",", 
              RowBox[{"{", 
-              RowBox[{
-               RowBox[{"-", "1"}], ",", 
-               RowBox[{"tM", "*", "tMax"}]}], "}"}], ",", 
-             RowBox[{"PlotStyle", "\[Rule]", 
-              RowBox[{"approxColors", "[", 
-               RowBox[{"[", " ", 
-                RowBox[{"calculatedOrders", "[", 
-                 RowBox[{"[", "i", "]"}], "]"}], " ", "]"}], "]"}]}], ",", 
-             RowBox[{"Exclusions", "\[Rule]", "jumpTimes"}], ",", 
-             RowBox[{"ExclusionsStyle", "\[Rule]", "Dashed"}]}], "]"}], ",", 
-           RowBox[{"{", 
-            RowBox[{"i", ",", "numSelectedOrders"}], "}"}]}], "]"}], ",", 
-         "\[IndentingNewLine]", 
-         RowBox[{"(*", " ", 
-          RowBox[{
-          "Plot", " ", "the", " ", "points", " ", "where", " ", "the", " ", 
-           "approximate", " ", "trajectories", " ", 
-           RowBox[{"(", "should", ")"}], " ", "coincide", " ", "with", " ", 
-           "the", " ", "original", " ", "trajectory"}], " ", "*)"}], 
-         "\[IndentingNewLine]", 
-         RowBox[{"Table", "[", 
-          RowBox[{
-           RowBox[{"PlotBlochPointsFromStates", "[", 
+              RowBox[{"PlotBlochVectorFromState", "[", 
+               RowBox[{
+                RowBox[{"origTrace", "[", 
+                 RowBox[{"tM", "*", "tMax"}], "]"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"Red", ",", " ", 
+                  RowBox[{
+                  "AbsoluteThickness", "[", "thicknessStateVec", "]"}]}], 
+                 "}"}]}], "]"}], "}"}], ",", 
+             RowBox[{"{", "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"If", "[", 
+            RowBox[{"optShowRotAx", ",", 
+             RowBox[{"{", 
+              RowBox[{"PlotBlochVector", "[", 
+               RowBox[{
+                RowBox[{"RotationAxisFromHamiltonian", "[", 
+                 RowBox[{"hOrigFunc", "[", 
+                  RowBox[{
+                   RowBox[{"tM", "*", "tMax"}], ",", "0.0"}], "]"}], "]"}], 
+                ",", 
+                RowBox[{"{", 
+                 RowBox[{"Gray", ",", 
+                  RowBox[{"AbsoluteThickness", "[", "thicknessRotAx", "]"}]}],
+                  "}"}]}], "]"}], "}"}], ",", 
+             RowBox[{"{", "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"(*", " ", 
             RowBox[{
-             RowBox[{"Map", "[", 
+            "Plot", " ", "the", " ", "trajectory", " ", "of", " ", "the", " ",
+              "qubit", " ", "under", " ", "the", " ", "approximate", " ", 
+             "Hamiltonians"}], " ", "*)"}], "\[IndentingNewLine]", 
+           RowBox[{"Table", "[", 
+            RowBox[{
+             RowBox[{"PlotBlochTraceFromState", "[", 
               RowBox[{
                RowBox[{"approxTraces", "[", 
-                RowBox[{"[", "i", "]"}], "]"}], ",", "relevantTCoincidence"}],
-               "]"}], ",", 
+                RowBox[{"[", "i", "]"}], "]"}], ",", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"-", "1"}], ",", 
+                 RowBox[{"tM", "*", "tMax"}]}], "}"}], ",", 
+               RowBox[{"PlotStyle", "\[Rule]", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"approxColors", "[", 
+                   RowBox[{"[", " ", "i", " ", "]"}], "]"}], ",", 
+                  RowBox[{
+                  "AbsoluteThickness", "[", "thicknessApproxTrace", "]"}], 
+                  ",", "linestyleApproxTrace"}], "}"}]}], ",", 
+               RowBox[{"Exclusions", "\[Rule]", "jumpTimes"}], ",", 
+               RowBox[{
+               "ExclusionsStyle", "\[Rule]", "linestyleApproxJumps"}]}], 
+              "]"}], ",", 
              RowBox[{"{", 
+              RowBox[{"i", ",", "num\[Alpha]0Trajectories"}], "}"}]}], "]"}], 
+           ",", "\[IndentingNewLine]", 
+           RowBox[{"(*", " ", 
+            RowBox[{
+            "Plot", " ", "the", " ", "points", " ", "where", " ", "the", " ", 
+             "approximate", " ", "trajectories", " ", 
+             RowBox[{"(", "should", ")"}], " ", "coincide", " ", "with", " ", 
+             "the", " ", "original", " ", "trajectory"}], " ", "*)"}], 
+           "\[IndentingNewLine]", 
+           RowBox[{"Table", "[", 
+            RowBox[{
+             RowBox[{"PlotBlochPointsFromStates", "[", 
               RowBox[{
-               RowBox[{"PointSize", "[", "Large", "]"}], ",", 
-               RowBox[{"approxColors", "[", 
-                RowBox[{"[", " ", 
-                 RowBox[{"calculatedOrders", "[", 
-                  RowBox[{"[", "i", "]"}], "]"}], " ", "]"}], "]"}]}], 
-              "}"}]}], "]"}], ",", 
-           RowBox[{"{", 
-            RowBox[{"i", ",", "numSelectedOrders"}], "}"}]}], "]"}], ",", 
-         "\[IndentingNewLine]", 
-         RowBox[{"(*", " ", 
-          RowBox[{
-           RowBox[{"Plot", " ", "the", " ", "t"}], " ", "=", " ", 
-           RowBox[{"t_f", " ", "jump", " ", "displacement"}]}], " ", "*)"}], 
-         "\[IndentingNewLine]", 
-         RowBox[{"Table", "[", 
-          RowBox[{
-           RowBox[{"PlotBlochTraceFromState", "[", 
-            RowBox[{
-             RowBox[{"finalJumps", "[", 
-              RowBox[{"[", " ", "i", " ", "]"}], "]"}], ",", " ", 
+               RowBox[{"Map", "[", 
+                RowBox[{
+                 RowBox[{"approxTraces", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], ",", 
+                 RowBox[{"relevantTCoincidences", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}]}], "]"}], ",", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"AbsolutePointSize", "[", "psizeApproxCoinc", "]"}], 
+                 ",", 
+                 RowBox[{"approxColors", "[", 
+                  RowBox[{"[", " ", "i", " ", "]"}], "]"}]}], "}"}]}], "]"}], 
+             ",", 
              RowBox[{"{", 
-              RowBox[{"0", ",", "1"}], "}"}], ",", 
-             RowBox[{"PlotStyle", "\[Rule]", 
-              RowBox[{"{", 
-               RowBox[{"Thin", ",", "Dashed", ",", " ", "Black"}], "}"}]}]}], 
-            "]"}], ",", 
-           RowBox[{"{", 
-            RowBox[{"i", ",", " ", "numSelectedOrders"}], "}"}]}], "]"}], ",",
-          "\[IndentingNewLine]", 
-         RowBox[{"Table", "[", 
-          RowBox[{
-           RowBox[{"PlotBlochPointsFromStates", "[", 
+              RowBox[{"i", ",", "num\[Alpha]0Trajectories"}], "}"}]}], "]"}], 
+           ",", "\[IndentingNewLine]", 
+           RowBox[{"(*", " ", 
             RowBox[{
-             RowBox[{"{", 
+             RowBox[{"Plot", " ", "the", " ", "t"}], " ", "=", " ", 
+             RowBox[{"t_f", " ", "jump", " ", "displacement"}]}], " ", "*)"}],
+            "\[IndentingNewLine]", 
+           RowBox[{"Table", "[", 
+            RowBox[{
+             RowBox[{"PlotBlochTraceFromState", "[", 
               RowBox[{
                RowBox[{"finalJumps", "[", 
-                RowBox[{"[", " ", "i", " ", "]"}], "]"}], "[", "1", "]"}], 
-              "}"}], ",", 
-             RowBox[{"{", 
-              RowBox[{
-               RowBox[{"AbsolutePointSize", "[", "10", "]"}], ",", 
-               RowBox[{"approxColors", "[", 
-                RowBox[{"[", " ", 
-                 RowBox[{"calculatedOrders", "[", 
-                  RowBox[{"[", "i", "]"}], "]"}], " ", "]"}], "]"}]}], 
-              "}"}]}], "]"}], ",", 
-           RowBox[{"{", 
-            RowBox[{"i", ",", " ", "numSelectedOrders"}], "}"}]}], "]"}], ",",
-          "\[IndentingNewLine]", 
-         RowBox[{"(*", 
-          RowBox[{
-           RowBox[{"Table", "[", 
-            RowBox[{
-             RowBox[{"PlotBlochTraceFromState", "[", 
-              RowBox[{
-               RowBox[{"approx\[Psi]0", "[", 
-                RowBox[{"[", "i", "]"}], "]"}], ",", " ", 
+                RowBox[{"[", " ", "i", " ", "]"}], "]"}], ",", " ", 
                RowBox[{"{", 
                 RowBox[{"0", ",", "1"}], "}"}], ",", 
                RowBox[{"PlotStyle", "\[Rule]", 
                 RowBox[{"{", 
-                 RowBox[{"Dashed", ",", " ", 
-                  RowBox[{"approxColors", "[", 
-                   RowBox[{"[", " ", 
-                    RowBox[{"calculatedOrders", "[", 
-                    RowBox[{"[", "i", "]"}], "]"}], " ", "]"}], "]"}]}], 
-                 "}"}]}]}], "]"}], ",", 
-             RowBox[{"{", 
-              RowBox[{"i", ",", " ", "numSelectedOrders"}], "}"}]}], "]"}], 
-           ","}], "*)"}], "\[IndentingNewLine]", 
-         RowBox[{"(*", 
-          RowBox[{
-           RowBox[{"Table", "[", 
-            RowBox[{
-             RowBox[{"PlotBlochTraceFromState", "[", 
-              RowBox[{
-               RowBox[{"Function", "[", 
-                RowBox[{"t", ",", 
                  RowBox[{
-                  RowBox[{
-                   RowBox[{"finalJumps", "[", 
-                    RowBox[{"[", "i", "]"}], "]"}], "[", "t", "]"}], ".", 
-                  RowBox[{
-                   RowBox[{"approxTraces", "[", 
-                    RowBox[{"[", "i", "]"}], "]"}], "[", 
-                   RowBox[{"tM", "*", "tMax"}], "]"}]}]}], "]"}], ",", " ", 
-               RowBox[{"{", 
-                RowBox[{"0", ",", "1"}], "}"}], ",", 
-               RowBox[{"PlotStyle", "\[Rule]", 
-                RowBox[{"{", 
-                 RowBox[{"Dashed", ",", " ", 
-                  RowBox[{"approxColors", "[", 
-                   RowBox[{"[", " ", 
-                    RowBox[{"calculatedOrders", "[", 
-                    RowBox[{"[", "i", "]"}], "]"}], " ", "]"}], "]"}]}], 
+                 "Thin", ",", "linestyleApproxJumps", ",", " ", "Black"}], 
                  "}"}]}]}], "]"}], ",", 
              RowBox[{"{", 
-              RowBox[{"i", ",", " ", "numSelectedOrders"}], "}"}]}], "]"}], 
-           ","}], "*)"}], "\[IndentingNewLine]", 
-         RowBox[{"(*", " ", 
-          RowBox[{
-          "Add", " ", "static", " ", "Bloch", " ", "sphere", " ", 
-           "elements"}], " ", "*)"}], "\[IndentingNewLine]", 
-         "BlochSphereCircles", ",", "\[IndentingNewLine]", 
-         "BlochSphereAxes"}], "\[IndentingNewLine]", "]"}], ",", 
-       "\[IndentingNewLine]", 
-       RowBox[{"ImageSize", "\[Rule]", 
-        RowBox[{"{", 
-         RowBox[{"500", ",", "500"}], "}"}]}], ",", "\[IndentingNewLine]", 
-       RowBox[{"ViewAngle", "->", 
-        RowBox[{"Pi", "/", "10"}]}], ",", "\[IndentingNewLine]", 
-       RowBox[{"Axes", "\[Rule]", "False"}], ",", "\[IndentingNewLine]", 
-       RowBox[{"Boxed", "\[Rule]", "False"}]}], "\[IndentingNewLine]", "]"}], 
-     "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]"}]], "Input",
+              RowBox[{"i", ",", " ", "num\[Alpha]0Trajectories"}], "}"}]}], 
+            "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"Table", "[", 
+            RowBox[{
+             RowBox[{"PlotBlochPointsFromStates", "[", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"finalJumps", "[", 
+                  RowBox[{"[", " ", "i", " ", "]"}], "]"}], "[", "1", "]"}], 
+                "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"AbsolutePointSize", "[", "psizeApproxFinal", "]"}], 
+                 ",", 
+                 RowBox[{"approxColors", "[", 
+                  RowBox[{"[", " ", "i", " ", "]"}], "]"}]}], "}"}]}], "]"}], 
+             ",", 
+             RowBox[{"{", 
+              RowBox[{"i", ",", " ", "num\[Alpha]0Trajectories"}], "}"}]}], 
+            "]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{"(*", " ", 
+            RowBox[{
+            "Add", " ", "static", " ", "Bloch", " ", "sphere", " ", 
+             "elements"}], " ", "*)"}], "\[IndentingNewLine]", 
+           "BlochSphereCircles", ",", "\[IndentingNewLine]", 
+           "BlochSphereAxes"}], "\[IndentingNewLine]", "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"ImageSize", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{"500", ",", "500"}], "}"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{"ViewAngle", "->", 
+          RowBox[{"Pi", "/", "10"}]}], ",", "\[IndentingNewLine]", 
+         RowBox[{"Axes", "\[Rule]", "False"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"Boxed", "\[Rule]", "False"}]}], "\[IndentingNewLine]", 
+        "]"}]}]}], "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", 
+    "]"}]}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}]], "Input",
  CellChangeTimes->{{3.71965440505723*^9, 3.719654452102209*^9}, {
    3.719654674060545*^9, 3.719654702869274*^9}, {3.719655508107579*^9, 
    3.719655526354762*^9}, {3.719657512358118*^9, 3.7196575140282583`*^9}, {
@@ -2024,7 +2053,21 @@ Cell[BoxData[
    3.7225809189774847`*^9}, {3.722580950914672*^9, 3.722580951080923*^9}, {
    3.7225816903116417`*^9, 3.722581690870736*^9}, {3.722581756585876*^9, 
    3.7225818345650663`*^9}, {3.722582521696672*^9, 3.722582522847719*^9}, 
-   3.722582618164858*^9, {3.7225826698452587`*^9, 3.722582706469739*^9}}]
+   3.722582618164858*^9, {3.7225826698452587`*^9, 3.722582706469739*^9}, {
+   3.722591428340119*^9, 3.722591444122734*^9}, {3.72259149633419*^9, 
+   3.72259149666532*^9}, {3.7225915343736973`*^9, 3.7225915427492332`*^9}, {
+   3.722592918285925*^9, 3.722592952156229*^9}, {3.722593920724368*^9, 
+   3.722593926858683*^9}, {3.724392544020685*^9, 3.724392560303254*^9}, {
+   3.724392629417194*^9, 3.724392685881734*^9}, {3.7243928293706207`*^9, 
+   3.7243928552895393`*^9}, {3.7243929001082067`*^9, 3.724392906355729*^9}, {
+   3.724393095209156*^9, 3.724393203084609*^9}, {3.724393238892462*^9, 
+   3.724393252373742*^9}, {3.724393584471923*^9, 3.724393620455769*^9}, {
+   3.7243939694226427`*^9, 3.724393976397956*^9}, {3.7243940381645412`*^9, 
+   3.724394110529852*^9}, {3.724395392883453*^9, 3.724395398057027*^9}, {
+   3.724395855808634*^9, 3.724395922968981*^9}, {3.724395973287673*^9, 
+   3.7243960696210527`*^9}, {3.7243967849367447`*^9, 3.724396786237681*^9}, {
+   3.724398715889325*^9, 3.724398742855867*^9}, {3.724398884109776*^9, 
+   3.72439888670033*^9}, {3.724398994431856*^9, 3.724398995575811*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -2034,167 +2077,192 @@ Cell["Cartesian Bloch angle plots", "Section",
   3.720358276007145*^9, 3.720358277511012*^9}}],
 
 Cell[BoxData[
- RowBox[{
-  RowBox[{"BlochAnglePlotter", ":=", 
-   RowBox[{"Hold", "[", "\[IndentingNewLine]", 
-    RowBox[{"Show", "[", "\[IndentingNewLine]", 
+ RowBox[{"BlochAnglePlotter", ":=", 
+  RowBox[{"Hold", "[", "\[IndentingNewLine]", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "thicknessOrigTrace", "}"}], ",", "\[IndentingNewLine]", 
      RowBox[{
-      RowBox[{"Join", "[", "\[IndentingNewLine]", 
+      RowBox[{"thicknessOrigTrace", "=", "2"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Show", "[", "\[IndentingNewLine]", 
        RowBox[{
-        RowBox[{"{", " ", 
-         RowBox[{"(*", " ", 
-          RowBox[{
-          "Plot", " ", "the", " ", "trajectory", " ", "and", " ", 
-           "stroboscopic", " ", "coincidence", " ", "points", " ", "of", " ", 
-           "the", " ", "qubit", " ", "under", " ", "the", " ", "original", 
-           " ", "Hamiltonian"}], " ", "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"Join", "[", "\[IndentingNewLine]", 
          RowBox[{
-          RowBox[{"PlotBlochAngleTraceFromState", "[", 
-           RowBox[{
-            RowBox[{"XBasisFromZBasis", "@*", "origTrace"}], ",", 
-            RowBox[{"{", 
-             RowBox[{"0", ",", 
-              RowBox[{"tM", "*", "tMax"}]}], "}"}], ",", 
-            RowBox[{"{", 
-             RowBox[{"PlotStyle", "\[Rule]", "Red"}], "}"}]}], "]"}], ",", 
-          "\[IndentingNewLine]", 
-          RowBox[{"Graphics", "[", 
-           RowBox[{"{", 
-            RowBox[{
-             RowBox[{"PointSize", "[", "Large", "]"}], ",", "Red", ",", 
-             RowBox[{"Point", "[", 
-              RowBox[{"BlochAngleCoordinatesFromState", "/@", 
-               RowBox[{
-                RowBox[{"(", 
-                 RowBox[{"XBasisFromZBasis", "@*", "origTrace"}], ")"}], "/@",
-                 "relevantTCoincidence"}]}], "]"}]}], "}"}], "]"}]}], 
-         "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
-        RowBox[{"(*", " ", 
-         RowBox[{
-         "Plot", " ", "the", " ", "trajectory", " ", "of", " ", "the", " ", 
-          "qubit", " ", "under", " ", "the", " ", "approximate", " ", 
-          "Hamiltonians"}], " ", "*)"}], "\[IndentingNewLine]", 
-        RowBox[{"Table", "[", 
-         RowBox[{
-          RowBox[{"PlotBlochAngleTraceFromState", "[", 
-           RowBox[{
-            RowBox[{"XBasisFromZBasis", " ", "@*", 
-             RowBox[{"(", 
-              RowBox[{"approxTraces", "[", 
-               RowBox[{"[", "i", "]"}], "]"}], ")"}]}], ",", 
-            RowBox[{"{", 
+          RowBox[{"If", "[", 
+           RowBox[{"optShowOrigTrace", ",", "\[IndentingNewLine]", 
+            RowBox[{"{", " ", 
+             RowBox[{"(*", " ", 
+              RowBox[{
+              "Plot", " ", "the", " ", "trajectory", " ", "and", " ", 
+               "stroboscopic", " ", "coincidence", " ", "points", " ", "of", 
+               " ", "the", " ", "qubit", " ", "under", " ", "the", " ", 
+               "original", " ", "Hamiltonian"}], " ", "*)"}], 
+             "\[IndentingNewLine]", 
              RowBox[{
-              RowBox[{"-", "1"}], ",", 
-              RowBox[{"tM", "*", "tMax"}]}], "}"}], ",", 
-            RowBox[{"PlotStyle", "\[Rule]", 
-             RowBox[{"approxColors", "[", 
-              RowBox[{"[", " ", 
-               RowBox[{"calculatedOrders", "[", 
-                RowBox[{"[", "i", "]"}], "]"}], " ", "]"}], "]"}]}], ",", 
-            RowBox[{"Exclusions", "\[Rule]", "jumpTimes"}], ",", 
-            RowBox[{"ExclusionsStyle", "\[Rule]", "Dashed"}]}], "]"}], ",", 
-          RowBox[{"{", 
-           RowBox[{"i", ",", "numSelectedOrders"}], "}"}]}], "]"}], ",", 
-        "\[IndentingNewLine]", 
-        RowBox[{"(*", " ", 
-         RowBox[{
-         "Plot", " ", "the", " ", "points", " ", "where", " ", "the", " ", 
-          "approximate", " ", "trajectories", " ", 
-          RowBox[{"(", "should", ")"}], " ", "coincide", " ", "with", " ", 
-          "the", " ", "original", " ", "trajectory"}], " ", "*)"}], 
-        "\[IndentingNewLine]", 
-        RowBox[{"Table", "[", 
-         RowBox[{
-          RowBox[{"Graphics", "[", 
-           RowBox[{"{", 
-            RowBox[{
-             RowBox[{"PointSize", "[", "Large", "]"}], ",", 
-             RowBox[{"approxColors", "[", 
-              RowBox[{"[", " ", 
-               RowBox[{"calculatedOrders", "[", 
-                RowBox[{"[", "i", "]"}], "]"}], " ", "]"}], "]"}], ",", 
-             RowBox[{"Point", "[", 
-              RowBox[{"BlochAngleCoordinatesFromState", "/@", 
+              RowBox[{"PlotBlochAngleTraceFromState", "[", 
                RowBox[{
-                RowBox[{"(", 
-                 RowBox[{"XBasisFromZBasis", "@*", 
-                  RowBox[{"(", 
-                   RowBox[{"approxTraces", "[", 
-                    RowBox[{"[", "i", "]"}], "]"}], ")"}]}], ")"}], "/@", 
-                "relevantTCoincidence"}]}], "]"}]}], "}"}], "]"}], ",", 
-          RowBox[{"{", 
-           RowBox[{"i", ",", "numSelectedOrders"}], "}"}]}], "]"}], ",", 
-        "\[IndentingNewLine]", "\[IndentingNewLine]", 
-        RowBox[{"(*", " ", 
-         RowBox[{
-          RowBox[{"Plot", " ", "the", " ", "t"}], " ", "=", " ", 
-          RowBox[{"t_f", " ", "jump", " ", "displacement"}]}], " ", "*)"}], 
-        "\[IndentingNewLine]", 
-        RowBox[{"Table", "[", 
-         RowBox[{
-          RowBox[{"PlotBlochAngleTraceFromState", "[", 
+                RowBox[{"XBasisFromZBasis", "@*", "origTrace"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"0", ",", 
+                  RowBox[{"tM", "*", "tMax"}]}], "}"}], ",", 
+                RowBox[{"PlotStyle", "\[Rule]", 
+                 RowBox[{"{", 
+                  RowBox[{"Red", ",", 
+                   RowBox[{
+                   "AbsoluteThickness", "[", "thicknessOrigTrace", "]"}]}], 
+                  "}"}]}]}], "]"}], ",", "\[IndentingNewLine]", 
+              RowBox[{"Graphics", "[", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"AbsolutePointSize", "[", "psizeOrigCoinc", "]"}], 
+                 ",", "Red", ",", 
+                 RowBox[{"Point", "[", 
+                  RowBox[{"BlochAngleCoordinatesFromState", "/@", 
+                   RowBox[{
+                    RowBox[{"(", 
+                    RowBox[{"XBasisFromZBasis", "@*", "origTrace"}], ")"}], "/@", 
+                    RowBox[{
+                    "Flatten", "[", "relevantTCoincidences", "]"}]}]}], 
+                  "]"}]}], "}"}], "]"}]}], "\[IndentingNewLine]", "}"}], ",", 
+            
+            RowBox[{"{", "}"}]}], "]"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"(*", " ", 
            RowBox[{
-            RowBox[{"XBasisFromZBasis", " ", "@*", 
-             RowBox[{"finalJumps", "[", 
-              RowBox[{"[", " ", "i", " ", "]"}], "]"}]}], ",", " ", 
+           "Plot", " ", "the", " ", "trajectory", " ", "of", " ", "the", " ", 
+            "qubit", " ", "under", " ", "the", " ", "approximate", " ", 
+            "Hamiltonians"}], " ", "*)"}], "\[IndentingNewLine]", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"PlotBlochAngleTraceFromState", "[", 
+             RowBox[{
+              RowBox[{"XBasisFromZBasis", " ", "@*", 
+               RowBox[{"(", 
+                RowBox[{"approxTraces", "[", 
+                 RowBox[{"[", "i", "]"}], "]"}], ")"}]}], ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"-", "1"}], ",", 
+                RowBox[{"tM", "*", "tMax"}]}], "}"}], ",", 
+              RowBox[{"PlotStyle", "\[Rule]", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"approxColors", "[", 
+                  RowBox[{"[", " ", "i", " ", "]"}], "]"}], ",", 
+                 RowBox[{
+                 "AbsoluteThickness", "[", "thicknessApproxTrace", "]"}], ",",
+                  "linestyleApproxTrace"}], "}"}]}], ",", 
+              RowBox[{"Exclusions", "\[Rule]", "jumpTimes"}], ",", 
+              RowBox[{
+              "ExclusionsStyle", "\[Rule]", "linestyleApproxJumps"}]}], "]"}],
+             ",", 
             RowBox[{"{", 
-             RowBox[{"0", ",", "1"}], "}"}], ",", 
-            RowBox[{"PlotStyle", "\[Rule]", 
+             RowBox[{"i", ",", "num\[Alpha]0Trajectories"}], "}"}]}], "]"}], 
+          ",", "\[IndentingNewLine]", 
+          RowBox[{"(*", " ", 
+           RowBox[{
+           "Plot", " ", "the", " ", "points", " ", "where", " ", "the", " ", 
+            "approximate", " ", "trajectories", " ", 
+            RowBox[{"(", "should", ")"}], " ", "coincide", " ", "with", " ", 
+            "the", " ", "original", " ", "trajectory"}], " ", "*)"}], 
+          "\[IndentingNewLine]", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"Graphics", "[", 
              RowBox[{"{", 
               RowBox[{
-               RowBox[{"AbsoluteThickness", "[", "1.0", "]"}], ",", "Dashed", 
-               ",", " ", "Black"}], "}"}]}]}], "]"}], ",", 
-          RowBox[{"{", 
-           RowBox[{"i", ",", " ", "numSelectedOrders"}], "}"}]}], "]"}], ",", 
-        "\[IndentingNewLine]", 
-        RowBox[{"Table", "[", 
-         RowBox[{
-          RowBox[{"Graphics", "[", 
+               RowBox[{"AbsolutePointSize", "[", "psizeApproxCoinc", "]"}], 
+               ",", 
+               RowBox[{"approxColors", "[", 
+                RowBox[{"[", " ", "i", " ", "]"}], "]"}], ",", 
+               RowBox[{"Point", "[", 
+                RowBox[{"BlochAngleCoordinatesFromState", "/@", 
+                 RowBox[{
+                  RowBox[{"(", 
+                   RowBox[{"XBasisFromZBasis", "@*", 
+                    RowBox[{"(", 
+                    RowBox[{"approxTraces", "[", 
+                    RowBox[{"[", "i", "]"}], "]"}], ")"}]}], ")"}], "/@", 
+                  RowBox[{"relevantTCoincidences", "[", 
+                   RowBox[{"[", "i", "]"}], "]"}]}]}], "]"}]}], "}"}], "]"}], 
+            ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "num\[Alpha]0Trajectories"}], "}"}]}], "]"}], 
+          ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+          RowBox[{"(*", " ", 
+           RowBox[{
+            RowBox[{"Plot", " ", "the", " ", "t"}], " ", "=", " ", 
+            RowBox[{"t_f", " ", "jump", " ", "displacement"}]}], " ", "*)"}], 
+          "\[IndentingNewLine]", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"PlotBlochAngleTraceFromState", "[", 
+             RowBox[{
+              RowBox[{"XBasisFromZBasis", " ", "@*", 
+               RowBox[{"finalJumps", "[", 
+                RowBox[{"[", " ", "i", " ", "]"}], "]"}]}], ",", " ", 
+              RowBox[{"{", 
+               RowBox[{"0", ",", "1"}], "}"}], ",", 
+              RowBox[{"PlotStyle", "\[Rule]", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"AbsoluteThickness", "[", "1.0", "]"}], ",", 
+                 "linestyleApproxJumps", ",", " ", "Black"}], "}"}]}]}], 
+             "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", " ", "num\[Alpha]0Trajectories"}], "}"}]}], 
+           "]"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"Graphics", "[", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"AbsolutePointSize", "[", "psizeApproxFinal", "]"}], 
+               ",", 
+               RowBox[{"approxColors", "[", 
+                RowBox[{"[", " ", "i", " ", "]"}], "]"}], ",", 
+               RowBox[{"Point", "[", 
+                RowBox[{"BlochAngleCoordinatesFromState", "@", 
+                 RowBox[{"XBasisFromZBasis", "@", 
+                  RowBox[{
+                   RowBox[{"finalJumps", "[", 
+                    RowBox[{"[", "i", "]"}], "]"}], "[", "1", "]"}]}]}], 
+                "]"}]}], "}"}], "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", "num\[Alpha]0Trajectories"}], "}"}]}], "]"}]}],
+          "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"PlotRange", "\[Rule]", 
+         RowBox[{"If", "[", 
+          RowBox[{"optCBAAutoPlotRange", ",", "Automatic", ",", 
            RowBox[{"{", 
             RowBox[{
-             RowBox[{"AbsolutePointSize", "[", "10", "]"}], ",", 
-             RowBox[{"approxColors", "[", 
-              RowBox[{"[", " ", 
-               RowBox[{"calculatedOrders", "[", 
-                RowBox[{"[", "i", "]"}], "]"}], " ", "]"}], "]"}], ",", 
-             RowBox[{"Point", "[", 
-              RowBox[{"BlochAngleCoordinatesFromState", "@", 
-               RowBox[{"XBasisFromZBasis", "@", 
-                RowBox[{
-                 RowBox[{"finalJumps", "[", 
-                  RowBox[{"[", "i", "]"}], "]"}], "[", "1", "]"}]}]}], 
-              "]"}]}], "}"}], "]"}], ",", 
-          RowBox[{"{", 
-           RowBox[{"i", ",", "numSelectedOrders"}], "}"}]}], "]"}]}], 
-       "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
-      RowBox[{"PlotRange", "\[Rule]", 
-       RowBox[{"{", 
-        RowBox[{
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"-", "Pi"}], ",", "Pi"}], "}"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"0", ",", "Pi"}], "}"}]}], "}"}]}], "]"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"AxesOrigin", "\[Rule]", 
+         RowBox[{"If", "[", 
+          RowBox[{"optCBAAutoPlotRange", ",", "Automatic", ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0"}], "}"}]}], "]"}]}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"AspectRatio", "\[Rule]", "0.5"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"ImageSize", "\[Rule]", 
+         RowBox[{"{", 
+          RowBox[{"800", ",", "400"}], "}"}]}], ",", "\[IndentingNewLine]", 
+        RowBox[{"AxesLabel", "\[Rule]", 
          RowBox[{"{", 
           RowBox[{
-           RowBox[{"-", "Pi"}], ",", "Pi"}], "}"}], ",", 
-         RowBox[{"{", 
-          RowBox[{"0", ",", "Pi"}], "}"}]}], "}"}]}], ",", 
-      "\[IndentingNewLine]", 
-      RowBox[{"AxesOrigin", "\[Rule]", 
-       RowBox[{"{", 
-        RowBox[{"0", ",", "0"}], "}"}]}], ",", "\[IndentingNewLine]", 
-      RowBox[{"AspectRatio", "\[Rule]", "0.5"}], ",", "\[IndentingNewLine]", 
-      RowBox[{"ImageSize", "\[Rule]", 
-       RowBox[{"{", 
-        RowBox[{"800", ",", "400"}], "}"}]}], ",", "\[IndentingNewLine]", 
-      RowBox[{"AxesLabel", "\[Rule]", 
-       RowBox[{"{", 
-        RowBox[{
-        "\"\<x-basis phase angle \[Phi]\\n\[Phi] = arg(<\[Psi]|->) - arg(<\
+          "\"\<x-basis phase angle \[Phi]\\n\[Phi] = arg(<\[Psi]|->) - arg(<\
 \[Psi]|+>)\\n'longitude'\>\"", ",", 
-         "\"\<x-basis population angle \[Theta]\\ncos(\[Theta]/2) = \
+           "\"\<x-basis population angle \[Theta]\\ncos(\[Theta]/2) = \
 |<\[Psi]|+>|\\n'latitude'\>\""}], "}"}]}], ",", "\[IndentingNewLine]", 
-      RowBox[{
-      "PlotLabel", "\[Rule]", 
-       "\"\<Bloch angle coordinates in the X-basis\>\""}]}], 
-     "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", "]"}]}], 
-  ";"}]], "Input",
+        RowBox[{
+        "PlotLabel", "\[Rule]", 
+         "\"\<Bloch angle coordinates in the X-basis\>\""}]}], 
+       "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", "]"}], 
+   "\[IndentingNewLine]", "]"}]}]], "Input",
  CellChangeTimes->{{3.720349177905793*^9, 3.720349179320332*^9}, {
    3.720355569185862*^9, 3.720355572720828*^9}, {3.7205048805844927`*^9, 
    3.720504883185042*^9}, {3.720505694807459*^9, 3.720505742305789*^9}, {
@@ -2209,203 +2277,16 @@ Cell[BoxData[
    3.722583612156597*^9, 3.722583639387269*^9}, {3.722583675348037*^9, 
    3.722583807445496*^9}, {3.722583842553493*^9, 3.722583875569696*^9}, {
    3.722583906858127*^9, 3.722583907792506*^9}, {3.722584130287657*^9, 
-   3.722584138198826*^9}, {3.7225842139156733`*^9, 3.722584252747004*^9}}]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell["Mercator plots", "Section",
- CellChangeTimes->{{3.720349180673524*^9, 3.720349185766903*^9}}],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{
-   RowBox[{"BlochMercatorPlotter", ":=", 
-    RowBox[{"Hold", "[", "\[IndentingNewLine]", 
-     RowBox[{"Show", "[", "\[IndentingNewLine]", 
-      RowBox[{
-       RowBox[{"Join", "[", "\[IndentingNewLine]", 
-        RowBox[{
-         RowBox[{"{", " ", 
-          RowBox[{"(*", " ", 
-           RowBox[{
-           "Plot", " ", "the", " ", "trajectory", " ", "and", " ", 
-            "stroboscopic", " ", "coincidence", " ", "points", " ", "of", " ",
-             "the", " ", "qubit", " ", "under", " ", "the", " ", "original", 
-            " ", "Hamiltonian"}], " ", "*)"}], "\[IndentingNewLine]", 
-          RowBox[{
-           RowBox[{"PlotMercatorBlochTraceFromState", "[", 
-            RowBox[{
-             RowBox[{"XBasisFromZBasis", "@*", "origTrace"}], ",", 
-             RowBox[{"{", 
-              RowBox[{"0", ",", 
-               RowBox[{"tM", "*", "tMax"}]}], "}"}], ",", 
-             RowBox[{"PlotStyle", "\[Rule]", "Red"}]}], "]"}], ",", 
-           "\[IndentingNewLine]", 
-           RowBox[{"Graphics", "[", 
-            RowBox[{"{", 
-             RowBox[{
-              RowBox[{"PointSize", "[", "Large", "]"}], ",", "Red", ",", 
-              RowBox[{"Point", "[", 
-               RowBox[{"MercatorCoordinatesFromBlochAngle", "/@", 
-                RowBox[{"BlochAngleCoordinatesFromState", "/@", 
-                 RowBox[{
-                  RowBox[{"(", 
-                   RowBox[{"XBasisFromZBasis", "@*", "origTrace"}], ")"}], "/@",
-                   "relevantTCoincidence"}]}]}], "]"}]}], "}"}], "]"}]}], 
-          "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
-         RowBox[{"(*", " ", 
-          RowBox[{
-          "Plot", " ", "the", " ", "trajectory", " ", "of", " ", "the", " ", 
-           "qubit", " ", "under", " ", "the", " ", "approximate", " ", 
-           "Hamiltonians"}], " ", "*)"}], "\[IndentingNewLine]", 
-         RowBox[{"Table", "[", 
-          RowBox[{
-           RowBox[{"PlotMercatorBlochTraceFromState", "[", 
-            RowBox[{
-             RowBox[{"XBasisFromZBasis", "@*", 
-              RowBox[{"(", 
-               RowBox[{"approxTraces", "[", 
-                RowBox[{"[", "i", "]"}], "]"}], ")"}]}], ",", 
-             RowBox[{"{", 
-              RowBox[{
-               RowBox[{"-", "1"}], ",", 
-               RowBox[{"tM", "*", "tMax"}]}], "}"}], ",", 
-             RowBox[{"PlotStyle", "\[Rule]", 
-              RowBox[{"approxColors", "[", 
-               RowBox[{"[", " ", 
-                RowBox[{"calculatedOrders", "[", 
-                 RowBox[{"[", "i", "]"}], "]"}], " ", "]"}], "]"}]}], ",", 
-             RowBox[{"Exclusions", "\[Rule]", "jumpTimes"}], ",", 
-             RowBox[{"ExclusionsStyle", "\[Rule]", "Dashed"}]}], "]"}], ",", 
-           RowBox[{"{", 
-            RowBox[{"i", ",", "numSelectedOrders"}], "}"}]}], "]"}], ",", 
-         "\[IndentingNewLine]", 
-         RowBox[{"(*", " ", 
-          RowBox[{
-          "Plot", " ", "the", " ", "points", " ", "where", " ", "the", " ", 
-           "approximate", " ", "trajectories", " ", 
-           RowBox[{"(", "should", ")"}], " ", "coincide", " ", "with", " ", 
-           "the", " ", "original", " ", "trajectory"}], " ", "*)"}], 
-         "\[IndentingNewLine]", 
-         RowBox[{"Table", "[", 
-          RowBox[{
-           RowBox[{"Graphics", "[", 
-            RowBox[{"{", 
-             RowBox[{
-              RowBox[{"PointSize", "[", "Large", "]"}], ",", 
-              RowBox[{"approxColors", "[", 
-               RowBox[{"[", " ", 
-                RowBox[{"calculatedOrders", "[", 
-                 RowBox[{"[", "i", "]"}], "]"}], " ", "]"}], "]"}], ",", 
-              RowBox[{"Point", "[", 
-               RowBox[{"MercatorCoordinatesFromBlochAngle", "/@", 
-                RowBox[{"BlochAngleCoordinatesFromState", "/@", 
-                 RowBox[{
-                  RowBox[{"(", 
-                   RowBox[{"XBasisFromZBasis", "@*", 
-                    RowBox[{"(", 
-                    RowBox[{"approxTraces", "[", 
-                    RowBox[{"[", "i", "]"}], "]"}], ")"}]}], ")"}], "/@", 
-                  "relevantTCoincidence"}]}]}], "]"}]}], "}"}], "]"}], ",", 
-           RowBox[{"{", 
-            RowBox[{"i", ",", "numSelectedOrders"}], "}"}]}], "]"}], ",", 
-         "\[IndentingNewLine]", 
-         RowBox[{"(*", " ", 
-          RowBox[{
-           RowBox[{"Plot", " ", "the", " ", "t"}], " ", "=", " ", 
-           RowBox[{"t_f", " ", "jump", " ", "displacement"}]}], " ", "*)"}], 
-         "\[IndentingNewLine]", 
-         RowBox[{"Table", "[", 
-          RowBox[{
-           RowBox[{"PlotMercatorBlochTraceFromState", "[", 
-            RowBox[{
-             RowBox[{"XBasisFromZBasis", " ", "@*", 
-              RowBox[{"finalJumps", "[", 
-               RowBox[{"[", " ", "i", " ", "]"}], "]"}]}], ",", " ", 
-             RowBox[{"{", 
-              RowBox[{"0", ",", "1"}], "}"}], ",", 
-             RowBox[{"PlotStyle", "\[Rule]", 
-              RowBox[{"{", 
-               RowBox[{
-                RowBox[{"AbsoluteThickness", "[", "1.0", "]"}], ",", "Dashed",
-                 ",", " ", "Black"}], "}"}]}]}], "]"}], ",", 
-           RowBox[{"{", 
-            RowBox[{"i", ",", " ", "numSelectedOrders"}], "}"}]}], "]"}], ",",
-          "\[IndentingNewLine]", 
-         RowBox[{"Table", "[", 
-          RowBox[{
-           RowBox[{"Graphics", "[", 
-            RowBox[{"{", 
-             RowBox[{
-              RowBox[{"AbsolutePointSize", "[", "10", "]"}], ",", 
-              RowBox[{"approxColors", "[", 
-               RowBox[{"[", " ", 
-                RowBox[{"calculatedOrders", "[", 
-                 RowBox[{"[", "i", "]"}], "]"}], " ", "]"}], "]"}], ",", 
-              RowBox[{"Point", "[", 
-               RowBox[{"MercatorCoordinatesFromBlochAngle", "@", 
-                RowBox[{"BlochAngleCoordinatesFromState", "@", 
-                 RowBox[{"XBasisFromZBasis", "@", 
-                  RowBox[{
-                   RowBox[{"finalJumps", "[", 
-                    RowBox[{"[", "i", "]"}], "]"}], "[", "1", "]"}]}]}]}], 
-               "]"}]}], "}"}], "]"}], ",", 
-           RowBox[{"{", 
-            RowBox[{"i", ",", "numSelectedOrders"}], "}"}]}], "]"}]}], 
-        "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
-       RowBox[{"AspectRatio", "\[Rule]", "0.5"}], ",", "\[IndentingNewLine]", 
-       
-       RowBox[{"ImageSize", "\[Rule]", 
-        RowBox[{"{", 
-         RowBox[{"800", ",", "400"}], "}"}]}], ",", "\[IndentingNewLine]", 
-       RowBox[{"PlotRange", "\[Rule]", 
-        RowBox[{"{", 
-         RowBox[{
-          RowBox[{"{", 
-           RowBox[{
-            RowBox[{"-", "Pi"}], ",", "Pi"}], "}"}], ",", 
-          RowBox[{"{", 
-           RowBox[{
-            RowBox[{"-", "0.5"}], ",", "0.5"}], "}"}]}], "}"}]}], ",", 
-       "\[IndentingNewLine]", 
-       RowBox[{"AxesLabel", "\[Rule]", 
-        RowBox[{"{", 
-         RowBox[{
-         "\"\<Mercator longitude \[Phi],\\nx-basis phase angle \
-\[Phi]\\n\[Phi] = arg(<\[Psi]|->) - arg(<\[Psi]|+>)\\n\>\"", ",", 
-          "\"\<Mercator z-intersect z(\[Theta]),\\nx-basis population angle \
-\[Theta]\\ncos(\[Theta]/2) = |<\[Psi]|+>|\>\""}], "}"}]}]}], 
-      "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", "]"}]}], ";"}], 
-  "\[IndentingNewLine]"}]], "Input",
- CellChangeTimes->{{3.71975408758805*^9, 3.719754110021474*^9}, {
-   3.71975452981112*^9, 3.719754606574605*^9}, {3.7197546407783012`*^9, 
-   3.7197546472498083`*^9}, {3.719817864184292*^9, 3.719817909721388*^9}, {
-   3.7198195019856577`*^9, 3.719819503285576*^9}, {3.719820235918066*^9, 
-   3.719820251476564*^9}, {3.7198305755691357`*^9, 3.719830650051548*^9}, {
-   3.719830821928141*^9, 3.71983084255162*^9}, {3.719831527367661*^9, 
-   3.7198315552291822`*^9}, {3.719831613657439*^9, 3.719831643177147*^9}, {
-   3.719831705045723*^9, 3.719831718901246*^9}, {3.7198318221473017`*^9, 
-   3.7198318312066927`*^9}, {3.7198320641366243`*^9, 3.719832088334985*^9}, {
-   3.719832134179079*^9, 3.719832144872622*^9}, {3.7198323815882187`*^9, 
-   3.719832471802874*^9}, {3.7198325240014887`*^9, 3.719832537116781*^9}, 
-   3.7198328266032667`*^9, {3.719843174759067*^9, 3.719843244248317*^9}, {
-   3.7198437511308002`*^9, 3.719843788827873*^9}, {3.71984384298101*^9, 
-   3.719843864113104*^9}, {3.720243702204912*^9, 3.7202437875619783`*^9}, {
-   3.720243943503297*^9, 3.720243987025612*^9}, {3.7202464165341167`*^9, 
-   3.7202464172056713`*^9}, {3.72024652475279*^9, 3.720246525600177*^9}, {
-   3.720349200187489*^9, 3.7203492111628036`*^9}, {3.7203492623724937`*^9, 
-   3.720349272891117*^9}, {3.720349762101885*^9, 3.720349764371441*^9}, {
-   3.720504887848832*^9, 3.720504889168459*^9}, {3.7205057516031103`*^9, 
-   3.720505759989237*^9}, {3.7205062204664783`*^9, 3.7205062598765697`*^9}, {
-   3.720509177535778*^9, 3.7205091823988943`*^9}, {3.7205112202573357`*^9, 
-   3.720511220601502*^9}, {3.7205112516885767`*^9, 3.720511257207906*^9}, {
-   3.72103968003988*^9, 3.721039685345126*^9}, {3.7210403994577436`*^9, 
-   3.721040403537895*^9}, {3.7210498742120953`*^9, 3.7210498778702602`*^9}, {
-   3.722262279481731*^9, 3.722262280454454*^9}, 3.722339412830985*^9, 
-   3.7223404725615387`*^9, {3.722341055914516*^9, 3.722341056850339*^9}, {
-   3.7225842267163477`*^9, 3.722584261002359*^9}, {3.722584358112514*^9, 
-   3.722584366030806*^9}}]
+   3.722584138198826*^9}, {3.7225842139156733`*^9, 3.722584252747004*^9}, {
+   3.722591452242949*^9, 3.7225914606089563`*^9}, {3.722591547565269*^9, 
+   3.7225915539737663`*^9}, {3.722593074962216*^9, 3.722593088384726*^9}, {
+   3.722593149342527*^9, 3.722593153204767*^9}, {3.7225939298433313`*^9, 
+   3.7225939344768333`*^9}, {3.7243964251965637`*^9, 
+   3.7243964760698023`*^9}, {3.724396528241579*^9, 3.724396529463888*^9}, {
+   3.7243965692485332`*^9, 3.7243966382739983`*^9}, {3.724396759534275*^9, 
+   3.72439676818369*^9}, {3.7243968014967127`*^9, 3.724396814630097*^9}, 
+   3.724397323472952*^9, 3.7243973761506023`*^9, {3.724397516067595*^9, 
+   3.724397551835203*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -2417,7 +2298,7 @@ Cell["Interactive trajectory manipulation code", "Section",
 Cell[BoxData[{
  RowBox[{
   RowBox[{
-   RowBox[{"approxColors", "=", 
+   RowBox[{"approxColorsOrders", "=", 
     RowBox[{"Array", "[", 
      RowBox[{
       RowBox[{"ColorData", "[", "\"\<BlueGreenYellow\>\"", "]"}], ",", 
@@ -2449,405 +2330,552 @@ Cell[BoxData[{
      RowBox[{
      "origTrace", ",", "approxTraces", ",", "\[Psi]0", ",", "gateAngle", ",", 
       "tMax", ",", "H1func", ",", "vals", ",", "hOrigFunc", ",", 
-      "\[IndentingNewLine]", "tCoincidence", ",", "t0", ",", "tC", ",", 
-      "relevantTCoincidence", ",", "selectedDrive", ",", "selectedDriveFunc", 
-      ",", "selectedH1Index", ",", "numSelectedOrders", ",", 
+      "\[IndentingNewLine]", "tCoincidences", ",", "t0", ",", "tC", ",", 
+      "relevantTCoincidences", ",", "selectedDrive", ",", "selectedDriveFunc",
+       ",", "selectedH1Index", ",", "num\[Alpha]0Trajectories", ",", 
       "\[IndentingNewLine]", "selectedJmpOperators", ",", "approx\[Psi]0", 
-      ",", "jmpFuncs", ",", "calculatedOrders", ",", "finalJumps", ",", 
+      ",", "jmpFuncs", ",", "calculatedOrder", ",", "finalJumps", ",", 
       "approxTracesAll", ",", "origAll", ",", "jumpTimes", ",", 
-      "finalJumpOpFuncs"}], "}"}], ",", "\[IndentingNewLine]", 
-    RowBox[{"Column", "[", 
-     RowBox[{"{", "\[IndentingNewLine]", 
-      RowBox[{
-       RowBox[{"Row", "[", 
-        RowBox[{"{", 
-         RowBox[{
-          RowBox[{"Text", "[", "\"\<Select driving envelope:  \>\"", "]"}], 
-          ",", 
-          RowBox[{"PopupMenu", "[", 
-           RowBox[{
-            RowBox[{"Dynamic", "[", "selectedH1Index", "]"}], ",", 
-            RowBox[{"Range", "[", 
-             RowBox[{"Length", "[", "driveList", "]"}], "]"}]}], "]"}], ",", 
-          "\[IndentingNewLine]", 
-          RowBox[{"Dynamic", "[", 
-           RowBox[{"Plot", "[", 
+      "finalJumpOpFuncs", ",", "approxColors", ",", "\[Alpha]0Vals"}], "}"}], 
+    ",", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"selectedH1Index", "=", "4"}], ";", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Column", "[", 
+      RowBox[{"{", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Row", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"Text", "[", "\"\<Select driving envelope:  \>\"", "]"}], 
+           ",", 
+           RowBox[{"PopupMenu", "[", 
             RowBox[{
-             RowBox[{
-              RowBox[{"driveListToPCFunction", "[", 
-               RowBox[{"driveList", "[", 
-                RowBox[{"[", "selectedH1Index", "]"}], "]"}], "]"}], "[", "t",
-               "]"}], ",", 
-             RowBox[{"{", 
-              RowBox[{"t", ",", 
-               RowBox[{"-", "0.1"}], ",", "1.1"}], "}"}], ",", 
-             RowBox[{"AxesLabel", "\[Rule]", 
-              RowBox[{"{", 
-               RowBox[{"\"\<t/t_max\>\"", ",", "\"\<H1/H1_avg\>\""}], "}"}]}],
-              ",", 
-             RowBox[{
-             "PlotLabel", "\[Rule]", "\"\<driving envelope H1(t)\>\""}], ",", 
-             
-             RowBox[{"ImageSize", "\[Rule]", "Medium"}]}], "]"}], "]"}]}], 
-         "}"}], "]"}], ",", "\[IndentingNewLine]", 
-       RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
-        RowBox[{"(*", " ", 
-         RowBox[{
-         "Define", " ", "initial", " ", "state", " ", "and", " ", "desired", 
-          " ", "gate", " ", "angle"}], " ", "*)"}], "\[IndentingNewLine]", 
-        RowBox[{
-         RowBox[{
-          RowBox[{"\[Psi]0", "=", 
-           RowBox[{"{", 
-            RowBox[{"1", ",", "0"}], "}"}]}], ";", "\[IndentingNewLine]", 
-          RowBox[{"\[Psi]0", "=", 
-           RowBox[{"\[Psi]0", "/", 
-            RowBox[{"Norm", "[", "\[Psi]0", "]"}]}]}], ";", 
-          "\[IndentingNewLine]", 
-          RowBox[{"gateAngle", " ", "=", " ", "Pi"}], ";", 
-          "\[IndentingNewLine]", 
-          RowBox[{"tMax", " ", "=", " ", 
-           RowBox[{"2", "*", 
-            RowBox[{"gateAngle", "/", "H1avg"}]}]}], ";", 
-          "\[IndentingNewLine]", 
-          RowBox[{"Dynamic", "[", "selectedH1Index", "]"}], ";", 
-          "\[IndentingNewLine]", 
-          RowBox[{"selectedDrive", "=", 
-           RowBox[{"driveList", "[", 
-            RowBox[{"[", "selectedH1Index", "]"}], "]"}]}], ";", 
-          "\[IndentingNewLine]", 
-          RowBox[{"selectedDriveFunc", "=", 
-           RowBox[{"driveListToPCFunction", "[", "selectedDrive", "]"}]}], 
-          ";", "\[IndentingNewLine]", 
-          RowBox[{"H1func", "=", 
-           RowBox[{"Function", "[", 
-            RowBox[{"t", ",", 
-             RowBox[{
-              RowBox[{"selectedDrive", "[", 
-               RowBox[{"t", "/", "tMax"}], "]"}], "*", "H1avg"}]}], "]"}]}], 
-          ";", "\[IndentingNewLine]", 
-          RowBox[{"vals", " ", "=", 
-           RowBox[{"{", 
-            RowBox[{
-             RowBox[{"ww", "\[Rule]", "wwIn"}], ",", 
-             RowBox[{"Delta", "\[Rule]", "DeltaIn"}], ",", 
-             RowBox[{"phi", "\[Rule]", "phiIn"}]}], "}"}]}], ";", 
-          "\[IndentingNewLine]", "\[IndentingNewLine]", 
-          RowBox[{"(*", " ", 
-           RowBox[{
-           "Compute", " ", "the", " ", "times", " ", "at", " ", "which", " ", 
-            "the", " ", "Magnus", " ", "and", " ", "the", " ", "real", " ", 
-            "Hamiltonians", " ", "are", " ", "supposed", " ", "to", " ", 
-            "coincide"}], " ", "*)"}], "\[IndentingNewLine]", 
-          RowBox[{"t0", "=", 
-           RowBox[{
-            RowBox[{"(", 
-             RowBox[{"\[Alpha]0", "/", "ww"}], ")"}], "/.", "vals"}]}], ";", 
-          "\[IndentingNewLine]", 
-          RowBox[{"tC", "=", 
-           RowBox[{
-            RowBox[{"(", 
-             RowBox[{"Pi", "/", "ww"}], ")"}], "/.", "vals"}]}], ";", 
-          "\[IndentingNewLine]", 
-          RowBox[{"tCoincidence", "=", 
-           RowBox[{"t0", "+", 
-            RowBox[{"Range", "[", 
-             RowBox[{"0.0", ",", "tMax", ",", "tC"}], "]"}]}]}], ";", 
-          "\[IndentingNewLine]", "\[IndentingNewLine]", 
-          RowBox[{"(*", " ", 
-           RowBox[{
-           "This", " ", "is", " ", "a", " ", "little", " ", "trick", " ", 
-            "to", " ", "keep", " ", "the", " ", "changing", " ", "of", " ", 
-            "parameters", " ", "smooth"}], " ", "*)"}], "\[IndentingNewLine]", 
-          RowBox[{"(*", " ", 
-           RowBox[{
-            RowBox[{"Without", " ", "it"}], ",", " ", 
-            RowBox[{
-            "the", " ", "inner", " ", "dynamic", " ", "block", " ", "would", 
-             " ", "get", " ", "updated", " ", "upon", " ", "change", " ", 
-             "of", " ", "selectedOrders"}], ","}], " ", "*)"}], 
-          "\[IndentingNewLine]", 
-          RowBox[{"(*", " ", 
-           RowBox[{
-            RowBox[{"before", " ", "the", " ", "outer", " ", 
-             RowBox[{"block", ".", " ", "Specifically"}]}], ",", " ", 
-            RowBox[{
-            "the", " ", "inner", " ", "dynamic", " ", "block", " ", "would", 
-             " ", "try", " ", "to", " ", "plot", " ", "the", " ", "new", " ", 
-             "orders"}], ","}], " ", "*)"}], "\[IndentingNewLine]", 
-          RowBox[{"(*", " ", 
-           RowBox[{
-           "before", " ", "their", " ", "trajectories", " ", "were", " ", 
-            "calculated", " ", "in", " ", "the", " ", "outer", " ", 
-            RowBox[{"block", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
-          RowBox[{"calculatedOrders", "=", "selectedOrders"}], ";", 
-          "\[IndentingNewLine]", 
-          RowBox[{"numSelectedOrders", "=", 
-           RowBox[{"Length", "[", "calculatedOrders", "]"}]}], ";", 
-          "\[IndentingNewLine]", "\[IndentingNewLine]", 
-          RowBox[{"(*", " ", 
-           RowBox[{
-           "Assemble", " ", "Hamiltonians", " ", "based", " ", "on", " ", 
-            "the", " ", "given", " ", "parameters", " ", "and", " ", 
-            "numerically", " ", "solve", " ", "trajectories", " ", "of", " ", 
-            "qubit"}], " ", "*)"}], "\[IndentingNewLine]", 
-          RowBox[{"origAll", "=", 
-           RowBox[{"NPCTrajectory", "[", 
-            RowBox[{
-            "selectedDrive", ",", "tMax", ",", "H1avg", ",", "\[Psi]0", ",", 
-             "\[Alpha]0", ",", "Horig", ",", "0", ",", "vals"}], "]"}]}], ";",
+             RowBox[{"Dynamic", "[", "selectedH1Index", "]"}], ",", 
+             RowBox[{"Range", "[", 
+              RowBox[{"Length", "[", "driveList", "]"}], "]"}]}], "]"}], ",", 
            "\[IndentingNewLine]", 
-          RowBox[{"hOrigFunc", "=", 
-           RowBox[{"origAll", "[", 
-            RowBox[{"[", "5", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
-          RowBox[{"origTrace", "=", 
-           RowBox[{"origAll", "[", 
-            RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
-          "\[IndentingNewLine]", 
-          RowBox[{"approxTracesAll", "=", 
-           RowBox[{"Table", "[", 
-            RowBox[{
-             RowBox[{"NPCTrajectory", "[", 
+           RowBox[{"Dynamic", "[", 
+            RowBox[{"Plot", "[", 
+             RowBox[{
               RowBox[{
-              "selectedDrive", ",", "tMax", ",", "H1avg", ",", "\[Psi]0", ",",
-                "\[Alpha]0", ",", 
-               RowBox[{"ApproxHList", "[", 
-                RowBox[{"[", " ", 
-                 RowBox[{"calculatedOrders", "[", 
-                  RowBox[{"[", "i", "]"}], "]"}], " ", "]"}], "]"}], ",", 
-               RowBox[{"jumpOList", "[", 
-                RowBox[{"[", " ", 
-                 RowBox[{"calculatedOrders", "[", 
-                  RowBox[{"[", "i", "]"}], "]"}], " ", "]"}], "]"}], ",", 
-               "vals"}], "]"}], ",", 
-             RowBox[{"{", 
-              RowBox[{"i", ",", "numSelectedOrders"}], "}"}]}], "]"}]}], ";", 
-          "\[IndentingNewLine]", 
-          RowBox[{"approxTraces", "=", 
-           RowBox[{"approxTracesAll", "[", 
-            RowBox[{"[", 
-             RowBox[{";;", ",", "1"}], "]"}], "]"}]}], ";", 
-          "\[IndentingNewLine]", 
-          RowBox[{"jumpTimes", "=", 
+               RowBox[{"driveListToPCFunction", "[", 
+                RowBox[{"driveList", "[", 
+                 RowBox[{"[", "selectedH1Index", "]"}], "]"}], "]"}], "[", 
+               "t", "]"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"t", ",", 
+                RowBox[{"-", "0.1"}], ",", "1.1"}], "}"}], ",", 
+              RowBox[{"AxesLabel", "\[Rule]", 
+               RowBox[{"{", 
+                RowBox[{"\"\<t/t_max\>\"", ",", "\"\<H1/H1_avg\>\""}], 
+                "}"}]}], ",", 
+              RowBox[{
+              "PlotLabel", "\[Rule]", "\"\<driving envelope H1(t)\>\""}], ",", 
+              RowBox[{"ImageSize", "\[Rule]", "Medium"}]}], "]"}], "]"}]}], 
+          "}"}], "]"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+         RowBox[{"(*", " ", 
+          RowBox[{
+          "Define", " ", "initial", " ", "state", " ", "and", " ", "desired", 
+           " ", "gate", " ", "angle"}], " ", "*)"}], "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{
            RowBox[{
-            RowBox[{"selectedDrive", "[", 
-             RowBox[{"[", 
-              RowBox[{";;", ",", "1"}], "]"}], "]"}], "*", "tMax"}]}], ";", 
-          "\[IndentingNewLine]", 
-          RowBox[{"finalJumpOpFuncs", "=", 
-           RowBox[{"approxTracesAll", "[", 
-            RowBox[{"[", 
-             RowBox[{";;", ",", "6"}], "]"}], "]"}]}], ";", 
-          "\[IndentingNewLine]", "\[IndentingNewLine]", 
-          RowBox[{"(*", " ", 
-           RowBox[{
-            RowBox[{"Let", "'"}], "s", " ", "get", " ", 
+           "num\[Alpha]0Trajectories", "=", "num\[Alpha]0TrajectoriesIn"}], 
+           ";", "\[IndentingNewLine]", 
+           RowBox[{"\[Psi]0", "=", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "0"}], "}"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"\[Psi]0", "=", 
+            RowBox[{"\[Psi]0", "/", 
+             RowBox[{"Norm", "[", "\[Psi]0", "]"}]}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"gateAngle", " ", "=", " ", "Pi"}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"tMax", " ", "=", " ", 
+            RowBox[{"2", "*", 
+             RowBox[{"gateAngle", "/", "H1avg"}]}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"Dynamic", "[", "selectedH1Index", "]"}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"selectedDrive", "=", 
+            RowBox[{"driveList", "[", 
+             RowBox[{"[", "selectedH1Index", "]"}], "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"selectedDriveFunc", "=", 
+            RowBox[{"driveListToPCFunction", "[", "selectedDrive", "]"}]}], 
+           ";", "\[IndentingNewLine]", 
+           RowBox[{"H1func", "=", 
+            RowBox[{"Function", "[", 
+             RowBox[{"t", ",", 
+              RowBox[{
+               RowBox[{"selectedDrive", "[", 
+                RowBox[{"t", "/", "tMax"}], "]"}], "*", "H1avg"}]}], "]"}]}], 
+           ";", "\[IndentingNewLine]", 
+           RowBox[{"vals", " ", "=", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"ww", "\[Rule]", "wwIn"}], ",", 
+              RowBox[{"Delta", "\[Rule]", "DeltaIn"}], ",", 
+              RowBox[{"phi", "\[Rule]", "phiIn"}]}], "}"}]}], ";", 
+           "\[IndentingNewLine]", "\[IndentingNewLine]", 
+           RowBox[{"(*", " ", 
             RowBox[{
-             RowBox[{"plottin", "'"}], "!"}]}], " ", "*)"}], 
-          "\[IndentingNewLine]", 
-          RowBox[{"Dynamic", "[", "\[IndentingNewLine]", 
-           RowBox[{
-            RowBox[{"relevantTCoincidence", "=", 
-             RowBox[{"Select", "[", 
-              RowBox[{"tCoincidence", ",", 
+            "This", " ", "is", " ", "a", " ", "little", " ", "trick", " ", 
+             "to", " ", "keep", " ", "the", " ", "changing", " ", "of", " ", 
+             "parameters", " ", "smooth"}], " ", "*)"}], 
+           "\[IndentingNewLine]", 
+           RowBox[{"(*", " ", 
+            RowBox[{
+             RowBox[{"Without", " ", "it"}], ",", " ", 
+             RowBox[{
+             "the", " ", "inner", " ", "dynamic", " ", "block", " ", "would", 
+              " ", "get", " ", "updated", " ", "upon", " ", "change", " ", 
+              "of", " ", "selectedOrders"}], ","}], " ", "*)"}], 
+           "\[IndentingNewLine]", 
+           RowBox[{"(*", " ", 
+            RowBox[{
+             RowBox[{"before", " ", "the", " ", "outer", " ", 
+              RowBox[{"block", ".", " ", "Specifically"}]}], ",", " ", 
+             RowBox[{
+             "the", " ", "inner", " ", "dynamic", " ", "block", " ", "would", 
+              " ", "try", " ", "to", " ", "plot", " ", "the", " ", "new", " ",
+               "orders"}], ","}], " ", "*)"}], "\[IndentingNewLine]", 
+           RowBox[{"(*", " ", 
+            RowBox[{
+            "before", " ", "their", " ", "trajectories", " ", "were", " ", 
+             "calculated", " ", "in", " ", "the", " ", "outer", " ", 
+             RowBox[{"block", "."}]}], " ", "*)"}], "\[IndentingNewLine]", 
+           RowBox[{"calculatedOrder", "=", "selectedOrder"}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"\[Alpha]0Vals", "=", 
+            RowBox[{"Sort", "[", 
+             RowBox[{"Mod", " ", "[", 
+              RowBox[{
+               RowBox[{"\[Alpha]0", "+", 
+                RowBox[{"Most", "[", 
+                 RowBox[{"Subdivide", "[", 
+                  RowBox[{"0.0", ",", "Pi", ",", "num\[Alpha]0Trajectories"}],
+                   "]"}], "]"}]}], ",", "Pi"}], "]"}], "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"approxColors", "=", 
+            RowBox[{"Table", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"ColorData", "[", "\"\<BlueGreenYellow\>\"", "]"}], 
+               "[", "a0v", "]"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"a0v", ",", 
+                RowBox[{"\[Alpha]0Vals", "/", "Pi"}]}], "}"}]}], "]"}]}], ";",
+            "\[IndentingNewLine]", "\[IndentingNewLine]", 
+           RowBox[{"(*", " ", 
+            RowBox[{
+            "Compute", " ", "the", " ", "times", " ", "at", " ", "which", " ",
+              "the", " ", "Magnus", " ", "and", " ", "the", " ", "real", " ", 
+             "Hamiltonians", " ", "are", " ", "supposed", " ", "to", " ", 
+             "coincide"}], " ", "*)"}], "\[IndentingNewLine]", 
+           RowBox[{"tC", "=", 
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{"Pi", "/", "ww"}], ")"}], "/.", "vals"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"tCoincidences", "=", 
+            RowBox[{"Table", "[", 
+             RowBox[{
+              RowBox[{
                RowBox[{"(", 
                 RowBox[{
-                 RowBox[{"#", "<", 
-                  RowBox[{"tM", "*", "tMax"}]}], "&"}], ")"}]}], "]"}]}], ";",
-             "\[IndentingNewLine]", "\[IndentingNewLine]", 
-            RowBox[{"finalJumps", "=", 
-             RowBox[{"Table", "[", 
+                 RowBox[{"\[Alpha]0Val", "/", "ww"}], "/.", "vals"}], ")"}], 
+               "+", 
+               RowBox[{"Range", "[", 
+                RowBox[{"0.0", ",", "tMax", ",", "tC"}], "]"}]}], ",", 
+              RowBox[{"{", 
+               RowBox[{"\[Alpha]0Val", ",", "\[Alpha]0Vals"}], "}"}]}], 
+             "]"}]}], ";", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+           RowBox[{"(*", " ", 
+            RowBox[{
+            "Assemble", " ", "Hamiltonians", " ", "based", " ", "on", " ", 
+             "the", " ", "given", " ", "parameters", " ", "and", " ", 
+             "numerically", " ", "solve", " ", "trajectories", " ", "of", " ",
+              "qubit"}], " ", "*)"}], "\[IndentingNewLine]", 
+           RowBox[{"origAll", "=", 
+            RowBox[{"NPCEffectiveTrajectory", "[", 
+             RowBox[{
+             "selectedDrive", ",", "tMax", ",", "H1avg", ",", "\[Psi]0", ",", 
+              "\[Alpha]0", ",", "Horig", ",", "0", ",", "vals"}], "]"}]}], 
+           ";", "\[IndentingNewLine]", 
+           RowBox[{"hOrigFunc", "=", 
+            RowBox[{"origAll", "[", 
+             RowBox[{"[", "5", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"origTrace", "=", 
+            RowBox[{"origAll", "[", 
+             RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+           "\[IndentingNewLine]", 
+           RowBox[{"approxTracesAll", "=", 
+            RowBox[{"Table", "[", 
+             RowBox[{
+              RowBox[{"NPCEffectiveTrajectory", "[", 
+               RowBox[{
+               "selectedDrive", ",", "tMax", ",", "H1avg", ",", "\[Psi]0", 
+                ",", "\[Alpha]0Val", ",", 
+                RowBox[{"ApproxHList", "[", 
+                 RowBox[{"[", " ", "calculatedOrder", " ", "]"}], "]"}], ",", 
+                
+                RowBox[{"jumpOList", "[", 
+                 RowBox[{"[", " ", "calculatedOrder", " ", "]"}], "]"}], ",", 
+                "vals"}], "]"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"\[Alpha]0Val", ",", "\[Alpha]0Vals"}], "}"}]}], 
+             "]"}]}], ";", "\[IndentingNewLine]", 
+           RowBox[{"approxTraces", "=", 
+            RowBox[{"approxTracesAll", "[", 
+             RowBox[{"[", 
+              RowBox[{";;", ",", "1"}], "]"}], "]"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"jumpTimes", "=", 
+            RowBox[{
+             RowBox[{"selectedDrive", "[", 
+              RowBox[{"[", 
+               RowBox[{";;", ",", "1"}], "]"}], "]"}], "*", "tMax"}]}], ";", 
+           "\[IndentingNewLine]", 
+           RowBox[{"finalJumpOpFuncs", "=", 
+            RowBox[{"approxTracesAll", "[", 
+             RowBox[{"[", 
+              RowBox[{";;", ",", "6"}], "]"}], "]"}]}], ";", 
+           "\[IndentingNewLine]", "\[IndentingNewLine]", 
+           RowBox[{"(*", " ", 
+            RowBox[{
+             RowBox[{"Let", "'"}], "s", " ", "get", " ", 
+             RowBox[{
+              RowBox[{"plottin", "'"}], "!"}]}], " ", "*)"}], 
+           "\[IndentingNewLine]", 
+           RowBox[{"Dynamic", "[", "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"relevantTCoincidences", "=", 
               RowBox[{
-               RowBox[{"Function", "[", 
-                RowBox[{"jmpFraction", ",", "\[IndentingNewLine]", 
-                 RowBox[{"Evaluate", "[", 
-                  RowBox[{
-                   RowBox[{"MatrixExp", "[", 
+               RowBox[{
+                RowBox[{"Select", "[", 
+                 RowBox[{"#", ",", 
+                  RowBox[{"(", 
+                   RowBox[{
+                    RowBox[{"#", "<", 
+                    RowBox[{"tM", "*", "tMax"}]}], "&"}], ")"}]}], "]"}], 
+                "&"}], "/@", "tCoincidences"}]}], ";", "\[IndentingNewLine]", 
+             "\[IndentingNewLine]", 
+             RowBox[{"finalJumps", "=", 
+              RowBox[{"Table", "[", 
+               RowBox[{
+                RowBox[{"Function", "[", 
+                 RowBox[{"jmpFraction", ",", "\[IndentingNewLine]", 
+                  RowBox[{"Evaluate", "[", 
+                   RowBox[{
+                    RowBox[{"MatrixExp", "[", 
                     RowBox[{"jmpFraction", "*", 
                     RowBox[{
                     RowBox[{"(", 
                     RowBox[{"finalJumpOpFuncs", "[", 
                     RowBox[{"[", " ", "ii", " ", "]"}], "]"}], ")"}], "[", 
                     RowBox[{"tM", "*", "tMax"}], "]"}]}], "]"}], " ", ".", 
-                   " ", 
-                   RowBox[{
+                    " ", 
+                    RowBox[{
                     RowBox[{"(", 
                     RowBox[{"approxTraces", "[", 
                     RowBox[{"[", " ", "ii", " ", "]"}], "]"}], ")"}], "[", 
                     RowBox[{"tM", "*", "tMax"}], "]"}]}], "]"}]}], 
-                "\[IndentingNewLine]", "]"}], ",", 
-               RowBox[{"{", 
-                RowBox[{"ii", ",", "numSelectedOrders"}], "}"}]}], "]"}]}], 
-            ";", "\[IndentingNewLine]", 
-            RowBox[{"Grid", "[", 
-             RowBox[{"{", 
-              RowBox[{
-               RowBox[{"Table", "[", 
-                RowBox[{
-                 RowBox[{"ReleaseHold", "[", 
-                  RowBox[{"plotExprs", "[", 
-                   RowBox[{"[", 
-                    RowBox[{"i", ",", "1"}], "]"}], "]"}], "]"}], ",", 
-                 RowBox[{"{", 
-                  RowBox[{"i", ",", "selectedPlots"}], "}"}]}], "]"}], ",", 
-               "\[IndentingNewLine]", 
-               RowBox[{"{", 
-                RowBox[{"StringForm", "[", 
+                 "\[IndentingNewLine]", "]"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"ii", ",", "num\[Alpha]0Trajectories"}], "}"}]}], 
+               "]"}]}], ";", "\[IndentingNewLine]", 
+             RowBox[{"Grid", "[", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"Table", "[", 
                  RowBox[{
-                 "\"\<\!\(\*SubscriptBox[\(t\), \(gate\)]\) = ``\>\"", ",", 
-                  " ", 
-                  RowBox[{"NumberForm", "[", 
-                   RowBox[{"tMax", ",", 
+                  RowBox[{"ReleaseHold", "[", 
+                   RowBox[{"plotExprs", "[", 
+                    RowBox[{"[", 
+                    RowBox[{"i", ",", "1"}], "]"}], "]"}], "]"}], ",", 
+                  RowBox[{"{", 
+                   RowBox[{"i", ",", "selectedPlots"}], "}"}]}], "]"}], ",", 
+                "\[IndentingNewLine]", 
+                RowBox[{"{", 
+                 RowBox[{"StringForm", "[", 
+                  RowBox[{
+                  "\"\<\!\(\*SubscriptBox[\(t\), \(gate\)]\) = ``\>\"", ",", 
+                   " ", 
+                   RowBox[{"NumberForm", "[", 
+                    RowBox[{"tMax", ",", 
                     RowBox[{"{", 
-                    RowBox[{"5", ",", "2"}], "}"}]}], "]"}]}], "]"}], "}"}]}],
-               "}"}], "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
-           "]"}]}], "\[IndentingNewLine]", ",", "\[IndentingNewLine]", 
-         RowBox[{"{", 
-          RowBox[{
-           RowBox[{"{", 
-            RowBox[{
-            "tM", ",", " ", "0.01", ",", 
-             "\"\<Time t / \!\(\*SubscriptBox[\(t\), \(gate\)]\)\>\""}], 
-            "}"}], ",", "0.01", ",", "1.0", ",", 
-           RowBox[{"Appearance", "\[Rule]", "\"\<Open\>\""}], ",", 
-           RowBox[{"AnimationRate", "\[Rule]", ".03"}], ",", 
-           RowBox[{"RefreshRate", "\[Rule]", ".005"}]}], "}"}], ",", 
-         "\[IndentingNewLine]", 
-         RowBox[{"{", 
-          RowBox[{
-           RowBox[{"{", 
-            RowBox[{
-            "\[Alpha]0", ",", "0.0", ",", "\"\<Offset \[Alpha]0\>\""}], "}"}],
-            ",", "0.0", ",", " ", "Pi", ",", 
-           RowBox[{"Appearance", "\[Rule]", "\"\<Open\>\""}]}], "}"}], ",", 
-         "\[IndentingNewLine]", 
-         RowBox[{"{", 
-          RowBox[{
-           RowBox[{"{", 
-            RowBox[{
-            "H1avg", ",", " ", "0.2", ",", 
-             "\"\<Average drive strength H1_avg\>\""}], "}"}], ",", "0.01", 
-           ",", "2.0", ",", 
-           RowBox[{"Appearance", "\[Rule]", "\"\<Open\>\""}]}], "}"}], ",", 
-         "\[IndentingNewLine]", 
-         RowBox[{"(*", 
-          RowBox[{
-           RowBox[{"{", 
-            RowBox[{
-             RowBox[{"{", 
-              RowBox[{
-              "upToOrder", ",", "1", ",", 
-               "\"\<Include Magnus expansion up to order\>\""}], "}"}], ",", 
-             RowBox[{"-", "1"}], ",", 
-             RowBox[{
-              RowBox[{"Length", "[", "ApproxHList", "]"}], "-", "1"}], ",", 
-             "1", ",", 
-             RowBox[{"Appearance", "\[Rule]", "\"\<Open\>\""}]}], "}"}], 
-           ","}], "*)"}], "\[IndentingNewLine]", 
-         RowBox[{"{", "\[IndentingNewLine]", 
-          RowBox[{
-           RowBox[{"{", 
-            RowBox[{"selectedOrders", ",", 
-             RowBox[{"{", 
-              RowBox[{"1", ",", "2"}], "}"}], ",", 
-             "\"\<Show Magnus orders\>\""}], "}"}], ",", 
-           "\[IndentingNewLine]", 
+                    RowBox[{"5", ",", "2"}], "}"}]}], "]"}]}], "]"}], "}"}], 
+                ",", "\[IndentingNewLine]", 
+                RowBox[{"{", 
+                 RowBox[{"StringForm", "[", 
+                  RowBox[{
+                   RowBox[{"\"\<\[Alpha]0 colors: \\n\>\"", "<>", 
+                    RowBox[{"Fold", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"#1", " ", "<>", "\"\<, \>\"", "<>", "#2"}], 
+                    "&"}], ",", 
+                    RowBox[{"ConstantArray", "[", 
+                    RowBox[{
+                    "\"\<``: ``\>\"", ",", "num\[Alpha]0Trajectories"}], 
+                    "]"}]}], "]"}]}], ",", 
+                   RowBox[{"Sequence", "@@", 
+                    RowBox[{"Riffle", "[", 
+                    RowBox[{"approxColors", ",", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"NumberForm", "[", 
+                    RowBox[{"#", ",", 
+                    RowBox[{"{", 
+                    RowBox[{"5", ",", "2"}], "}"}]}], "]"}], "&"}], "/@", 
+                    "\[Alpha]0Vals"}]}], "]"}]}]}], "]"}], "}"}]}], 
+               "\[IndentingNewLine]", "}"}], "\[IndentingNewLine]", "]"}]}], 
+            "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"{", 
            RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+             "tM", ",", " ", "0.01", ",", 
+              "\"\<Time t / \!\(\*SubscriptBox[\(t\), \(gate\)]\)\>\""}], 
+             "}"}], ",", "0.01", ",", "1.0", ",", 
+            RowBox[{"Appearance", "\[Rule]", "\"\<Open\>\""}], ",", 
+            RowBox[{"AnimationRate", "\[Rule]", ".03"}], ",", 
+            RowBox[{"RefreshRate", "\[Rule]", ".005"}]}], "}"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+             "\[Alpha]0", ",", "0.45", ",", "\"\<Offset \[Alpha]0\>\""}], 
+             "}"}], ",", "0", ",", " ", "Pi", ",", 
+            RowBox[{"Appearance", "\[Rule]", "\"\<Open\>\""}]}], "}"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+             "H1avg", ",", " ", "0.4", ",", 
+              "\"\<Average drive strength H1_avg\>\""}], "}"}], ",", "0.01", 
+            ",", "2.0", ",", 
+            RowBox[{"Appearance", "\[Rule]", "\"\<Open\>\""}]}], "}"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"(*", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+               "upToOrder", ",", "1", ",", 
+                "\"\<Include Magnus expansion up to order\>\""}], "}"}], ",", 
+              
+              RowBox[{"-", "1"}], ",", 
+              RowBox[{
+               RowBox[{"Length", "[", "ApproxHList", "]"}], "-", "1"}], ",", 
+              "1", ",", 
+              RowBox[{"Appearance", "\[Rule]", "\"\<Open\>\""}]}], "}"}], 
+            ","}], "*)"}], "\[IndentingNewLine]", 
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+             "selectedOrder", ",", "2", ",", "\"\<Show Magnus order\>\""}], 
+             "}"}], ",", "\[IndentingNewLine]", 
             RowBox[{
              RowBox[{"(", 
-              RowBox[{"#", "\[Rule]", 
-               RowBox[{"Graphics", "[", 
-                RowBox[{
-                 RowBox[{"{", 
-                  RowBox[{
-                   RowBox[{"Text", "[", 
-                    RowBox[{"#", "-", "1"}], "]"}], ",", 
-                   RowBox[{"EdgeForm", "[", "Thin", "]"}], ",", 
-                   RowBox[{"approxColors", "[", 
-                    RowBox[{"[", "#", "]"}], "]"}], ",", 
-                   RowBox[{"Rectangle", "[", 
-                    RowBox[{"{", 
-                    RowBox[{"1", ",", 
-                    RowBox[{"-", "0.5"}]}], "}"}], "]"}]}], "}"}], ",", 
-                 RowBox[{"ImageSize", "\[Rule]", 
-                  RowBox[{"{", 
-                   RowBox[{"30", ",", "12"}], "}"}]}]}], "]"}]}], ")"}], 
-             "&"}], "/@", 
-            RowBox[{"Range", "[", 
-             RowBox[{"1", ",", 
-              RowBox[{"Length", "[", "ApproxHList", "]"}]}], "]"}]}], ",", 
-           "\[IndentingNewLine]", 
-           RowBox[{"ControlType", "\[Rule]", "CheckboxBar"}]}], 
-          "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
-         RowBox[{"{", 
-          RowBox[{
-           RowBox[{"{", 
-            RowBox[{
-            "wwIn", ",", "1.0", ",", "\"\<Drive frequency \[Omega]\>\""}], 
-            "}"}], ",", "0.01", ",", "2.0"}], "}"}], ",", 
-         "\[IndentingNewLine]", 
-         RowBox[{"{", 
-          RowBox[{
-           RowBox[{"{", 
-            RowBox[{
-            "DeltaIn", ",", "0.0", ",", 
-             "\"\<Qubit detuning \[CapitalDelta]\>\""}], "}"}], ",", 
-           RowBox[{"-", "1.0"}], ",", "1.0"}], "}"}], ",", 
-         "\[IndentingNewLine]", 
-         RowBox[{"{", 
-          RowBox[{
-           RowBox[{"{", 
-            RowBox[{
-            "phiIn", ",", "0.0", ",", "\"\<Rotation axis angle \[Phi]\>\""}], 
-            "}"}], ",", 
-           RowBox[{"-", "Pi"}], ",", "Pi"}], "}"}], ",", 
-         "\[IndentingNewLine]", 
-         RowBox[{"{", 
-          RowBox[{
-           RowBox[{"{", 
-            RowBox[{"selectedPlots", ",", 
-             RowBox[{"Pick", "[", 
               RowBox[{
-               RowBox[{"Range", "[", 
-                RowBox[{"Length", "[", "plotExprs", "]"}], "]"}], ",", 
+               RowBox[{"#", "\[Rule]", 
+                RowBox[{"#", "-", "1"}]}], "&"}], ")"}], "/@", 
+             RowBox[{"Range", "[", 
+              RowBox[{"1", ",", 
+               RowBox[{"Length", "[", "ApproxHList", "]"}]}], "]"}]}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"ControlType", "\[Rule]", "RadioButtonBar"}]}], 
+           "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"{", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+             "num\[Alpha]0TrajectoriesIn", ",", " ", "5", ",", " ", 
+              "\"\<Number of \[Alpha]0 trajectories\\n(takes a while to \
+update)\>\""}], "}"}], ",", "\[IndentingNewLine]", 
+            RowBox[{"Range", "[", 
+             RowBox[{"1", ",", "10"}], "]"}], ",", "\[IndentingNewLine]", 
+            RowBox[{"ControlType", "\[Rule]", "SetterBar"}]}], 
+           "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+             "wwIn", ",", "1.0", ",", "\"\<Drive frequency \[Omega]\>\""}], 
+             "}"}], ",", "0.01", ",", "2.0"}], "}"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+             "DeltaIn", ",", "0.0", ",", 
+              "\"\<Qubit detuning \[CapitalDelta]\>\""}], "}"}], ",", 
+            RowBox[{"-", "1.0"}], ",", "1.0"}], "}"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+             "phiIn", ",", "0.0", ",", "\"\<Rotation axis angle \[Phi]\>\""}],
+              "}"}], ",", 
+            RowBox[{"-", "Pi"}], ",", "Pi"}], "}"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"selectedPlots", ",", 
+              RowBox[{"Pick", "[", 
+               RowBox[{
+                RowBox[{"Range", "[", 
+                 RowBox[{"Length", "[", "plotExprs", "]"}], "]"}], ",", 
+                RowBox[{"plotExprs", "[", 
+                 RowBox[{"[", 
+                  RowBox[{";;", ",", "3"}], "]"}], "]"}], ",", "1"}], "]"}], 
+              ",", "\"\<Visualizations\>\""}], "}"}], ",", 
+            RowBox[{"Table", "[", 
+             RowBox[{
+              RowBox[{"i", "\[Rule]", 
                RowBox[{"plotExprs", "[", 
                 RowBox[{"[", 
-                 RowBox[{";;", ",", "3"}], "]"}], "]"}], ",", "1"}], "]"}], 
-             ",", "\"\<Visualizations\>\""}], "}"}], ",", 
-           RowBox[{"Table", "[", 
-            RowBox[{
-             RowBox[{"i", "\[Rule]", 
-              RowBox[{"plotExprs", "[", 
-               RowBox[{"[", 
-                RowBox[{"i", ",", "2"}], "]"}], "]"}]}], ",", 
-             RowBox[{"{", 
-              RowBox[{"i", ",", 
-               RowBox[{"Length", "[", "plotExprs", "]"}]}], "}"}]}], "]"}], 
-           ",", 
-           RowBox[{"ControlType", "\[Rule]", "CheckboxBar"}]}], "}"}]}], 
-        "\[IndentingNewLine]", 
-        RowBox[{"(*", 
-         RowBox[{"Evaluate", "[", 
-          RowBox[{"Sequence", "@@", 
-           RowBox[{"Table", "[", 
-            RowBox[{
-             RowBox[{"{", 
+                 RowBox[{"i", ",", "2"}], "]"}], "]"}]}], ",", 
+              RowBox[{"{", 
+               RowBox[{"i", ",", 
+                RowBox[{"Length", "[", "plotExprs", "]"}]}], "}"}]}], "]"}], 
+            ",", 
+            RowBox[{"ControlType", "\[Rule]", "CheckboxBar"}]}], "}"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+             "optShowStateVec", ",", "True", ",", 
+              "\"\<Show state vector\>\""}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"True", ",", "False"}], "}"}]}], "}"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+             "optShowRotAx", ",", "True", ",", "\"\<Show rotation axis\>\""}],
+              "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"True", ",", "False"}], "}"}]}], "}"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+             "optShowOrigTrace", ",", "True", ",", 
+              "\"\<Show real trajectory\>\""}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"True", ",", "False"}], "}"}]}], "}"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+             "thicknessApproxTrace", ",", "2", ",", 
+              "\"\<Thickness effective trajectory\>\""}], "}"}], ",", "0", 
+            ",", "15"}], "}"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+             "psizeOrigCoinc", ",", "4.5", ",", 
+              "\"\<Coinc. point size real traj.\>\""}], "}"}], ",", "0", ",", 
+            "15"}], "}"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+             "psizeApproxCoinc", ",", "7", ",", 
+              "\"\<Coinc. point size eff. traj.\>\""}], "}"}], ",", "0", ",", 
+            "15"}], "}"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+             "psizeApproxFinal", ",", "10", ",", 
+              "\"\<Final point size eff. traj.\>\""}], "}"}], ",", "0", ",", 
+            "15"}], "}"}], ",", "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"linestyleApproxTrace", ",", 
+              RowBox[{"Dashing", "[", 
+               RowBox[{"{", "}"}], "]"}], ",", 
+              "\"\<Line style eff. traj.\>\""}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
               RowBox[{
-               RowBox[{"{", 
-                RowBox[{
-                 RowBox[{"selplots", "[", "i", "]"}], ",", 
-                 RowBox[{"plotExprs", "[", 
-                  RowBox[{"[", 
-                   RowBox[{"i", ",", "3"}], "]"}], "]"}], ",", 
-                 RowBox[{"plotExprs", "[", 
-                  RowBox[{"[", 
-                   RowBox[{"i", ",", "2"}], "]"}], "]"}]}], "}"}], ",", 
-               RowBox[{"{", 
-                RowBox[{"0", ",", "1"}], "}"}]}], "}"}], ",", 
-             RowBox[{"{", 
-              RowBox[{"i", ",", 
-               RowBox[{"Length", "[", "plotExprs", "]"}]}], "}"}]}], "]"}]}], 
-          "]"}], "*)"}], "\[IndentingNewLine]", "]"}]}], "}"}], "]"}]}], 
+               RowBox[{"Dashing", "[", 
+                RowBox[{"{", "}"}], "]"}], "\[Rule]", "\"\<Solid\>\""}], ",", 
+              
+              RowBox[{"Dashed", "\[Rule]", "\"\<Dashed\>\""}], ",", 
+              RowBox[{"Dotted", "\[Rule]", "\"\<Dotted\>\""}], ",", 
+              RowBox[{"DotDashed", "\[Rule]", "\"\<DotDashed\>\""}]}], "}"}], 
+            ",", 
+            RowBox[{"ControlType", "->", "PopupMenu"}]}], "}"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+             "linestyleApproxJumps", ",", "Dashed", ",", 
+              "\"\<Line style eff. traj. jumps\>\""}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"Dashing", "[", 
+                RowBox[{"{", "}"}], "]"}], "\[Rule]", "\"\<Solid\>\""}], ",", 
+              
+              RowBox[{"Dashed", "\[Rule]", "\"\<Dashed\>\""}], ",", 
+              RowBox[{"Dotted", "\[Rule]", "\"\<Dotted\>\""}], ",", 
+              RowBox[{"DotDashed", "\[Rule]", "\"\<DotDashed\>\""}]}], "}"}], 
+            ",", 
+            RowBox[{"ControlType", "->", "PopupMenu"}]}], "}"}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+             "optCBAAutoPlotRange", ",", "False", ",", 
+              "\"\<Auto plot range for CBA plot\>\""}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"True", ",", "False"}], "}"}]}], "}"}]}], 
+         "\[IndentingNewLine]", 
+         RowBox[{"(*", 
+          RowBox[{"Evaluate", "[", 
+           RowBox[{"Sequence", "@@", 
+            RowBox[{"Table", "[", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"selplots", "[", "i", "]"}], ",", 
+                  RowBox[{"plotExprs", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"i", ",", "3"}], "]"}], "]"}], ",", 
+                  RowBox[{"plotExprs", "[", 
+                   RowBox[{"[", 
+                    RowBox[{"i", ",", "2"}], "]"}], "]"}]}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{"0", ",", "1"}], "}"}]}], "}"}], ",", 
+              RowBox[{"{", 
+               RowBox[{"i", ",", 
+                RowBox[{"Length", "[", "plotExprs", "]"}]}], "}"}]}], "]"}]}],
+            "]"}], "*)"}], "\[IndentingNewLine]", "]"}]}], "}"}], "]"}]}]}], 
    "\[IndentingNewLine]", "]"}]}]}], "Input",
  CellChangeTimes->{{3.720349299127124*^9, 3.720349338149681*^9}, {
    3.720349478941538*^9, 3.7203495598621273`*^9}, {3.720349817696536*^9, 
@@ -2930,7 +2958,38 @@ Cell[BoxData[{
    3.722581403364558*^9, 3.722581433746113*^9}, {3.722581486532193*^9, 
    3.7225814975073977`*^9}, {3.722581539220759*^9, 3.722581563796644*^9}, {
    3.722581602586547*^9, 3.722581621303526*^9}, {3.722581699154663*^9, 
-   3.722581699441332*^9}, {3.722772492952577*^9, 3.7227724937919827`*^9}}]
+   3.722581699441332*^9}, {3.722584727204074*^9, 3.722584735465682*^9}, {
+   3.722584801329296*^9, 3.7225848057959833`*^9}, {3.722584882976057*^9, 
+   3.7225849021154213`*^9}, {3.7225849541632977`*^9, 3.722584963112355*^9}, {
+   3.722585466783959*^9, 3.722585482676075*^9}, {3.722585523951273*^9, 
+   3.722585559960051*^9}, {3.7225915084874783`*^9, 3.722591529654591*^9}, {
+   3.7225915699428596`*^9, 3.722591570028892*^9}, {3.722591669608837*^9, 
+   3.72259178566747*^9}, {3.722591877905278*^9, 3.722591906001411*^9}, {
+   3.722592031901031*^9, 3.722592234354385*^9}, {3.722592868968574*^9, 
+   3.722592878316922*^9}, {3.7225932336305513`*^9, 3.722593269753498*^9}, {
+   3.7225933006836767`*^9, 3.722593339179894*^9}, 3.722593374190917*^9, {
+   3.7225936804009933`*^9, 3.722593753205859*^9}, {3.722593789154407*^9, 
+   3.722593823937153*^9}, {3.7225938594757643`*^9, 3.722593888770089*^9}, {
+   3.722594007640192*^9, 3.722594022674281*^9}, {3.722594060034284*^9, 
+   3.7225940605989027`*^9}, {3.722594117563012*^9, 3.7225941451237307`*^9}, {
+   3.722594225012789*^9, 3.72259422721095*^9}, {3.7225942887050858`*^9, 
+   3.722594295733642*^9}, {3.722594353505547*^9, 3.7225943566792107`*^9}, {
+   3.722594603333338*^9, 3.7225946040566387`*^9}, {3.722594689764338*^9, 
+   3.722594694385455*^9}, {3.722594801425088*^9, 3.72259480205506*^9}, {
+   3.7225948327399473`*^9, 3.722594835789096*^9}, {3.7225948801927423`*^9, 
+   3.722594903466116*^9}, {3.722594975116805*^9, 3.722594993665955*^9}, {
+   3.722596095682767*^9, 3.722596165327886*^9}, {3.7225962213260517`*^9, 
+   3.722596222331781*^9}, {3.722596340599218*^9, 3.722596470723982*^9}, {
+   3.722596559108666*^9, 3.7225967349708557`*^9}, {3.7225967788678637`*^9, 
+   3.722596781218169*^9}, {3.72259683853369*^9, 3.722596842602681*^9}, {
+   3.7225969113231*^9, 3.7225969510950403`*^9}, {3.722597229953278*^9, 
+   3.722597366531913*^9}, {3.722597450282796*^9, 3.7225974550140047`*^9}, {
+   3.7243944310646544`*^9, 3.724394490560134*^9}, {3.724394687601493*^9, 
+   3.724394703862275*^9}, {3.7243947361195583`*^9, 3.7243949797821093`*^9}, {
+   3.72439517271848*^9, 3.724395193709236*^9}, {3.724395242930883*^9, 
+   3.724395286257642*^9}, {3.724395316483492*^9, 3.724395358721554*^9}, {
+   3.724395405614676*^9, 3.724395424548463*^9}, {3.7243957997226477`*^9, 
+   3.7243958007537413`*^9}, {3.724397462094863*^9, 3.724397506666771*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -2961,7 +3020,13 @@ Cell[BoxData[
    3.7204167455022297`*^9, 3.72041675968716*^9}, 3.7204400971983337`*^9, {
    3.720504530316079*^9, 3.720504534626072*^9}, {3.720505763220057*^9, 
    3.720505766040083*^9}, {3.720516467328878*^9, 3.720516467773799*^9}, {
-   3.722584379504612*^9, 3.7225843892971478`*^9}}]
+   3.722584379504612*^9, 3.7225843892971478`*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.7243981141320763`*^9, 3.724398114572053*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.724397222146912*^9, 3.7243972228108177`*^9}}]
 }, Open  ]]
 }, Open  ]]
 },
@@ -2996,48 +3061,45 @@ Cell[7739, 219, 3225, 90, 165, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[11001, 314, 270, 3, 64, "Section"],
-Cell[11274, 319, 5541, 147, 420, "Input"],
-Cell[16818, 468, 432, 9, 28, "Input"],
-Cell[17253, 479, 761, 21, 28, "Input"],
-Cell[18017, 502, 951, 24, 46, "Input"]
+Cell[11274, 319, 7641, 206, 522, "Input"],
+Cell[18918, 527, 598, 12, 28, "Input"],
+Cell[19519, 541, 761, 21, 28, "Input"],
+Cell[20283, 564, 951, 24, 46, "Input"]
 }, Open  ]],
-Cell[18983, 529, 118, 1, 64, "Section"],
+Cell[21249, 591, 118, 1, 64, "Section"],
 Cell[CellGroupData[{
-Cell[19126, 534, 186, 2, 50, "Section"],
-Cell[19315, 538, 7056, 189, 505, "Input"],
-Cell[26374, 729, 10980, 247, 743, "Input"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[37391, 981, 134, 1, 64, "Section"],
-Cell[37528, 984, 1547, 25, 165, "Text"],
-Cell[39078, 1011, 14817, 326, 607, "Input"],
-Cell[53898, 1339, 2285, 58, 63, "Input"]
+Cell[21392, 596, 186, 2, 50, "Section"],
+Cell[21581, 600, 7056, 189, 505, "Input"],
+Cell[28640, 791, 10855, 245, 743, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[56220, 1402, 111, 1, 64, "Section"],
-Cell[56334, 1405, 12224, 304, 1015, "Input"]
+Cell[39532, 1041, 134, 1, 64, "Section"],
+Cell[39669, 1044, 14468, 320, 590, "Input"],
+Cell[54140, 1366, 2266, 57, 63, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[68595, 1714, 100, 1, 65, "Chapter"],
-Cell[CellGroupData[{
-Cell[68720, 1719, 97, 1, 64, "Section"],
-Cell[68820, 1722, 16090, 304, 539, "Input"]
+Cell[56443, 1428, 111, 1, 64, "Section"],
+Cell[56557, 1431, 13256, 325, 1032, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[84947, 2031, 163, 2, 64, "Section"],
-Cell[85113, 2035, 8206, 176, 420, "Input"]
+Cell[69850, 1761, 100, 1, 65, "Chapter"],
+Cell[CellGroupData[{
+Cell[69975, 1766, 97, 1, 64, "Section"],
+Cell[70075, 1769, 16778, 300, 607, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[93356, 2216, 99, 1, 64, "Section"],
-Cell[93458, 2219, 9319, 188, 403, "Input"]
+Cell[86890, 2074, 163, 2, 64, "Section"],
+Cell[87056, 2078, 10207, 210, 505, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[102814, 2412, 174, 2, 64, "Section"],
-Cell[102991, 2416, 24890, 516, 1281, "Input"]
+Cell[97300, 2293, 174, 2, 64, "Section"],
+Cell[97477, 2297, 33639, 694, 1642, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[127918, 2937, 102, 1, 64, "Section"],
-Cell[128023, 2940, 1197, 23, 97, "Input"]
+Cell[131153, 2996, 102, 1, 64, "Section"],
+Cell[131258, 2999, 1197, 23, 97, "Input"],
+Cell[132458, 3024, 94, 1, 28, InheritFromParent],
+Cell[132555, 3027, 94, 1, 28, InheritFromParent]
 }, Open  ]]
 }, Open  ]]
 }
