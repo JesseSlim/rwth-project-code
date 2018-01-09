@@ -82,6 +82,7 @@ Magnus expansion
 %----------------------------------------------------------------------------------------
 \newpage
 \section{The truncated Magnus expansion}
+\label{sec:magnus-expansion}
 The Magnus expansion\supercite{Magnusexponentialsolutiondifferential1954,WaughAverageHamiltonianTheory2007,BlanesMagnusexpansionits2009,BlanespedagogicalapproachMagnus2010} for the time evolution under Hamiltonian $H(t)$ is defined as
 \begin{alignat}{2}
 	&\Omega(t,t_0) &&= \sum_{n=1}^\infty \Omega_n(t,t_0),\\
@@ -222,8 +223,27 @@ Noting that the expressions and integrals become increasingly complicated for hi
 \section{Impulse operators}
 The effective Hamiltonian generated from the Magnus expansion is applicable if the driving envelope is varied analytically. However, if the driving envelope experiences a non-analytical change, such as a sudden turn-on, an extra ``impulse operator'' is needed to describe the ``jump'' between the effective trajectory before and after the change. In this section we will work towards the development of such impulse operators.
 
-\subsection{Constant drive}
-Constant drive\todo{summarize findings for constant drive}
+\subsection{Piecewise analytical driving envelopes}
+Once again, we start with a two-level system that is driven by a perpendicular ($\sx$) oscillating signal of frequency $\omega$ with a slowly (compared to $\omega$) varying envelope $E(t)$. In the frame that rotates along with the driving frequency $\omega$, the Hamiltonian is given by eq. ($\ref{eq:H-drive}$) (for detuning $\Delta = 0$ and phase offset $\phi=0$). 
+
+
+The stroboscopic Magnus trajectory, as defined in Section~\ref{sec:magnus-expansion}, approximates the evolution of a two-level system under perpendicular oscillating (frequency $\omega$) drive by 
+
+\begin{figure}[tb]
+	\centering
+	\begin{subfigure}[b]{0.3\linewidth}
+		\centering
+		\includegraphics[scale=1]{figures/jumpop_drive.pdf}
+		\caption{\label{fig:jumpop-trace:drive}Piecewise analytical drive.}
+	\end{subfigure}%
+	\begin{subfigure}[b]{0.7\linewidth}
+		\centering
+		\includegraphics[scale=1]{figures/jumpop_trace.pdf}
+		\caption{\label{fig:jumpop-trace:trajectory}Trajectories.}
+	\end{subfigure}%
+	\caption{\textbf{Effective Magnus trajectories under a piecewise analytical driving envelope.} \subcapref{fig:jumpop-trace:drive} An exemplary piecewise analytical driving envelope is shown. This envelope, with a total pulse duration of $t_d = 7.57$, exhibits non-analyticities at $t=0$ (turn-on time), $t=t_d/2$ and $t=t_d$ (turn-off time). The average drive strength over the total pulse duration is $\overline{H}_1 = 0.83$, such that the rotation induced by driving a two-level system with this particular pulse is $\theta_d = \overline{H}_1t_d/2=\pi$ in the rotating wave approximation. \subcapref{fig:jumpop-trace:trajectory} The evolution (red) of a system initially in the $\ket{0}$ state, driven by a sinusoidal signal with an envelope as given in Figure~\subref{fig:jumpop-trace:drive}, is obtained through numerical integration. In addition, the stroboscopic Magnus trajectory of order $1/\omega^2$ (blue) is plotted. The actual and stroboscopic trajectories approximately coincide every $t_c=\pi / \omega$, starting at $t_0 = \alpha_0/\omega$ (red, blue dots). At each non-analytical point in the driving envelope, the stroboscopic trajectory shows a ``jump''. For the second discontinuity, at $t = t_d/2$, the corresponding point on each trajectory is indicated (diamond). Around this discontinuity, evolution operators along several sections of the actual and the stroboscopic trajectories are marked ($\Omega_i$) and expanded upon in the main text. Relevant parameters are $\omega = 1$, $\alpha_0 = 1$. }
+	\label{fig:jumpop-trace}
+\end{figure}
 
 \subsection{Linear drive}
 
