@@ -81,6 +81,114 @@ Magnus expansion
 %	ARTICLE CONTENTS
 %----------------------------------------------------------------------------------------
 \newpage
+
+\section{Impulse operators}
+The effective Hamiltonian generated from the Magnus expansion is applicable if the driving envelope is varied analytically. However, if the driving envelope experiences a non-analytical change, such as a sudden turn-on, an extra ``impulse operator'' is needed to describe the ``jump'' between the effective trajectory before and after the change. In this section we will work towards the development of such impulse operators.
+
+\subsection{Piecewise analytical driving envelopes}
+We start with a two-level system that is driven by a perpendicular ($\sx$) oscillating signal of frequency $\omega$ with a slowly (compared to $\omega$) varying envelope $E(t)$. In the frame that rotates along with the driving frequency $\omega$, the Hamiltonian of the driven system is given by 
+\begin{align}
+	\label{eq:H-drive-split}
+	\matr{H}_\real(t) &= \frac{E(t)}{4}\left( \cos(\phi) \sx + \sin(\phi)\sy + \cos(2 \omega t + \phi) \sx - \sin(2 \omega t + \phi) \sy \right) + \frac{\Delta}{2} \sz \nonumber \\ 
+	&= E(t)\matr{H}_p(t) + \frac{\Delta}{2}\sz,
+\end{align}
+where we define $\matr{H}_p(t)$ as the periodic part of the Hamiltonian.
+
+As detailed in Daniel's notes, we can use the Magnus expansion to construct an effective evolution operator that coincides stroboscopically with the actual evolution operator. In this construction, the Hamiltonian (\ref{eq:H-drive-split}) and higher-order commutators are integrated over an interval $[t_0, t_0+t_c]$, with $t_c = \pi / \omega$ corresponding to the period of $\matr{H}_p(t)$. In addition, to facilitate the integration of eq. (\ref{eq:H-drive-split}), the envelope function $E(t)$ is replaced by a Taylor expansion around $t_0$. Therefore, to accurately capture the behaviour of the system, the envelope function must be reasonably well approximated by its Taylor expansion on the interval $[t_0, t_0+t_c]$. If a non-analyticity occurs within this interval, this is obviously not the case. 
+
+\begin{figure}[tb]
+	\centering
+	\begin{subfigure}[b]{0.3\linewidth}
+		\centering
+		\includegraphics[scale=1]{figures/jumpop_drive.pdf}
+		\caption{\label{fig:jumpop-trace:drive}Piecewise analytical drive.}
+	\end{subfigure}%
+	\begin{subfigure}[b]{0.7\linewidth}
+		\centering
+		\includegraphics[scale=1]{figures/jumpop_trace.pdf}
+		\caption{\label{fig:jumpop-trace:trajectory}Trajectories.}
+	\end{subfigure}%
+	\caption{\textbf{Effective Magnus trajectories under a piecewise analytical driving envelope.} \subcapref{fig:jumpop-trace:drive} An exemplary piecewise analytical driving envelope is shown. This envelope, with a total pulse duration of $t_d = 7.57$, exhibits non-analyticities at $t=0$ (turn-on time), $t=t_d/2$ and $t=t_d$ (turn-off time). The average drive strength over the total pulse duration is $\overline{H}_1 = 0.83$, such that the rotation induced by driving a two-level system with this particular pulse is $\theta_d = \overline{H}_1t_d/2=\pi$ in the rotating wave approximation. \subcapref{fig:jumpop-trace:trajectory} The evolution (red) of a system initially in the $\ket{0}$ state, driven by a sinusoidal signal with an envelope as given in Figure~\subref{fig:jumpop-trace:drive}, is obtained through numerical integration. In addition, the stroboscopic Magnus trajectory of order $1/\omega^2$ (blue) is plotted. The actual and stroboscopic trajectories approximately coincide every $t_c=\pi / \omega$, starting at $t_0 = \alpha_0/\omega$ (red, blue dots). At each non-analytical point in the driving envelope, the stroboscopic trajectory shows a ``jump''. For the second discontinuity, at $t = t_d/2$, the corresponding point on each trajectory is indicated (diamond). Around this discontinuity, evolution operators along several sections of the actual and the stroboscopic trajectories are marked ($\Omega_i$) and expanded upon in the main text. Relevant parameters are $\omega = 1$, $\alpha_0 = 1$. }
+	\label{fig:jumpop-trace}
+\end{figure}
+
+Figure~\ref{fig:jumpop-trace} illustrates this situation. A system, initially in the state $\ket{\psi_\real(t=0)}=\ket{0}$, is driven using a particular driving envelope, shown in Figure~\ref{fig:jumpop-trace:drive}, that exhibits discontinuities at the turn-on time $t=0$ and the turn-off time $t_d$, in addition to a discontinuity at $t_j = t_d/2$. For this discussion, we focus on the discontinuity at $t_j$ and define $E_l(t)$ ($E_r(t)$) as the part of the envelope function left (right) of $t_j$. 
+
+Our goal now is to find an effective trajectory $\ket{\psi_{\eff}(t)}$ that 
+\begin{enumerate*}[label=(\alph*)]
+	\item stroboscopically coincides with the actual trajectory, and
+	\item evolves corresponding to $E_l(t)$ for $t<t_j$ and to $E_r(t)$ for $t>t_j$.
+\end{enumerate*} 
+The second condition fixes the shape of the effective trajectory sections $\ket{\psi_{\eff}(t)}_l $ and $\ket{\psi_{\eff}(t)}_r$ left and right of $t_j$, while the first condition fixes the positions of these sections. Although the real trajectory is necessarily continuous everywhere under unitary evolution, in general, the combined effective trajectory is not continuous at $t_j$, as shown in Figure~\ref{fig:jumpop-trace:trajectory}. We describe this discontinuity with an ``impulse operator'', which will be subject of the next section.
+
+\subsection{The impulse operator}
+\newcommand{\evolexp}[1]{e^{#1}}
+The impulse operator $\Omega_j$ is defined as the matrix exponent \todo{is this the right term?} that transforms the endpoint $\ket{\psi_{\eff}(t_j)}_l$ of the effective trajectory section left of $t_j$ into the starting point $\ket{\psi_{\eff}(t_j)}_r$ of the section right of $t_j$. That is,
+\begin{align}
+	\ket{\psi_{\eff}(t_j)}_r = \evolexp{\Omega_j} \ket{\psi_{\eff}(t_j)}_l.
+\end{align}
+From Figure~\ref{fig:jumpop-trace:trajectory}, we see that
+\begin{align}
+	\evolexp{\Omega_j} = (\evolexp{\Omega_D})^{-1} \evolexp{\Omega_C} (\evolexp{\Omega_B})^{-1} \evolexp{\Omega_A} = \evolexp{-\Omega_D} \evolexp{\Omega_C} \evolexp{-\Omega_B} \evolexp{\Omega_A},
+	\label{eq:omega_j-defintion}
+\end{align}
+where $\Omega_i, i \in \{A,B,C,D\}$ are all matrix exponents that describe the evolution between certain points on the actual and effective trajectories. In particular,
+\begin{alignat}{2}
+	&\ket{\psi_\eff(t_0)}_l &&= \evolexp{\Omega_A} \ket{\psi_\eff(t_j)}_l \label{eq:omega_A-definition} \\
+	&\ket{\psi_\real(t_0)} &&= \evolexp{\Omega_B} \ket{\psi_\real(t_j)} \label{eq:omega_B-definition} \\
+	&\ket{\psi_\real(t_0+t_c)} &&= \evolexp{\Omega_C} \ket{\psi_\real(t_j)} \label{eq:omega_C-definition} \\
+	&\ket{\psi_\eff(t_0+t_c)}_r &&= \evolexp{\Omega_D} \ket{\psi_\eff(t_j)}_r. \label{eq:omega_D-definition}
+\end{alignat}
+The definition of the effective trajectory requires that $\ket{\psi_\eff(t_0)}_l = \ket{\psi_\real(t_0)}$ and $\ket{\psi_\real(t_0+t_c)}_r = \ket{\psi_\real(t_0+t_c)}$. Equation (\ref{eq:omega_j-defintion}) then follows immediately from definitions (\ref{eq:omega_A-definition})-(\ref{eq:omega_D-definition}) and the stroboscopic coincidence condition.
+
+We use explicit Magnus expansions (as per Daniel's definition) to express the four $\Omega_i$'s. For example,
+\begin{align}
+	\Omega_A = M\left[H_{\eff,l}(t), t_0, t_j\right].
+	\label{eq:Omega_A-explicit-ME}
+\end{align}
+For this particular explicit Magnus expansion, we substitute $E(t)$ by a Taylor expansion of $E_l(t)$ around $t_j$. For the other expansions we also substitute $E(t)$ by a Taylor expansion around $t_j$ of $E_l(t)$ or $E_r(t)$ appropriately. Finally, we construct an expression for $\Omega_j$ by repeated application of the Baker-Campbell-Hausdorff (BCH) formula to equation (\ref{eq:omega_j-defintion}).
+
+\subsection{The impulse operator as a power series in $1/\omega$}
+In principle, the impulse operator introduced in the previous section is exact if the relevant Magnus and Taylor expansions and the BCH formula are treated up to infinite order. In this section we will discuss how to calculate the impulse operator up to finite order $k$ in $1/\omega$. 
+
+As a first step, we express the two relevant times in the problem, $t_0$ and $t_j$, relative to the time scale $1/\omega$ of the power series by introducing the angle-like quantities $\alpha_0 = \omega t_0$ and $\alpha_j = \omega t_j$. We then calculate explicit Magnus expansions for all four $\Omega_i$'s (cf. eq. (\ref{eq:Omega_A-explicit-ME})) up to the desired order $k$ in $1/\omega$, using the method detailed in Daniel's notes. Noting that the impulse operator needs to be dimensionless, a similar dimensional argument as applied in Daniel's note leads us to the conclusion that the highest relevant order of the envelope Taylor expansions is $k-1$.
+
+Subsequently, we note that the substitutions $t_0 = \alpha_0/\omega$ and $t_j = \alpha_j/\omega$ render all integral bounds in the Magnus expansion proportional to $1/\omega$, such that the integrals and therefore the $\Omega_i$'s themselves become proportional to $1/\omega$. This implies that an $n$-th order nested commutator of $\Omega_i$'s is proportional to $1/\omega^{n+1}$. Therefore, the highest order of the BCH formula we need to take into account is $k-1$.
+
+After putting this machinery to work, we arrive at a power series for the impulse operator $\Omega_j$. The first three terms are given by
+\begin{alignat}{3}
+	&\Omega_j &&=\,\,&&\sum_{i=0}^\infty \frac{1}{\omega^i} \Omega_j^{(i)}, \\
+	&\Omega_j^{(0)} && = &&0, \label{eq:Omega_j-ww-0} \\
+	&\Omega_j^{(1)} && = &&i\frac{\sin(\alpha_j - \alpha_0)}{4}(E_r-E_l)\cdot(\cos(\phi+\alpha_0+\alpha_j)\sx - \sin(\phi+\alpha_0+\alpha_j)\sy), \label{eq:Omega_j-ww-1} \\
+	&\Omega_j^{(2)} && = &&-i\frac{\sin(\alpha_j - \alpha_0)}{32} \times \label{eq:Omega_j-ww-2} \\
+	& && && \Big( 4\Delta(E_r - E_l) \cdot \big( \cos(\phi+\alpha_0+\alpha_j) \sx + \sin(\phi+\alpha_0+\alpha_j) \sy \big)\nonumber \\
+	& && && + 4(\dot{E}_r - \dot{E}_l) \cdot \big( \sin(\phi+\alpha_0+\alpha_j) \sx - \cos(\phi+\alpha_0+\alpha_j) \sy \big) \nonumber \\
+	& && && + (E_r^2-E_l^2) \cdot \big(\cos(\alpha_j - \alpha_0) - 2\cos(2\phi+\alpha_0+\alpha_j)\big)\sz \Big), \nonumber 
+\end{alignat}
+where $E_{r,l}$ and $\dot{E}_{r,l}$ are shorthand for the Taylor coefficients $E_{r,l}(t_j)$ and $\dot{E}_{r,l}(t_j)$ respectively.
+
+\subsubsection{Final and initial impulse operators}
+The impulse operator formalism is also capable of describing the discontinuity in the effective trajectory during a non-analytical turn-on or turn-off of the driving field. In this case, either $E_l(t)$ or $E_r(t)$ is identically zero and the expressions (\ref{eq:Omega_j-ww-0})-(\ref{eq:Omega_j-ww-2}) simplify accordingly. 
+
+In addition, for computational simplicity when calculating higher order initial or final impulse operators, we can simplify eq. (\ref{eq:omega_j-defintion}) considerably. For example, if we're interested in the turn-on discontinuity at $t=0$, for $t<0$ the system Hamiltonian is given by 
+\begin{align}
+	\label{eq:H-nodrive}
+	\matr{H}_\real(t) = \frac{\Delta}{2}\sz.
+\end{align}
+This Hamiltonian is constant and can be represented exactly in the effective Hamiltonian formalism, even at the lowest (zeroeth) order in $1/\omega$. Therefore, we can take $\matr{H}_\eff(t) = \matr{H}_\real(t)$ for $t<0$. Then it follows that $\Omega_A = -i\matr{H}_\eff (t_0 - t_j) = -i\matr{H}_\real (t_0 - t_j) = \Omega_B$ and
+\begin{align}
+	\evolexp{\Omega_j} = \evolexp{-\Omega_D}\evolexp{\Omega_C}.
+\end{align}
+A similar argument can be made for the turn-off discontinuity. Note that the ``turn-off impulse operator'' can also be used at any point in time $t$ to calculate the transformation from the effective trajectory to the real trajectory at that time.
+
+% \begin{alignat}{3}
+% 	&\Omega_2(t,t_0) &&= \phantom{-} \frac{1}{2}\int_{t_0}^t \mathrm{d}t_1 \int_{t_0}^{t_1} \mathrm{d}t_2 \big[ && -iH(t_1), -iH(t_2) \big] \nonumber \\
+% 	& &&= - \frac{1}{2}\int_{t_0}^t \mathrm{d}t_1 \int_{t_0}^{t_1} \mathrm{d}t_2 \big[ &&\frac{E(t_1)}{4}\left( (1 + \cos(2 \omega t_1)) \sx - \sin(2 \omega t_1) \sy \right), \nonumber \\ 
+% 	& && &&\frac{E(t_2)}{4}\left( (1 + \cos(2 \omega t_2)) \sx - \sin(2 \omega t_2) \sy \right) \big]
+% \end{alignat}
+
+\newpage 
+
 \section{The truncated Magnus expansion}
 \label{sec:magnus-expansion}
 The Magnus expansion\supercite{Magnusexponentialsolutiondifferential1954,WaughAverageHamiltonianTheory2007,BlanesMagnusexpansionits2009,BlanespedagogicalapproachMagnus2010} for the time evolution under Hamiltonian $H(t)$ is defined as
@@ -220,38 +328,8 @@ The first term of (\ref{eq:o2-term}) represents the Bloch-Siegert shift and is t
 
 Noting that the expressions and integrals become increasingly complicated for higher order Magnus terms, we stop here with the manual integration and intuitive interpretation of the Magnus terms.
 
-\section{Impulse operators}
-The effective Hamiltonian generated from the Magnus expansion is applicable if the driving envelope is varied analytically. However, if the driving envelope experiences a non-analytical change, such as a sudden turn-on, an extra ``impulse operator'' is needed to describe the ``jump'' between the effective trajectory before and after the change. In this section we will work towards the development of such impulse operators.
+\newpage
 
-\subsection{Piecewise analytical driving envelopes}
-Once again, we start with a two-level system that is driven by a perpendicular ($\sx$) oscillating signal of frequency $\omega$ with a slowly (compared to $\omega$) varying envelope $E(t)$. In the frame that rotates along with the driving frequency $\omega$, the Hamiltonian is given by eq. ($\ref{eq:H-drive}$) (for detuning $\Delta = 0$ and phase offset $\phi=0$). 
-
-
-The stroboscopic Magnus trajectory, as defined in Section~\ref{sec:magnus-expansion}, approximates the evolution of a two-level system under perpendicular oscillating (frequency $\omega$) drive by 
-
-\begin{figure}[tb]
-	\centering
-	\begin{subfigure}[b]{0.3\linewidth}
-		\centering
-		\includegraphics[scale=1]{figures/jumpop_drive.pdf}
-		\caption{\label{fig:jumpop-trace:drive}Piecewise analytical drive.}
-	\end{subfigure}%
-	\begin{subfigure}[b]{0.7\linewidth}
-		\centering
-		\includegraphics[scale=1]{figures/jumpop_trace.pdf}
-		\caption{\label{fig:jumpop-trace:trajectory}Trajectories.}
-	\end{subfigure}%
-	\caption{\textbf{Effective Magnus trajectories under a piecewise analytical driving envelope.} \subcapref{fig:jumpop-trace:drive} An exemplary piecewise analytical driving envelope is shown. This envelope, with a total pulse duration of $t_d = 7.57$, exhibits non-analyticities at $t=0$ (turn-on time), $t=t_d/2$ and $t=t_d$ (turn-off time). The average drive strength over the total pulse duration is $\overline{H}_1 = 0.83$, such that the rotation induced by driving a two-level system with this particular pulse is $\theta_d = \overline{H}_1t_d/2=\pi$ in the rotating wave approximation. \subcapref{fig:jumpop-trace:trajectory} The evolution (red) of a system initially in the $\ket{0}$ state, driven by a sinusoidal signal with an envelope as given in Figure~\subref{fig:jumpop-trace:drive}, is obtained through numerical integration. In addition, the stroboscopic Magnus trajectory of order $1/\omega^2$ (blue) is plotted. The actual and stroboscopic trajectories approximately coincide every $t_c=\pi / \omega$, starting at $t_0 = \alpha_0/\omega$ (red, blue dots). At each non-analytical point in the driving envelope, the stroboscopic trajectory shows a ``jump''. For the second discontinuity, at $t = t_d/2$, the corresponding point on each trajectory is indicated (diamond). Around this discontinuity, evolution operators along several sections of the actual and the stroboscopic trajectories are marked ($\Omega_i$) and expanded upon in the main text. Relevant parameters are $\omega = 1$, $\alpha_0 = 1$. }
-	\label{fig:jumpop-trace}
-\end{figure}
-
-\subsection{Linear drive}
-
-% \begin{alignat}{3}
-% 	&\Omega_2(t,t_0) &&= \phantom{-} \frac{1}{2}\int_{t_0}^t \mathrm{d}t_1 \int_{t_0}^{t_1} \mathrm{d}t_2 \big[ && -iH(t_1), -iH(t_2) \big] \nonumber \\
-% 	& &&= - \frac{1}{2}\int_{t_0}^t \mathrm{d}t_1 \int_{t_0}^{t_1} \mathrm{d}t_2 \big[ &&\frac{E(t_1)}{4}\left( (1 + \cos(2 \omega t_1)) \sx - \sin(2 \omega t_1) \sy \right), \nonumber \\ 
-% 	& && &&\frac{E(t_2)}{4}\left( (1 + \cos(2 \omega t_2)) \sx - \sin(2 \omega t_2) \sy \right) \big]
-% \end{alignat}
 
 \printbibliography
 	
